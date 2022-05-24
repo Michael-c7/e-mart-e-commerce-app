@@ -12,7 +12,7 @@ ReactDOM.render(
       <Route path="/" exact>
         <App />
       </Route>
-      <Route path="/:productID" >
+      <Route path="/:productID">
         <Product />
       </Route>
     </Router>

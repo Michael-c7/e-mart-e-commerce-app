@@ -32,12 +32,12 @@ const Product = () => {
         )
     }
 
-    const { fields } = product
-    const { name, description, price, image } = fields
+    // const { fields } = product
+    // const { name, description, price, image } = fields
   
     return (
       <section className='section section-center'>
-        <Link to='/' className='link'>
+        {/* <Link to='/' className='link'>
           Back Home
         </Link>
         <div>
@@ -53,7 +53,8 @@ const Product = () => {
               <p>{description}</p>
             </div>
           </article>
-        </div>
+        </div> */}
+        <h2>product page</h2>
       </section>
     )
 }

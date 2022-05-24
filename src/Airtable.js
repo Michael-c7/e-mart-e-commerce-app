@@ -23,26 +23,8 @@ const Airtable = () => {
 // api from our own server, setup for our own react project
   return (
     <section className="section section-center">
-    <div className="title">
-      <h2>Airtable setup</h2>
-      <div className="title-underline"></div>
-      <div className="products">
-        {products.map((product) => {
-          const { id, url, price, name } = product
-
-          return (
-            <Link to={`/${id}`} className="product" key={id}>
-              <img src={url} alt={name}/>
-              <div className="info">
-                <h5>{name}</h5>
-                <h5 className="price">${price}</h5>
-              </div>
-            </Link>
-          )
-        })}
-      </div>
-    </div>
-  </section>
+      airtable
+    </section>
   )
 }
 

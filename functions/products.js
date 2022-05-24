@@ -4,13 +4,15 @@ require("dotenv").config()
 
 const Airtable = require('airtable-node');
  
+// serverless function table id --> apphyUUe28w9woNTI
+// current table id --> 
+
 const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
-  .base('apphyUUe28w9woNTI')
+  .base('app9WelbphR5wjUEI')
   .table('products')
 
 
 exports.handler = async (event, context, cb) => {
-    console.log(event)
         const { id } = event.queryStringParameters
         if(id) {
             try {
@@ -45,20 +47,24 @@ exports.handler = async (event, context, cb) => {
             }
         }
         try {
-            const { records } = await airtable.list()
-            const products = records.map((product) => {
-                const { id } = product;
-                const { name, image, price } = product.fields
-                const url = image[0].url
-                return { id, name, url, price }
-            })
+            // const { records } = await airtable.list()
+            const data = await airtable.list()
+
+            console.log(data)
+            // const products = records.map((product) => {
+            //     const { id } = product;
+            //     const { name, image, price } = product.fields
+            //     const url = image[0].url
+            //     return { id, name, url, price }
+            // })
             return {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                 },
                 statusCode:200,
                 // body must be a string, can stringify not strings to meet this requirement
-                body:JSON.stringify(products),
+                // body:JSON.stringify(products),
+                body:JSON.stringify(data.records),
             }
         } catch(error) {
             console.log(error)
