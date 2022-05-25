@@ -2,16 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-
-const HomePage = () => {
+const Footer = () => {
   return (
     <Wrapper>
-      <div>HomePage</div>
+    Footer
     </Wrapper>
   )
 }
 
-export default HomePage
+export default Footer
+
 
 const Wrapper = styled.section`
     div {

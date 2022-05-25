@@ -3,15 +3,15 @@ import styled from 'styled-components'
 
 
 
-const HomePage = () => {
+const SideBar = () => {
   return (
     <Wrapper>
-      <div>HomePage</div>
+        SideBar
     </Wrapper>
   )
 }
 
-export default HomePage
+export default SideBar
 
 const Wrapper = styled.section`
     div {
