@@ -3,9 +3,11 @@ import styled from 'styled-components'
 
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
     <Wrapper>
-    Footer
+      <div>e-mart ©{currentYear} copyright</div>
     </Wrapper>
   )
 }
@@ -13,8 +15,9 @@ const Footer = () => {
 export default Footer
 
 
-const Wrapper = styled.section`
-    div {
-        color:blue;
-    }
+const Wrapper = styled.footer`
+    background:#F7F7F7;
+    font-size:0.925rem;
+    padding:1rem;
+    text-align:center;
 `
