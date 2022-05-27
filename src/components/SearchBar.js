@@ -4,9 +4,16 @@ import { VscChromeClose } from "react-icons/vsc"
 /* when you type in the search bar & hit enter
 takes you to the products page w/ your search */
 const SearchBar = () => {
+  const [showSearchBar, setShowSearchBar] = React.useState(false)
+
   return (
     <Wrapper>
-      <nav className="searchbar">
+      {/*
+      put on class .searchbar
+      classes for when showing the searchbar --> searchbar--transition
+      classes for when hiding the search bar --> offscreen
+      */}
+      <nav className={`searchbar ${showSearchBar ? "searchbar--transition" : "offscreen"}`}>
         <div className="searchbar__inner">
           <label className="searchbar__label">
             <input className="searchbar__input" placeholder="What are you looking for?"/>
@@ -25,12 +32,21 @@ export default SearchBar
 
 const Wrapper = styled.section`
   .searchbar {
-    position:relative;
+    position:absolute;
     background:#fff;
     height:5rem;
+    width:100%;
     display:flex;
     justify-content:space-around;
     align-items:center;
+
+    transition:transform 0.4s ease;
+    transform:translateY(50px);
+  }
+
+  .searchbar--transition {
+    transition:transform 0.4s ease;
+    transform:translateY(0px);
   }
 
   .searchbar__inner {
@@ -81,10 +97,20 @@ const Wrapper = styled.section`
     cursor:pointer;
   }
 
-
   .searchbar__close-btn-icon {
     display:flex;
     justify-content:center;
     align-items:center;
+  }
+
+
+
+
+
+  // mobile view (1200px)
+  @media screen and (max-width: 1200px) {
+    .searchbar__inner {
+      padding:0 1rem;
+    }
   }
 `
