@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route,Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom';
 
 // components
 import Navbar from "./components/Navbar"
-import Sidebar from "./components/Navbar"
+import Sidebar from "./components/Sidebar"
 import Footer  from "./components/Footer"
 
 // pages
@@ -17,7 +17,7 @@ import  SingleProductPage from "./pages/SingleProductPage"
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+      <Navbar />
       <Sidebar />
       <Switch>
         <Route exact path='/'>

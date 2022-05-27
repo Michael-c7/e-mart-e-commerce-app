@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { VscChromeClose } from "react-icons/vsc"
 /* when you type in the search bar & hit enter
 takes you to the products page w/ your search */
-const SearchBar = () => {
+const Searchbar = () => {
   const [showSearchBar, setShowSearchBar] = React.useState(false)
 
   return (
@@ -27,7 +27,7 @@ const SearchBar = () => {
   )
 }
 
-export default SearchBar
+export default Searchbar
 
 
 const Wrapper = styled.section`

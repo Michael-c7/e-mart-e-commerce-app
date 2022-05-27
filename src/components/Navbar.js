@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import eMartLogo from "../assets/E-MART-logo.svg"
 
 
-import SearchBar from "./SearchBar"
+import Searchbar from "./Searchbar"
 
 const Navbar = () => {
   return (
@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
 
       </nav>
-      <SearchBar/>
+      <Searchbar/>
     </Wrapper>
   )
 }
