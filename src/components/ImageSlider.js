@@ -106,7 +106,7 @@ const ImageSlider = () => {
         <div className='nav-dots-container'>
           <ul className='nav-dots'>
             {slideInfoData.map((_, index) => {
-              return <li className={`nav-dot ${currentSliderIndex === index ? "nav-dot--current" : ""}`} onClick={() => setCurrentSliderIndex(index)}  key={index}></li>
+              return <li className={`nav-dot nav-dot--${index} ${currentSliderIndex === index ? "nav-dot--current nav-dot--current--" : ""} ${currentSliderIndex === index && "nav-dot--current--"}${index}`} onClick={() => setCurrentSliderIndex(index)}  key={index}></li>
             })}
           </ul>
         </div>
@@ -416,11 +416,73 @@ const Wrapper = styled.section`
 
 
 
+// desktop version above 1920
+@media only screen and (min-width:2560px) {
+  .slide__info {
+    width:75rem;
+  }
 
+  .slide__heading {
+    font-size:5rem;
+  }
+
+  .slide__sub-heading {
+    margin:1.5rem auto 3.5rem auto;
+    font-size:2rem;
+  }
+
+  .slide__shop-now-btn {
+    font-size:26px;
+    line-height:16px;
+    padding:15px 30px;
+  }
+
+  .movement-btn {
+    font-size:3rem;
+  }
+
+  .nav-dots {
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgb(150,150,150,0.25);
+    border-radius:3rem;
+    padding:2rem 2rem;
+    width:15rem;
+    height:2rem;
+  }
+
+  .nav-dot {
+    --dot-size:10px;
+    width:var(--dot-size);
+    height:var(--dot-size);
+    margin-right:10px;
+  }
+
+
+  .nav-dot--current {
+    --dot-size:20px;
+    width:var(--dot-size);
+    height:var(--dot-size);
+  }
+
+  .nav-dot--current::after {
+    --dot-size:25px;
+    width:var(--dot-size);
+    height:var(--dot-size);
+    border:var(--main-color) 2px solid;
+    top:-2px;
+    left:-0px;
+  }
+
+  .nav-dot {
+    left:-0px;
+  }
+}
 
 
 // mobile version
-  // font size change
   @media only screen and (max-width:1600px) {
     .slide__info {
       width:35rem;
@@ -441,7 +503,6 @@ const Wrapper = styled.section`
       padding:15px 30px;
     }
 
-
     .center-right {
       left:80%;
       top:50%;
@@ -455,10 +516,8 @@ const Wrapper = styled.section`
     }
   }
 
-  // font size change
   @media only screen and (max-width:1400px) {
     .slide__info {
-      // background:red;
       width:35rem;
     }
 
@@ -477,7 +536,6 @@ const Wrapper = styled.section`
       padding:15px 30px;
     }
 
-
     .center-right {
       left:85%;
       top:50%;
@@ -491,8 +549,6 @@ const Wrapper = styled.section`
     }
   }
 
-
-  // font size change
   @media only screen and (max-width:1200px) {
     .slide__info {
       width:30rem;
@@ -526,8 +582,6 @@ const Wrapper = styled.section`
     }
   }
 
-
-  // font size change
   @media only screen and (max-width:940px) {
     .slide__info {
       width:27rem;
@@ -551,7 +605,6 @@ const Wrapper = styled.section`
     }
   }
 
-  // font size change
   @media only screen and (max-width:768px) {
     .slide__info {
       width:17rem;
@@ -579,7 +632,6 @@ const Wrapper = styled.section`
     }
   }
 
-  // font size change, arrows change  & center slide__info, get rid of nav__dots
   @media only screen and (max-width:575px) {
     .slide-0 .slide-img {
       object-position: 15% 50%;
@@ -592,7 +644,6 @@ const Wrapper = styled.section`
     .slide-2 .slide-img {
       object-position: 88% 50%;
     }
-
 
     .slide__info {
       width:90vw;
@@ -633,8 +684,6 @@ const Wrapper = styled.section`
     }
 
     .movement-btns  {
-      // background:red;
-      
       position:absolute;
       width:100%;
       display:flex;
@@ -642,8 +691,6 @@ const Wrapper = styled.section`
       top:100%;
       transform:translateY(-100%);
     }
-
-
 
     .prev-btn,
     .next-btn {
@@ -657,8 +704,6 @@ const Wrapper = styled.section`
       filter:var(--white-color-filter);
     }
 
-
-
     .nav-dots-container {
       border: 0;
       clip: rect(0 0 0 0);
@@ -670,9 +715,8 @@ const Wrapper = styled.section`
       width: 1px;
     }
 
-    
   }
-  // font size change
+
   @media only screen and (max-width:365px) {
     .slide-0 .slide-img {
       object-position: 25% 50%;
@@ -696,6 +740,16 @@ const Wrapper = styled.section`
 
     .slide__shop-now-btn {
       font-size:12px;
+    }
+  }
+
+  @media only screen and (max-height:320px) {
+    .slide__heading {
+      margin-bottom:15px;
+    }
+
+    .slide__sub-heading {
+      display:none;
     }
   }
 
