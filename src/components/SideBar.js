@@ -2,16 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import { VscChromeClose } from "react-icons/vsc"
+import { useProductsContext } from '../context/products_context'
 
 
 const Sidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false)
+
+  const {
+    isSidebarOpen,
+    sidebarClose,
+  } = useProductsContext()
 
   return (
     <Wrapper>
-        <div className={`sidebar-container ${sidebarOpen ? "" : "offscreen"}`}>
-          <section className={`sidebar ${sidebarOpen ? "sidebar--transition " : ""}`}>
-            <button className="sidebar__close-btn" onClick={() => () => setSidebarOpen(false)}>
+        <div className={`sidebar-container ${isSidebarOpen ? "" : "offscreen"}`}>
+          <section className={`sidebar ${isSidebarOpen ? "sidebar--transition " : ""}`}>
+            <button className="sidebar__close-btn" onClick={sidebarClose}>
               <VscChromeClose/>
             </button>
             <ul className="sidebar__items">
@@ -41,6 +46,7 @@ const Wrapper = styled.section`
       width:100vw;
       height:100vh;
       overflow:none;
+      z-index:999;
     }
 
     .sidebar {

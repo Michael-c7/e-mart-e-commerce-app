@@ -7,9 +7,10 @@ import ImageSlider from '../components/ImageSlider'
 import accessoriesImg from "../assets/images/accessories-img.jpg"
 import fashionImg from "../assets/images/fashion-img.jpg"
 import bannerImg from "../assets/images/banner-img.jpg"
+// misc
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import { useProductsContext } from '../context/products_context'
 
 
 
@@ -22,6 +23,11 @@ import axios from 'axios'
 
 const HomePage = () => {
   const url = "/api/products"
+
+
+  const {
+    sidebarOpen
+  } = useProductsContext()
 
   
 
@@ -56,19 +62,21 @@ const HomePage = () => {
 
   React.useEffect(() => {
       fetchData()
+
+      console.log(sidebarOpen)
   }, [])
 
-  React.useEffect(() => {
-    const productAmountForShowcase = 4;
-    setWomensProducts(filterProductByTag(["women", "female"]).slice(0,productAmountForShowcase))
-    setMensProduct(filterProductByTag(["male", "men"]).slice(0,productAmountForShowcase))
+  // React.useEffect(() => {
+  //   const productAmountForShowcase = 4;
+  //   setWomensProducts(filterProductByTag(["women", "female"]).slice(0,productAmountForShowcase))
+  //   setMensProduct(filterProductByTag(["male", "men"]).slice(0,productAmountForShowcase))
 
-  }, [products])
+  // }, [products])
 
 
-  React.useEffect(() => {
-    console.log(womensProducts)
-  }, [womensProducts])
+  // React.useEffect(() => {
+  //   console.log(womensProducts)
+  // }, [womensProducts])
   
 
   return (
@@ -79,7 +87,7 @@ const HomePage = () => {
         <Link className='info-box' to='/products'>
             <div className='info-box__details'>
               <h2 className='info-box__heading'>Accessories</h2>
-              <h3 className='info-box__sub-heading'>The Best Look Anywhere</h3>
+              <h3 className='info-box__sub-heading'>The Best Looks Anywhere</h3>
             </div>
             <div className='info-box__img-container'>
               <div className='info-box__img info-box__img-1'></div>
@@ -88,7 +96,7 @@ const HomePage = () => {
         <Link className='info-box' to='/products'>
             <div className='info-box__details'>
               <h2 className='info-box__heading'>Fashion</h2>
-              <h3 className='info-box__sub-heading'>Live According to Fashion</h3>
+              <h3 className='info-box__sub-heading'>Live Life Your Way</h3>
             </div>
             <div className='info-box__img-container'>
               <div className='info-box__img info-box__img-2'></div>

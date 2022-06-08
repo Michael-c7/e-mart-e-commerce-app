@@ -4,17 +4,22 @@ import { Link } from 'react-router-dom';
 import { BsSearch, BsBag } from 'react-icons/bs';
 import { GiHamburgerMenu } from "react-icons/gi"
 import eMartLogo from "../assets/E-MART-logo.svg"
+import { useProductsContext } from '../context/products_context'
 
 
 import Searchbar from "./Searchbar"
 
 const Navbar = () => {
+  const {
+    isSidebarOpen,
+    sidebarOpen
+  } = useProductsContext()
   return (
     <Wrapper>
       <nav className="navbar">
         <div className="navbar__group navbar__group-first">
           {/*hamburger menu here for mobile view*/}
-          <GiHamburgerMenu className="navbar__hamburger-menu"/>
+          <GiHamburgerMenu className="navbar__hamburger-menu" onClick={sidebarOpen}/>
           <div>
             <img className="navbar__logo" src={eMartLogo} alt="e-mart logo"/>
           </div>
