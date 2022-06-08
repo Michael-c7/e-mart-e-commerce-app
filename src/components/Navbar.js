@@ -12,7 +12,8 @@ import Searchbar from "./Searchbar"
 const Navbar = () => {
   const {
     isSidebarOpen,
-    sidebarOpen
+    sidebarOpen,
+    searchbarOpen,
   } = useProductsContext()
   return (
     <Wrapper>
@@ -40,7 +41,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar__group navbar__group-last">
-          <button className="navbar__icon navbar__search"><BsSearch/></button>
+          <button className="navbar__icon navbar__search" onClick={searchbarOpen}><BsSearch/></button>
           <div className="navbar__icon navbar__cart-container">
             <BsBag className="navbar__cart-icon"/>
             <span className="navbar__cart-total">$55.89</span>

@@ -8,6 +8,15 @@ const products_reducer = (state, action) => {
       
     }
 
+    if(action.type === "SEARCHBAR_OPEN") {
+      return {...state, isSearchbarOpen: true}
+    }
+
+    if(action.type === "SEARCHBAR_CLOSE") {
+      return {...state, isSearchbarOpen: false}
+      
+    }
+
 
 
     

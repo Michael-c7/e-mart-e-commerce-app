@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { VscChromeClose } from "react-icons/vsc"
+import { useProductsContext } from '../context/products_context'
 /* when you type in the search bar & hit enter
 takes you to the products page w/ your search */
 const Searchbar = () => {
   const [showSearchBar, setShowSearchBar] = React.useState(false)
+  
+  const {
+    isSearchbarOpen,
+    searchbarClose,
+  } = useProductsContext()
 
   return (
     <Wrapper>
@@ -13,12 +19,12 @@ const Searchbar = () => {
       classes for when showing the searchbar --> searchbar--transition
       classes for when hiding the search bar --> offscreen
       */}
-      <nav className={`searchbar ${showSearchBar ? "searchbar--transition" : "offscreen"}`}>
+      <nav className={`searchbar ${isSearchbarOpen ? "searchbar--transition" : "offscreen"}`}>
         <div className="searchbar__inner">
           <label className="searchbar__label">
             <input className="searchbar__input" placeholder="What are you looking for?"/>
           </label>
-          <button className="searchbar__close-btn">
+          <button className="searchbar__close-btn" onClick={searchbarClose}>
             <VscChromeClose className="searchbar__close-btn-icon"/>
           </button>
         </div>
@@ -40,12 +46,14 @@ const Wrapper = styled.section`
     justify-content:space-around;
     align-items:center;
 
-    transition:transform 0.4s ease;
+    transition:transform 0.2s ease;
     transform:translateY(50px);
+
+    z-index:999;
   }
 
   .searchbar--transition {
-    transition:transform 0.4s ease;
+    transition:transform 0.2s ease;
     transform:translateY(0px);
   }
 

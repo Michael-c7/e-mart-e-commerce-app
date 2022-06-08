@@ -4,6 +4,7 @@ import products_reducer from '../reducers/products_reducer'
 const initialState = {
     products:[],
     isSidebarOpen:false,
+    isSearchbarOpen:false,
 }
 
 
@@ -22,6 +23,13 @@ export const ProductsProvider = ({ children }) => {
       dispatch({type: "SIDEBAR_CLOSE"})
     }
 
+    const searchbarOpen = _ => {
+      dispatch({type: "SEARCHBAR_OPEN"})
+    }
+  
+    const searchbarClose = _ => {
+      dispatch({type: "SEARCHBAR_CLOSE"})
+    }
   
     return (
       <ProductsContext.Provider
@@ -29,6 +37,8 @@ export const ProductsProvider = ({ children }) => {
           ...state,
           sidebarOpen,
           sidebarClose,
+          searchbarOpen,
+          searchbarClose,
         }}
       >
         {children}
