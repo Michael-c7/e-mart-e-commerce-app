@@ -132,14 +132,11 @@ const Wrapper = styled.section`
 
   .slide-0 { }
   .slide-1 { }
-
   .slide-2 { }
-
 
   .slide__current {
     opacity:1;
   }
-
 
   .slide-img {
     position:relative;
@@ -147,7 +144,6 @@ const Wrapper = styled.section`
     height:100%;
     object-fit:cover;
   }
-
 
   @keyframes appearAnimation {
     0%   {
@@ -170,7 +166,6 @@ const Wrapper = styled.section`
       }
   }
 
-
   .slide__info {
     position:absolute;
     top:0;
@@ -186,7 +181,6 @@ const Wrapper = styled.section`
     animation-fill-mode: forwards;
     opacity:0;
   }
-
 
   .slide__info--intro-animation .slide__sub-heading {
     animation-name:slideFromBottom;
