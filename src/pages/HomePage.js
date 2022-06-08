@@ -97,7 +97,7 @@ const HomePage = () => {
       </section>
 
 
-      <section className='collection'>
+      {/* <section className='collection'>
         <h2 className='collection__heading'>Collections</h2>
         <ul className='collection__categories'>
           <li className='collection__category'>Women</li>
@@ -105,7 +105,7 @@ const HomePage = () => {
           <li className='collection__category'>Accessories</li>
         </ul>
         <div className='collection__cards-all'>
-        {/* <ul className='collection__cards'>
+        <ul className='collection__cards'>
           <li className='collection__card'>
             <div className='info-box__img-container'>
               <div className='info-box__img info-box__img-1'></div>
@@ -118,9 +118,9 @@ const HomePage = () => {
                 <button className='collection__card-add-to-cart-btn'>ADD TO CART</button>
             </div>
           </li>
-        </ul> */}
+        </ul>
         </div>
-      </section>
+      </section> */}
 
     </Wrapper>
   )
@@ -135,20 +135,19 @@ h3 {
 }
 
 .info-boxes {
+  --info-boxes-width:55vw;
+  --amt-of-info-box:2;
   position:relative;
-  // background:red;
-  width:70vw;
+  width:var(--info-boxes-width);
   display:flex;
   justify-content:center;
   align-items:center;
   margin:2rem auto 5rem auto;
 }
 
-
 .info-box {
   position:relative;
-  margin:0 0.5rem;
-
+  margin:0 1rem;
 }
 
 .info-box__details {
@@ -179,9 +178,9 @@ h3 {
 
 
 .info-box__img-container {
-  width:500px;
+  width:calc(var(--info-boxes-width) / var(--amt-of-info-box));
   height:500px;
-  overflow: hidden;
+  overflow:hidden;
 }
  
 .info-box__img {
@@ -205,6 +204,35 @@ h3 {
 .info-box__img:hover { 
   transform: scale(1.05);
  }
+ 
+
+ @media only screen and (max-width:1024px) {
+    .info-boxes {
+      --info-boxes-width:70vw;
+    }
+  }
+
+  @media only screen and (max-width:768px) {
+    .info-boxes {
+      --info-boxes-width:100vw;
+    }
+  }
+
+  @media only screen and (max-width:425px) {
+    .info-boxes {
+      /*
+      --amt-of-info-box:1; not saying their is only 1 info-box,
+      this means to divide by 1 to get the full width w/ flex-direction:column;  
+      */  
+      --amt-of-info-box:1;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .info-box {
+      margin:1rem 0;
+    }
+  }
 
 
 

@@ -60,7 +60,6 @@ const Wrapper = styled.section`
       justify-content:space-around;
       align-items:center;
       background:#fff;
-
       height:5.6875rem;
     }
 
@@ -153,9 +152,23 @@ const Wrapper = styled.section`
 
 
 
+    // 4k view 
+    @media screen and (min-width: 2560px) {
+      .navbar__logo {
+        transform:scale(1.1);
+      }
 
+      .navbar__item {
+        font-size:1.475rem;
+      }
 
-    // mobile view (1024px)
+      .navbar__icon {
+        font-size:1.8rem;
+      }
+
+    }
+
+    // mobile view 
     @media screen and (max-width: 1024px) {
 
       .navbar  {
@@ -170,6 +183,16 @@ const Wrapper = styled.section`
 
       .navbar__group-middle {
         display:none;
+      }
+    }
+
+    @media screen and (max-width: 326px) {
+      .navbar  {
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:center;
+        padding:0 1rem;
       }
     }
     
