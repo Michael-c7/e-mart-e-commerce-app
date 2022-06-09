@@ -4,9 +4,7 @@ import { VscChromeClose } from "react-icons/vsc"
 import { useProductsContext } from '../context/products_context'
 /* when you type in the search bar & hit enter
 takes you to the products page w/ your search */
-const Searchbar = () => {
-  const [showSearchBar, setShowSearchBar] = React.useState(false)
-  
+const Searchbar = () => {  
   const {
     isSearchbarOpen,
     searchbarClose,
@@ -115,7 +113,7 @@ const Wrapper = styled.section`
 
 
 
-  // mobile view (1200px)
+  // mobile view
   @media screen and (max-width: 1200px) {
     .searchbar__inner {
       padding:0 1rem;

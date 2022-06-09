@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 //components
 import ImageSlider from '../components/ImageSlider'
@@ -22,61 +22,56 @@ import { useProductsContext } from '../context/products_context'
 
 
 const HomePage = () => {
-  const url = "/api/products"
-
-
   const {
-    sidebarOpen
+    sidebarOpen,
+    products,
+    productsLoading,
+    productsError,
   } = useProductsContext()
 
-  
 
-  const [products, setProducts] = React.useState([])
+  // const [womensProductCollection, setWomensProductCollection] = useState([])
+  // const [mensProductCollection, setMensProductCollection] = useState([])
+  // const [accessoriesProductCollection, setAccessoriesProductCollection] = useState([])
 
-  const [womensProducts, setWomensProducts] = React.useState([])
-  const [mensProduct, setMensProduct] = React.useState([])
-  const [accessoryProduct, setaccessoryProduct] = React.useState([])
+  const [collectionsMasterArray, setCollectionsMasterArray] = useState([])
 
-  const fetchData = async () => {
-      try {
-          const { data } = await axios.get(url)
-          setProducts(data)
-      } catch(error) {
-
-      }
-  }
 
   /**
    * 
-   * @param {string} tagsToFilterBy eg: ["women"] or ["women","female","men","male"]
+   * @param {array} products - the products, an array of objects
+   * @param {string} tagToFilterBy the tag to filter by eg: "mens"
+   * @returns - an array of objects(products)
    */
-  const filterProductByTag = (tagsToFilterBy) => {
+  const filterProductsByTag = (products, tagToFilterBy) => {
     let filteredProducts = products.filter((product) => {
-      if(product?.fields?.tags.includes(tagsToFilterBy[0]) 
-      && product?.fields?.tags.includes(tagsToFilterBy[1])) {
+      if(product?.fields?.tags.includes(tagToFilterBy)) {
         return product;
       }
     })
     return filteredProducts;
   }
 
-  React.useEffect(() => {
-      fetchData()
+  useEffect(() => {
+    const productAmountForShowcase = 4;
+    // set the collections master array
+    setCollectionsMasterArray([
+      {
+        topic:"Women",
+        productCollection:filterProductsByTag(products, "women").slice(0, productAmountForShowcase),
+      },
+      {
+        topic:"Men",
+        productCollection:filterProductsByTag(products, "men").slice(0, productAmountForShowcase),
+      },
+      {
+        topic:"Accessories",
+        productCollection:filterProductsByTag(products, "accessory").slice(0, productAmountForShowcase),
+      },
+    ])
+  }, [products])
 
-      console.log(sidebarOpen)
-  }, [])
 
-  // React.useEffect(() => {
-  //   const productAmountForShowcase = 4;
-  //   setWomensProducts(filterProductByTag(["women", "female"]).slice(0,productAmountForShowcase))
-  //   setMensProduct(filterProductByTag(["male", "men"]).slice(0,productAmountForShowcase))
-
-  // }, [products])
-
-
-  // React.useEffect(() => {
-  //   console.log(womensProducts)
-  // }, [womensProducts])
   
 
   return (
@@ -105,15 +100,37 @@ const HomePage = () => {
       </section>
 
 
-      {/* <section className='collection'>
+      <section className='collection'>
         <h2 className='collection__heading'>Collections</h2>
         <ul className='collection__categories'>
-          <li className='collection__category'>Women</li>
-          <li className='collection__category'>Men</li>
-          <li className='collection__category'>Accessories</li>
+          {collectionsMasterArray.map(({topic}, index) => {
+            return (
+              <li className={`collection__category collection__category--${index}`} key={index}>
+                {topic}
+              </li>
+            )
+          })}
         </ul>
         <div className='collection__cards-all'>
-        <ul className='collection__cards'>
+          {collectionsMasterArray?.map(({ productCollection }, index) => {
+            return (
+              <ul className={`collection-cards collection-cards--${index}`} key={productCollection?.id}>
+                {productCollection.map(({fields, id}, index) => {
+                  return (
+                    <li className='collection-card' key={fields?.id}>
+                      {fields?.Name}
+                    </li>
+                  )
+                })}
+              </ul>
+            )
+          })}
+          <div className='outer-test'>
+            <img className='inner-img-test' src={bannerImg} alt=''/>
+          </div>
+
+
+        {/* <ul className='collection__cards'>
           <li className='collection__card'>
             <div className='info-box__img-container'>
               <div className='info-box__img info-box__img-1'></div>
@@ -126,9 +143,9 @@ const HomePage = () => {
                 <button className='collection__card-add-to-cart-btn'>ADD TO CART</button>
             </div>
           </li>
-        </ul>
+        </ul> */}
         </div>
-      </section> */}
+      </section>
 
     </Wrapper>
   )
@@ -296,5 +313,31 @@ h3 {
 .collection__category--current {
   color:#000;
 }
+
+
+.collection-cards {
+  margin:1rem 0;
+}
+
+
+
+.outer-test {
+  width:500px;
+  height:500px;
+  overflow:hidden;
+}
+
+.inner-img-test {
+  width:100%;
+  height:100%;
+  background-position:center;
+  background-size:cover;
+  transition:transform ease 0.5s;
+  object-fit:cover;
+}
+
+.inner-img-test:hover { 
+  transform: scale(1.05);
+ }
 
 `
