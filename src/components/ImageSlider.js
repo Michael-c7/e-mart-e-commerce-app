@@ -6,9 +6,6 @@ import { GrPrevious, GrNext } from "react-icons/gr"
 import sliderImg1 from "../assets/images/slider-img-1.jpg"
 import sliderImg2 from "../assets/images/slider-img-2.jpg"
 import sliderImg3 from "../assets/images/slider-img-3.jpg"
-import fashionImg from "../assets/images/fashion-img.jpg"
-import accessoriesImg from "../assets/images/accessories-img.jpg"
-import bannerImg from "../assets/images/banner-img.jpg"
 import { Link } from 'react-router-dom'
 
 

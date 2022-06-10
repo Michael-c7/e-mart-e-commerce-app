@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-//components
-import ImageSlider from '../components/ImageSlider'
-import StarRating from '../components/StarRating'
-
-// images
-import accessoriesImg from "../assets/images/accessories-img.jpg"
-import fashionImg from "../assets/images/fashion-img.jpg"
-import bannerImg from "../assets/images/banner-img.jpg"
 // misc
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useProductsContext } from '../context/products_context'
 
+//components
+import ImageSlider from '../components/ImageSlider'
+import StarRating from '../components/StarRating'
 import InfoBoxes from '../components/InfoBoxes'
 import CollectionShowcase from '../components/CollectionShowcase'
+import Banner from '../components/Banner'
 
 
 
@@ -40,7 +36,7 @@ const HomePage = () => {
 
       <CollectionShowcase/>
 
-
+      <Banner/>
 
     </Wrapper>
   )
