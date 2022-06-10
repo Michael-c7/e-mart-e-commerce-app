@@ -21,9 +21,9 @@ const Navbar = () => {
         <div className="navbar__group navbar__group-first">
           {/*hamburger menu here for mobile view*/}
           <GiHamburgerMenu className="navbar__hamburger-menu" onClick={sidebarOpen}/>
-          <div>
+          <Link to="/">
             <img className="navbar__logo" src={eMartLogo} alt="e-mart logo"/>
-          </div>
+          </Link>
         </div>
 
         <div className="navbar__group navbar__group-middle">

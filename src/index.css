@@ -8,6 +8,7 @@ Variables
   --main-color:#17C6AA;
   --main-black:#282828;
   --star-rating-color:#FFD400;
+  --gray:#8d92a3;
 
 
   --main-color-filter:invert(65%) sepia(63%) saturate(553%) hue-rotate(118deg) brightness(87%) contrast(90%);
@@ -140,4 +141,28 @@ p {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+
+.standard-button {
+  position:relative;
+  border:none;
+  background:var(--main-color);
+  color:#fff;
+  text-transform:uppercase;
+  font-family:'Open Sans', sans-serif;
+  font-size:14px;
+  font-weight:600;
+  line-height:16px;
+  padding:15px 30px;
+  white-space:nowrap;
+  border-radius:4px;
+  outline:none;
+  transition:all 0.2s ease;
+}
+
+.standard-button:hover {
+  background:#222;
+  transition:all 0.25s ease;
+  cursor:pointer;
 }

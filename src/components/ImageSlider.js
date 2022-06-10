@@ -22,7 +22,7 @@ const slideInfoData = [
   },
   {
     heading:"Must have Deals",
-    subHeading:"Creative, Flexible and stylish options for all sizes",
+    subHeading:"Save on new arrivals from your fave brands",
     /*first word is the up / down positioning second word is the left / right positioning*/
     slideInfoPosition:"center-left",
     img:sliderImg2,
@@ -30,7 +30,7 @@ const slideInfoData = [
   },
   {
     heading:"Live life in comfort",
-    subHeading:"",
+    subHeading:"Creative, Flexible and stylish options for all sizes",
     /*first word is the up / down positioning second word is the left / right positioning*/
     slideInfoPosition:"center-left",
     img:sliderImg3,
