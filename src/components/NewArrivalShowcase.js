@@ -4,7 +4,7 @@ import StarRating from '../components/StarRating'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { filterProductsByTag } from '../utils/misc'
-const CollectionShowcase = () => {
+const NewArrivalShowcase = () => {
     const {
         products,
       } = useProductsContext()
@@ -20,19 +20,11 @@ const CollectionShowcase = () => {
   
 
   useEffect(() => {
-    const productAmountForShowcase = 4;
+    const productAmountForShowcase = 8;
     setCollectionsMasterArray([
       {
-        topic:"Women",
-        productCollection:filterProductsByTag(products, "dress").slice(0, productAmountForShowcase),
-      },
-      {
-        topic:"Men",
-        productCollection:filterProductsByTag(products, "shirt").slice(0, productAmountForShowcase),
-      },
-      {
         topic:"Accessories",
-        productCollection:filterProductsByTag(products, "accessory").slice(0, productAmountForShowcase),
+        productCollection:filterProductsByTag(products, "casual").slice(0, productAmountForShowcase),
       },
     ])
   }, [products])
@@ -41,16 +33,10 @@ const CollectionShowcase = () => {
 
   return (
     <Wrapper>
-    <h2 className='collection__heading'>Collections</h2>
-    <ul className='collection__categories'>
-      {collectionsMasterArray.map(({topic}, index) => {
-        return (
-          <li className={`collection__category collection__category--${index}  ${currentCollection === index ? 'collection__category--current' : ''}`} key={index} onClick={() => setCurrentCollection(index)}>
-            {topic}
-          </li>
-        )
-      })}
-    </ul>
+    <header>
+        <h2 className='collection__heading'>New arrival</h2>
+        <h3>Hurry up! Limited</h3>
+    </header>
     <div className='collection__cards-all'>
       {collectionsMasterArray?.map(({ productCollection }, index) => {
         return (
@@ -81,7 +67,7 @@ const CollectionShowcase = () => {
   )
 }
 
-export default CollectionShowcase
+export default NewArrivalShowcase
 
 const Wrapper = styled.section`
 --info-boxes-width:55vw;
@@ -93,7 +79,24 @@ h3 {
 
 --collection-cards-width:56.5vw;
 width:var(--collection-cards-width);
-margin:2rem auto 5rem auto;
+margin:5rem auto 5rem auto;
+
+
+header {
+    text-align:center;
+    margin:1rem 0;
+}
+
+header h2 {
+    font-weight:500;
+    margin-bottom:1.15rem;
+}
+
+header h3 {
+    font-weight:400;
+    font-size:1rem;
+    var(--gray);
+}
 
 .collection__heading {
   font-size:2rem;
@@ -147,7 +150,7 @@ margin:2rem auto 5rem auto;
 
 .collection-card {
   text-align:center;
- 
+ margin:1rem 0;
 }
 
 

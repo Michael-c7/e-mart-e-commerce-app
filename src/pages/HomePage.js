@@ -11,6 +11,7 @@ import StarRating from '../components/StarRating'
 import InfoBoxes from '../components/InfoBoxes'
 import CollectionShowcase from '../components/CollectionShowcase'
 import Banner from '../components/Banner'
+import NewArrivalShowcase from '../components/NewArrivalShowcase'
 
 
 
@@ -37,6 +38,8 @@ const HomePage = () => {
       <CollectionShowcase/>
 
       <Banner/>
+
+      <NewArrivalShowcase/>
 
     </Wrapper>
   )
