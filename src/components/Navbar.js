@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BsSearch, BsBag } from 'react-icons/bs';
 import { GiHamburgerMenu } from "react-icons/gi"
 import eMartLogo from "../assets/E-MART-logo.svg"
@@ -15,6 +15,15 @@ const Navbar = () => {
     sidebarOpen,
     searchbarOpen,
   } = useProductsContext()
+
+  // let x = useParams()
+
+
+  React.useEffect(() => {
+    // console.log(x )
+  }, [])
+
+
   return (
     <Wrapper>
       <nav className="navbar">
@@ -43,7 +52,9 @@ const Navbar = () => {
         <div className="navbar__group navbar__group-last">
           <button className="navbar__icon navbar__search" onClick={searchbarOpen}><BsSearch/></button>
           <div className="navbar__icon navbar__cart-container">
-            <BsBag className="navbar__cart-icon"/>
+            <Link to='/cart'>
+              <BsBag className="navbar__cart-icon"/>
+            </Link>
             <span className="navbar__cart-total">$55.89</span>
             <div className="navbar__item-amt">
               <span>5</span>
@@ -86,8 +97,9 @@ const Wrapper = styled.section`
     .navbar__item {
       margin:0 1rem;
       font-weight:500;
-      font-size:1.075rem;
+      font-size:1.15rem;
       color:#000;
+      transition:color 0.2s ease;
     }
 
     .navbar__item a {
@@ -96,11 +108,17 @@ const Wrapper = styled.section`
     }
 
     .navbar__item a:hover {
+
       color:var(--main-color);
     }
 
     .navbar__icon {
       font-size:1.6rem;
+      color:#000;
+    }
+
+    .navbar__icon a {
+      color:#000;
     }
 
 

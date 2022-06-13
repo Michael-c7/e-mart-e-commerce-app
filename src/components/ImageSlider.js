@@ -55,14 +55,20 @@ const ImageSlider = () => {
 
     const autoSlideChange = _ => {
         // 10000 === 10 seconds
-        const slideChangeTimeInMilliseconds = 20000;
+        const slideChangeTimeInMilliseconds = 25000;
+
         setInterval(() => {
         nextSlide()
         }, slideChangeTimeInMilliseconds)
     }
 
     React.useEffect(() => {
-        // autoSlideChange()
+
+        if (!window.matchMedia("(max-width: 768px)").matches) {    
+          autoSlideChange()
+        } else {
+          
+        }
     }, [])
 
 

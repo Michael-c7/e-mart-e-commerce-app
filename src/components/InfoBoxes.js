@@ -7,7 +7,7 @@ import fashionImg from "../assets/images/fashion-img.jpg"
 const InfoBoxes = () => {
   return (
     <Wrapper>
-      <Link className='info-box' to='/products'>
+      <Link className='info-box info-box-1' to='/products'>
           <div className='info-box__details'>
             <h2 className='info-box__heading'>Accessories</h2>
             <h3 className='info-box__sub-heading'>The Best Looks Anywhere</h3>
@@ -16,7 +16,7 @@ const InfoBoxes = () => {
             <div className='info-box__img info-box__img-1'></div>
           </div>
       </Link>
-      <Link className='info-box' to='/products'>
+      <Link className='info-box info-box-2' to='/products'>
           <div className='info-box__details'>
             <h2 className='info-box__heading'>Fashion</h2>
             <h3 className='info-box__sub-heading'>Live Life Your Way</h3>
@@ -37,11 +37,11 @@ h3 {
   margin: 0px;
 }
 
+--amt-of-info-box:2;
 
-  --info-boxes-width:55vw;
-  --amt-of-info-box:2;
+// info boxes
   position:relative;
-  width:var(--info-boxes-width);
+  width:var(--standard-width);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -50,7 +50,17 @@ h3 {
 
 .info-box {
   position:relative;
-  margin:0 1rem;
+  width:100%;
+}
+
+
+.info-box-1 {
+  margin-right:1rem;
+}
+
+
+.info-box-2 {
+  margin-left:1rem;
 }
 
 .info-box__details {
@@ -81,7 +91,7 @@ h3 {
 
 
 .info-box__img-container {
-  width:calc(var(--info-boxes-width) / var(--amt-of-info-box));
+  width:100%;
   height:500px;
   overflow:hidden;
 }
@@ -109,17 +119,8 @@ h3 {
  }
  
 
- @media only screen and (max-width:1024px) {
-    --info-boxes-width:70vw;
-  }
-
-  @media only screen and (max-width:768px) {
-    --info-boxes-width:100vw;
-  }
-
   @media only screen and (max-width:425px) {
       /*
-      --amt-of-info-box:1; 
       does not mean there is only 1 info-box,
       this means to divide by 1 to get the full width w/ flex-direction:column;  
       */  

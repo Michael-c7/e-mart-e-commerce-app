@@ -45,12 +45,11 @@ const Banner = () => {
 export default Banner
 
 const Wrapper = styled.section`
---banner-width:55vw;
 
 // bg
 position:relative;
 background-color:#F8F8F8;
-width:var(--banner-width);
+width:var(--standard-width);
 height:500px;
 margin:2rem auto;
 overflow:hidden;
@@ -123,8 +122,6 @@ overflow:hidden;
 
 
 @media only screen and (max-width:1024px) {
-  --banner-width:75vw;
-
   .banner__info {
     width:30vw;
     position:absolute;
@@ -168,8 +165,6 @@ overflow:hidden;
 
 
 @media only screen and (max-width:768px) {
-  --banner-width:100vw;
-
   .banner__info {
     width:50vw;
     position:absolute;
@@ -181,9 +176,57 @@ overflow:hidden;
 }
 
 
-@media only screen and (max-width:425px) {
-  --banner-width:100vw;
+@media only screen and (max-width:610px) {
+  .banner__info {
+    width:50vw;
+    position:absolute;
+    text-align:center;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }
 
+  .banner__heading {
+    font-size:2rem;
+    font-weight:500;
+    margin:0 auto;
+    max-width:20ch;
+    background:#fff;
+    padding:0.5rem;
+    border-radius:4px;
+  }
+
+  .banner__sub-heading {
+    max-width:25ch;
+
+    font-size:1rem;
+    font-weight:400;
+    color:grey;
+    margin:1rem auto 2.5rem auto;
+
+    background:#fff;
+    padding:0.5rem;
+    border-radius:4px;
+  }
+
+  .banner-img {
+    position:relative;
+    width:auto;
+    height:auto;
+    transition:transform 0.5s ease;
+    transform:scale(1.25) translateX(-15%);
+    left:15%;
+    top:50px;
+  }
+
+  :hover .banner-img {
+    transform:scale(1.25);
+  }
+
+}
+
+
+@media only screen and (max-width:425px) {
   .banner__info {
     width:100vw;
     position:absolute;
@@ -200,7 +243,7 @@ overflow:hidden;
     height:auto;
     transform: scale(1.25) translate(-0%, -50%);
     left:0%;
-    top:50%;
+    top:50px;
   }
 
   :hover .banner-img {

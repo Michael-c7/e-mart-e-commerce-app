@@ -40,10 +40,10 @@ const NewArrivalShowcase = () => {
     <div className='collection__cards-all'>
       {collectionsMasterArray?.map(({ productCollection }, index) => {
         return (
-          <ul className={`collection-cards collection-cards--${index} ${currentCollection === index ? 'collection-cards--show' : ''}`} key={productCollection?.id}>
+          <ul className={`collection-cards collection-cards--${index} ${currentCollection === index ? 'collection-cards--show' : ''}`} key={index}>
             {productCollection.map(({fields, id}, index) => {
               return (
-                <li className={`collection-card`} key={fields?.id}>
+                <li className={`collection-card`} key={index}>
                   <Link to='/products'>
                     <div className='collection-card__img-container'>
                       <img className='collection-card__img' src={fields?.images[0].url} alt=''/>
@@ -76,9 +76,7 @@ h3 {
   margin:0px;
 }
 
-
---collection-cards-width:56.5vw;
-width:var(--collection-cards-width);
+width:var(--standard-width);
 margin:5rem auto 5rem auto;
 
 
@@ -158,7 +156,7 @@ header h3 {
 .collection-card__img-container {
   --card-space:0.25rem;
   --card-spacing:calc(var(--card-amt) * var(--card-space));
-  --card-width:calc(var(--collection-cards-width) / var(--card-amt));
+  --card-width:calc(var(--standard-width) / var(--card-amt));
   --cardWidthAndCardSpacing:calc(var(--card-width) - var(--card-spacing));
 
   width:var(--cardWidthAndCardSpacing);
@@ -209,7 +207,6 @@ header h3 {
 
 // mobile view
 @media only screen and (max-width:1024px) {
-    --collection-cards-width:70vw;
     .collection-cards {
         --card-amt:3;
     }
@@ -220,18 +217,14 @@ header h3 {
   }
 
   @media only screen and (max-width:768px) {
-    --collection-cards-width:100vw;
-
     .collection-cards {
         --card-amt:2;
     }
-
   }
 
 
   @media only screen and (max-width:425px) {
     /*
-
     does not mean there is only 1 info-box,
     this means to divide by 1 to get the full width w/ flex-direction:column;  
     */  
