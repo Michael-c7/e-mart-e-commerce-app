@@ -35,7 +35,7 @@ const Banner = () => {
 
       <div className='banner__info'>
         <h2 className='banner__heading'>The Best Trends of {currentSeasonNorthernHemisphere} {getCurrentYear}</h2>
-        <h3 className='banner__sub-heading'>subheading here</h3>
+        <h3 className='banner__sub-heading'>Get the look that matches the season</h3>
         <Link className='standard-button banner__shop-now-btn' to="/products">buy now</Link>
       </div>
     </Wrapper>
@@ -59,14 +59,14 @@ overflow:hidden;
   position:relative;
   width:auto;
   height:auto;
-  transition:transform 0.2s ease;
-  transform:scale(1.5);
-  top:0px;
+  transition:transform 0.5s ease;
+  transform:scale(1.35);
+  left:150px;
+  top:35px;
 }
 
 :hover .banner-img {
-  transform:scale(1.55);
-
+  transform:scale(1.45);
 }
 
 
@@ -95,10 +95,139 @@ overflow:hidden;
 }
 
 
+// smaller versions
+@media only screen and (max-width:1440px) {
+  .banner__info {
+    width:30vw;
+    position:absolute;
+    text-align:center;
+    left:95%;
+    top:50%;
+    transform:translate(-95%, -50%);
+  }
+
+  .banner-img {
+    position:relative;
+    width:auto;
+    height:auto;
+    transition:transform 0.5s ease;
+    transform:scale(1.25);
+    left:-20px;
+    top:50px;
+  }
+
+  :hover .banner-img {
+    transform:scale(1.35);
+  }
+}
+
+
+@media only screen and (max-width:1024px) {
+  --banner-width:75vw;
+
+  .banner__info {
+    width:30vw;
+    position:absolute;
+    text-align:center;
+    left:85%;
+    top:50%;
+    transform:translate(-85%, -50%);
+  }
+
+  .banner__heading {
+    font-size:2rem;
+    font-weight:500;
+    margin:0 auto;
+    max-width:15ch;
+
+  }
+
+  .banner__sub-heading {
+    max-width:25ch;
+
+    font-size:1rem;
+    font-weight:400;
+    color:grey;
+    margin:1rem auto 2.5rem auto;
+  }
+
+  .banner-img {
+    position:relative;
+    width:auto;
+    height:auto;
+    transition:transform 0.5s ease;
+    transform:scale(1.25);
+    left:-20px;
+    top:50px;
+  }
+
+  :hover .banner-img {
+    transform:scale(1.35);
+  }
+}
 
 
 @media only screen and (max-width:768px) {
   --banner-width:100vw;
+
+  .banner__info {
+    width:50vw;
+    position:absolute;
+    text-align:center;
+    left:85%;
+    top:50%;
+    transform:translate(-85%, -50%);
+  }
+}
+
+
+@media only screen and (max-width:425px) {
+  --banner-width:100vw;
+
+  .banner__info {
+    width:100vw;
+    position:absolute;
+    text-align:center;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }
+
+
+  .banner-img {
+    position:absolute;
+    width:auto;
+    height:auto;
+    transform: scale(1.25) translate(-0%, -50%);
+    left:0%;
+    top:50%;
+  }
+
+  :hover .banner-img {
+    transform:scale(1.25);
+  }
+}
+
+
+@media only screen and (max-width:375px) {
+  .banner-img {
+    transform: scale(1.25) translateX(-5%);
+    left:5%;
+    top:50px;
+  }
+
+  :hover .banner-img {
+    transform:scale(1.25);
+  }
+}
+
+
+@media only screen and (max-width:375px) {
+  .banner-img {
+    transform: scale(1.25) translateX(-10%);
+    left:10%;
+    top:50px;
+  }
 }
 
 
