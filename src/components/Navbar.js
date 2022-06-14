@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
 import { BsSearch, BsBag } from 'react-icons/bs';
 import { GiHamburgerMenu } from "react-icons/gi"
 import eMartLogo from "../assets/E-MART-logo.svg"
@@ -10,18 +10,45 @@ import { useProductsContext } from '../context/products_context'
 import Searchbar from "./Searchbar"
 
 const Navbar = () => {
+  const [currentPath, setCurrentPath] = React.useState('')
+
   const {
     isSidebarOpen,
     sidebarOpen,
     searchbarOpen,
   } = useProductsContext()
 
-  // let x = useParams()
+  const location = useLocation();
 
 
   React.useEffect(() => {
-    // console.log(x )
-  }, [])
+    setCurrentPath(location.pathname)
+  }, [location.pathname])
+
+
+
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', stickNavbar);
+    return () => window.removeEventListener('scroll', stickNavbar);
+  }, []);
+
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      let r = document.querySelector(':root');
+      
+      if(windowHeight > 900) {
+        r.style.setProperty('--navbar-position', 'sticky');
+        r.style.setProperty('--navbar-animation-name', 'fadeIn'); 
+      }
+
+      if(windowHeight < 900) {
+        r.style.setProperty('--navbar-position', 'static');
+      }
+
+    }
+  };
 
 
   return (
@@ -37,13 +64,13 @@ const Navbar = () => {
 
         <div className="navbar__group navbar__group-middle">
           <ul className="navbar__items">
-            <li className="navbar__item">
+            <li className={` navbar__item ${currentPath === '/' && "navbar__item--current"}`}>
               <Link to="/">Home</Link>
             </li>
-            <li className="navbar__item">
+            <li className={`navbar__item ${currentPath === '/about' && "navbar__item--current"}`}>
               <Link to="/about">About</Link>
             </li>
-            <li className="navbar__item">
+            <li className={`navbar__item ${currentPath === '/products' && "navbar__item--current"}`}>
               <Link to="/products">Products</Link>
             </li>
           </ul>
@@ -61,7 +88,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
       </nav>
       <Searchbar/>
     </Wrapper>
@@ -72,12 +98,35 @@ export default Navbar
 
 
 const Wrapper = styled.section`
+    position:var(--navbar-position);
+    top:0;
+    z-index:999;
+    background:#fff;
+    width:100%;
+
+    animation:var(--navbar-animation-name);
+    animation-duration:0.1s;
+
+
+    @keyframes fadeIn {
+      from { opacity:0; }
+  
+      to { opacity:1; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity:1; }
+  
+      to { opacity:0; }
+    }
+
+
     .navbar {
       display:flex;
       justify-content:space-around;
       align-items:center;
-      background:#fff;
       height:5.6875rem;
+      z-index:500;
     }
 
     .navbar__hamburger-menu {
@@ -108,7 +157,6 @@ const Wrapper = styled.section`
     }
 
     .navbar__item a:hover {
-
       color:var(--main-color);
     }
 
@@ -119,6 +167,10 @@ const Wrapper = styled.section`
 
     .navbar__icon a {
       color:#000;
+    }
+
+    .navbar__item--current a {
+      color:var(--main-color);
     }
 
 
@@ -189,7 +241,6 @@ const Wrapper = styled.section`
       .navbar__icon {
         font-size:1.8rem;
       }
-
     }
 
     // mobile view 

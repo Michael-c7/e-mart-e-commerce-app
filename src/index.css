@@ -10,6 +10,10 @@ Variables
   --star-rating-color:#FFD400;
   --gray:#8d92a3;
 
+  --navbar-position:static;
+  --color-test:red;
+  --navbar-animation-name:"";
+
 
   --main-color-filter:invert(65%) sepia(63%) saturate(553%) hue-rotate(118deg) brightness(87%) contrast(90%);
   --black-color-filter:invert(11%) sepia(0%) saturate(2599%) hue-rotate(315deg) brightness(90%) contrast(85%);;
