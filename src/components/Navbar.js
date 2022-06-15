@@ -28,27 +28,27 @@ const Navbar = () => {
 
 
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', stickNavbar);
-    return () => window.removeEventListener('scroll', stickNavbar);
-  }, []);
+  // React.useEffect(() => {
+  //   window.addEventListener('scroll', stickNavbar);
+  //   return () => window.removeEventListener('scroll', stickNavbar);
+  // }, []);
 
-  const stickNavbar = () => {
-    if (window !== undefined) {
-      let windowHeight = window.scrollY;
-      let r = document.querySelector(':root');
+  // const stickNavbar = () => {
+  //   if (window !== undefined) {
+  //     let windowHeight = window.scrollY;
+  //     let r = document.querySelector(':root');
       
-      if(windowHeight > 900) {
-        r.style.setProperty('--navbar-position', 'sticky');
-        r.style.setProperty('--navbar-animation-name', 'fadeIn'); 
-      }
+  //     if(windowHeight > 900) {
+  //       r.style.setProperty('--navbar-position', 'sticky');
+  //       r.style.setProperty('--navbar-animation-name', 'fadeIn'); 
+  //     }
 
-      if(windowHeight < 900) {
-        r.style.setProperty('--navbar-position', 'static');
-      }
+  //     if(windowHeight < 900) {
+  //       r.style.setProperty('--navbar-position', 'static');
+  //     }
 
-    }
-  };
+  //   }
+  // };
 
 
   return (
@@ -98,34 +98,12 @@ export default Navbar
 
 
 const Wrapper = styled.section`
-    position:var(--navbar-position);
-    top:0;
-    z-index:999;
-    background:#fff;
-    width:100%;
-
-    animation:var(--navbar-animation-name);
-    animation-duration:0.1s;
-
-
-    @keyframes fadeIn {
-      from { opacity:0; }
-  
-      to { opacity:1; }
-    }
-
-    @keyframes fadeOut {
-      from { opacity:1; }
-  
-      to { opacity:0; }
-    }
-
-
     .navbar {
       display:flex;
       justify-content:space-around;
       align-items:center;
       height:5.6875rem;
+      background:#fff;
       z-index:500;
     }
 
