@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill } from 'react-icons/bs'
-import { AiOutlinePlus } from 'react-icons/ai'
+
 import ProductCards from '../components/ProductCards'
 import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
+import CheckBoxColorGroup from '../components/filterComponents/CheckBoxColorGroup'
+
+import PriceSliderGroupMain from '../components/filterComponents/PriceSliderGroupMain'
 
 const ProductsPage = () => {
 
@@ -29,6 +32,11 @@ const ProductsPage = () => {
       type:'Availability',
       data:['In stock', 'Out of stock'],
       dataIndex:3,
+    },
+    {
+      type:'Color',
+      data:['red', 'green', 'blue', 'purple', 'gray', 'black', 'orange','violet','yellow','white','red'],
+      dataIndex:4,
     }
   ]
 
@@ -76,47 +84,27 @@ const ProductsPage = () => {
         <div className='side'>
           <input type='text' placeholder='Search'/>
 
-
+          {/*Categories*/}
           <CheckboxGroupMain data={filterCategoryData[0]}/>
 
+          {/*Colors*/}
+          <CheckBoxColorGroup  data={filterCategoryData[4]}/>
 
-          <div>
-            <h2>Price</h2>
-            price slider here
-
-            <div>
-              <div>$12- $87</div>
-              <button>Clear</button>
-            </div>
-          </div>
-
-
-          <div>
-            <h2>COLOR</h2>
-            <ul>
-              <li>
-                <input type="checkbox" value="instock" id="instock"/>
-                <label for="instock">red (as a color square)</label>
-              </li>
-
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">green (as a color square)</label>
-              </li>
-
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">blue (as a color square)</label>
-              </li>
-            </ul>
-          </div>
-
-
+          {/*Size*/}
           <CheckboxGroupMain data={filterCategoryData[1]}/>
 
+          {/*Price*/}
+          <PriceSliderGroupMain/>
+
+          {/*Brands*/}
           <CheckboxGroupMain data={filterCategoryData[2]}/>
 
+          {/*Availability*/}
           <CheckboxGroupMain data={filterCategoryData[3]}/>
+
+
+
+          <button>Clear Filters</button>
 
 
           {/* <div>
@@ -169,7 +157,6 @@ const Wrapper = styled.section`
   .top-filter {
     position:relative;
     width:100%;
-    // background:red;
 
     // align-self:center;
     margin-bottom:2rem;
@@ -263,84 +250,5 @@ const Wrapper = styled.section`
 
 
 
-
-
-
-
-
-  .box {
-    display: block;
-    position: relative;
-    padding-left: 28px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    // font-size: 20px;
-  }
-
-  /* Hide the default style of the checkbox */
-  input[type=checkbox] {
-    visibility: hidden;
-  }
-
-
-  /* Create a custom checkbox */
-  .mark {
-    position:absolute;
-    top:3px;
-    left:0px;
-    height:20px;
-    width:20px;
-    background-color:#efefef;
-    transition:all 0.2s ease;
-  }
-
-
-  /* Specify the background color for the checkbox while hovering */
-  .box:hover input + .mark {
-    background-color:#e0e0e0;
-  }
-
-
-  /* Specify the background color for the checkbox when the checkbox is active */
-  .box input:active + .mark {
-    background-color: #ccc;
-  }
-
-
-  /* Specify the background color for the checkbox when it is checked */
-  .box input:checked + .mark {
-    background-color: #8ebf42;
-    background-color: var(--main-color);
-    
-  }
-
-
-  /* Checkmark to be shown in checkbox */
-  /* It will not be shown when not checked */
-  .mark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  /* Display checkmark when checked */
-  .box input:checked + .mark:after {
-    display: block;
-  }
-
-  
-  /* Styling the checkmark using webkit */
-  /* Rotated the rectangle by 45 degree and showing only two border to make it look like a tick mark */
-  .box .mark:after {
-    left: 8px;
-    bottom: 5px;
-    width: 6px;
-    height: 12px;
-    border: solid #eee;
-    border-width: 0 4px 4px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
   
 `

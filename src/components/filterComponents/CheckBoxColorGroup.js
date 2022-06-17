@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 
-const CheckboxGroupMain = (props) => {
+const CheckBoxColorGroup = (props) => {
   const { type, data, dataIndex } = props.data;
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -40,7 +41,7 @@ const CheckboxGroupMain = (props) => {
               <li className='checkbox-item' key={index}>
                 <label class="box">{item}
                   <input type="checkbox"/>
-                  <span class="mark"></span>
+                  <span class="mark" style={{backgroundColor:item}}></span>
                 </label>
               </li>
             )
@@ -51,7 +52,7 @@ const CheckboxGroupMain = (props) => {
   )
 }
 
-export default CheckboxGroupMain
+export default CheckBoxColorGroup
 
 
 const Wrapper = styled.section`
@@ -99,11 +100,11 @@ margin:1.5rem 0;
 
 
 .box {
-    display: block;
-    position: relative;
-    padding-left: 28px;
-    margin-bottom: 10px;
-    cursor: pointer;
+    display:block;
+    position:relative;
+    padding-left:28px;
+    margin-bottom:10px;
+    cursor:pointer;
     // font-size: 20px;
   }
 
@@ -120,28 +121,16 @@ margin:1.5rem 0;
     left:0px;
     height:20px;
     width:20px;
-    background-color:#efefef;
-    transition:all 0.2s ease;
+    // transition:all 0.2s ease;
   }
 
 
-  /* Specify the background color for the checkbox while hovering */
-  .box:hover input + .mark {
-    background-color:#e0e0e0;
-  }
 
-
-  /* Specify the background color for the checkbox when the checkbox is active */
-  .box input:active + .mark {
-    background-color: #ccc;
-  }
 
 
   /* Specify the background color for the checkbox when it is checked */
   .box input:checked + .mark {
-    background-color: #8ebf42;
-    background-color: var(--main-color);
-    
+    border:5px solid white;
   }
 
 
@@ -162,15 +151,11 @@ margin:1.5rem 0;
   /* Styling the checkmark using webkit */
   /* Rotated the rectangle by 45 degree and showing only two border to make it look like a tick mark */
   .box .mark:after {
-    left: 8px;
-    bottom: 5px;
-    width: 6px;
-    height: 12px;
-    border: solid #eee;
-    border-width: 0 4px 4px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    left:-5px;
+    top:-5px;
+    width:calc(100% + 10px);
+    height:calc(100% + 10px);
+    border:solid var(--main-color) 3px;
   }
 
 
@@ -181,7 +166,7 @@ margin:1.5rem 0;
 
 
 
-
+  /*plus / minus things*/
   --w: 12px;
   --h: 2px;
   --bg: #333;

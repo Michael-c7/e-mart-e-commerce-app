@@ -1,58 +1,58 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
+const PriceSliderGroupMain = (props) => {
+    const [menuOpen, setMenuOpen] = useState(false)
 
-const CheckboxGroupMain = (props) => {
-  const { type, data, dataIndex } = props.data;
-  const [menuOpen, setMenuOpen] = useState(false)
-
-
-
-  function slidetoggle() {
-    document.querySelectorAll(this.getAttribute('data-slidetoggle')).forEach(el => {
-      const ch = el.clientHeight,
-        sh = el.scrollHeight,
-        isCollapsed = !ch,
-        noHeightSet = !el.style.height;
-  
-      el.style.height = (isCollapsed || noHeightSet ? sh : 0) + "px";
-      if (noHeightSet) return slidetoggle.call(this);
-    });
-  }
+    let dataIndex = 999;
   
   
-  document.querySelectorAll("[data-slidetoggle]").forEach(el => el.addEventListener('click', slidetoggle));
+  
+    function slidetoggle() {
+      document.querySelectorAll(this.getAttribute('data-slidetoggle')).forEach(el => {
+        const ch = el.clientHeight,
+          sh = el.scrollHeight,
+          isCollapsed = !ch,
+          noHeightSet = !el.style.height;
+    
+        el.style.height = (isCollapsed || noHeightSet ? sh : 0) + "px";
+        if (noHeightSet) return slidetoggle.call(this);
+      });
+    }
+    
+    
+    document.querySelectorAll("[data-slidetoggle]").forEach(el => el.addEventListener('click', slidetoggle));
+  
+  
 
 
-  return (
-    <Wrapper>
-      <div className={`filter-checkbox-group ${menuOpen && 'filter-checkbox-group--open'}`}>
-        <header className='filter-checkbox-group__header' data-slidetoggle={`#box${dataIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
-          <h2 className='filter-checkbox-group__heading'>{type}</h2>
-          <div className={`wrap ${menuOpen ? 'toggle' : 'toggle open'}`}>
-            <div className="toggle"></div>
+
+    return (
+        <Wrapper>
+          <div className={`filter-checkbox-group ${menuOpen && 'filter-checkbox-group--open'}`}>
+            <header className='filter-checkbox-group__header' data-slidetoggle={`#box${dataIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
+              <h2 className='filter-checkbox-group__heading'>Price</h2>
+              <div className={`wrap ${menuOpen ? 'toggle' : 'toggle open'}`}>
+                <div className="toggle"></div>
+              </div>
+            </header>
+            
+            <ul className='checkbox-items' id={`box${dataIndex}`}>
+                  <li className='checkbox-item'>
+                      <div>
+                        <div>$87</div>
+                        <input type="range" name="price" min="0" max="309999"/>
+                        <button>Clear</button>
+                      </div>
+                  </li>
+            </ul>
           </div>
-        </header>
-        
-        <ul className='checkbox-items' id={`box${dataIndex}`}>
-          {data.map((item, index) => {
-            return (
-              <li className='checkbox-item' key={index}>
-                <label class="box">{item}
-                  <input type="checkbox"/>
-                  <span class="mark"></span>
-                </label>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-  </Wrapper>
-  )
+      </Wrapper>
+      )
 }
 
-export default CheckboxGroupMain
-
+export default PriceSliderGroupMain
 
 const Wrapper = styled.section`
 margin:1.5rem 0;
@@ -224,7 +224,27 @@ margin:1.5rem 0;
       background: var(--bg);
     }
   }
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
 `
