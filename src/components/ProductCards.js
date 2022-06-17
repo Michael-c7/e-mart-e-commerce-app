@@ -29,7 +29,7 @@ const ProductCards = () => {
                 {products.map(({fields, id}, index) => {
                     return (
                         <li className='product__card' key={index}>
-                            <Link to='/products'>
+                            <Link to={`/products/${id}`}>
                                 <div className='collection-card__img-container'>
                                 <img className='collection-card__img' src={fields?.images[0].url} alt=''/>
                                 </div>

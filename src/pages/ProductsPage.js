@@ -8,7 +8,32 @@ import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
 const ProductsPage = () => {
 
 
+  const filterCategoryData = [
+    {
+      type:'Categories',
+      data:['accessories', 'shoes', 'clothing'],
+      dataIndex:0,
+    },
+    {
+      type:'Size',
+      data:['small', 'medium', 'large'],
+      dataIndex:1,
+    },
 
+    {
+      type:'Brands',
+      data:['poppy', 'lee', 'chaps'],
+      dataIndex:2,
+    },
+    {
+      type:'Availability',
+      data:['In stock', 'Out of stock'],
+      dataIndex:3,
+    }
+  ]
+
+
+  
 
   
   return (
@@ -52,35 +77,7 @@ const ProductsPage = () => {
           <input type='text' placeholder='Search'/>
 
 
-          <CheckboxGroupMain/>
-          {/* <div className='filter-checkbox-group'>
-            <header className='filter-checkbox-group__header'>
-              <h2 className='filter-checkbox-group__heading'>Categories</h2>
-              <AiOutlinePlus className='filter-checkbox-group__open-icon'/>
-            </header>
-            <ul className='checkbox-item'>
-              <li className='checkbox-item'>
-                <label class="box">accessories
-                  <input type="checkbox"/>
-                  <span class="mark"></span>
-                </label>
-              </li>
-
-              <li className='checkbox-item'>
-                <label class="box">shoes
-                  <input type="checkbox"/>
-                  <span class="mark"></span>
-                </label>
-              </li>
-
-              <li className='checkbox-item'>
-                <label class="box">clothing
-                  <input type="checkbox"/>
-                  <span class="mark"></span>
-                </label>
-              </li>
-            </ul>
-          </div> */}
+          <CheckboxGroupMain data={filterCategoryData[0]}/>
 
 
           <div>
@@ -115,48 +112,14 @@ const ProductsPage = () => {
           </div>
 
 
-          <div>
-            <h2>SIZE</h2>
-            <ul>
-              <li>
-                <input type="checkbox" value="instock" id="instock"/>
-                <label for="instock">Small</label>
-              </li>
+          <CheckboxGroupMain data={filterCategoryData[1]}/>
 
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">Medium</label>
-              </li>
+          <CheckboxGroupMain data={filterCategoryData[2]}/>
 
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">Large</label>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h2>BRANDS</h2>
-            <ul>
-              <li>
-                <input type="checkbox" value="instock" id="instock"/>
-                <label for="instock">poppy</label>
-              </li>
-
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">chaps</label>
-              </li>
-
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">lee's</label>
-              </li>
-            </ul>
-          </div>
+          <CheckboxGroupMain data={filterCategoryData[3]}/>
 
 
-          <div>
+          {/* <div>
             <h2>AVAILABILITY</h2>
             <ul>
               <li>
@@ -168,7 +131,7 @@ const ProductsPage = () => {
                 <label for="outofstock">Out of stock</label>
               </li>
             </ul>
-          </div>   
+          </div>    */}
         </div>
 
         <div className='holder-products'>
