@@ -72,7 +72,7 @@ margin:1.5rem 0;
   font-size:1.15rem;
   font-weight:600;
   transition:all 0.2s ease;
-  top:3px;
+  top:5px;
   position:relative;
 }
 
