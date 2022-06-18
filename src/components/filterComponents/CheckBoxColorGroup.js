@@ -56,16 +56,13 @@ export default CheckBoxColorGroup
 
 
 const Wrapper = styled.section`
-margin:1.5rem 0;
-
-
 .filter-checkbox-group__header {
   position:relative;
   display:flex;
   justify-content:space-between;
   align-items:center;
   cursor:pointer;
-
+  margin-bottom:0.75rem;
 }
 
 .filter-checkbox-group__heading {
@@ -82,19 +79,12 @@ margin:1.5rem 0;
 }
 
 
-.filter-checkbox-group__open-icon {
-  font-size:1.25rem;
-}
-
-
-
-
 .checkbox-items {
-  overflow: hidden;
-  transition: height 0.5s;
+  display:grid;
+  grid-template-columns:repeat(2, auto);
+  overflow:hidden;
+  transition:height 0.5s;
 }
-
-
 
 
 
@@ -106,6 +96,10 @@ margin:1.5rem 0;
     margin-bottom:10px;
     cursor:pointer;
     // font-size: 20px;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
   }
 
   /* Hide the default style of the checkbox */

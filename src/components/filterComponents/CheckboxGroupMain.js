@@ -65,6 +65,8 @@ margin:1.5rem 0;
   align-items:center;
   cursor:pointer;
 
+  margin-bottom:0.75rem;
+
 }
 
 .filter-checkbox-group__heading {
@@ -105,6 +107,10 @@ margin:1.5rem 0;
     margin-bottom: 10px;
     cursor: pointer;
     // font-size: 20px;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
   }
 
   /* Hide the default style of the checkbox */

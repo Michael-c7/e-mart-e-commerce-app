@@ -82,7 +82,7 @@ const ProductsPage = () => {
       <div className='holder'>
 
         <div className='side'>
-          <input type='text' placeholder='Search'/>
+          <input className='search-input' type='text' placeholder='Search'/>
 
           {/*Categories*/}
           <CheckboxGroupMain data={filterCategoryData[0]}/>
@@ -104,7 +104,7 @@ const ProductsPage = () => {
 
 
 
-          <button>Clear Filters</button>
+          <button className='clear-filters-btn'>Clear Filters</button>
 
 
           {/* <div>
@@ -140,6 +140,7 @@ const Wrapper = styled.section`
 
   width:70vw;
   margin:5rem auto;
+  
 
 
   .holder {
@@ -250,5 +251,39 @@ const Wrapper = styled.section`
 
 
 
+
+
+
+
+
+
+
+
+
+
+  .search-input {
+    border:none;
+    padding:0.75rem;
+    background:#F1F5F8;
+    color:#222;
+    width:auto;
+    font-size:0.875rem;
+    letter-spacing:0.8px;
+  }
+
+  .search-input:placeholder {
+    color:#B4B6B7;
+  }
+
+
+  .clear-filters-btn {
+    border:none;
+    background:#BB1525;
+    color:#fff;
+    letter-spacing:0.8px;
+    font-size:0.875rem;
+    padding:0.75rem 1rem;
+    cursor:pointer;
+  }
   
 `
