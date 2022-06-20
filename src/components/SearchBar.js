@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { VscChromeClose } from "react-icons/vsc"
+import { VscChromeClose } from 'react-icons/vsc'
 import { useProductsContext } from '../context/products_context'
 /* when you type in the search bar & hit enter
 takes you to the products page w/ your search */
@@ -10,6 +10,14 @@ const Searchbar = () => {
     searchbarClose,
   } = useProductsContext()
 
+  const searchInput = React.useRef(null);
+
+  const focusInput = _ => searchInput.current.focus();
+
+  React.useEffect(() => {
+    focusInput()
+  }, [isSearchbarOpen])
+
   return (
     <Wrapper>
       {/*
@@ -17,13 +25,13 @@ const Searchbar = () => {
       classes for when showing the searchbar --> searchbar--transition
       classes for when hiding the search bar --> offscreen
       */}
-      <nav className={`searchbar ${isSearchbarOpen ? "searchbar--transition" : "offscreen"}`}>
-        <div className="searchbar__inner">
-          <label className="searchbar__label">
-            <input className="searchbar__input" placeholder="What are you looking for?"/>
+      <nav  className={`searchbar ${isSearchbarOpen ? 'searchbar--transition' : 'offscreen'}`}>
+        <div className='searchbar__inner'>
+          <label className='searchbar__label'>
+            <input ref={searchInput} className='searchbar__input' placeholder='What are you looking for?'/>
           </label>
-          <button className="searchbar__close-btn" onClick={searchbarClose}>
-            <VscChromeClose className="searchbar__close-btn-icon"/>
+          <button className='searchbar__close-btn' onClick={searchbarClose}>
+            <VscChromeClose className='searchbar__close-btn-icon'/>
           </button>
         </div>
       </nav>
