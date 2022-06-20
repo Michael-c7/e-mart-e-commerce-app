@@ -205,6 +205,7 @@ const Wrapper = styled.section`
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    margin-left:2rem;
   }
 
 
