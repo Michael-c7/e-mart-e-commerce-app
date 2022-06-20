@@ -5,7 +5,6 @@ import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill } from 'react-i
 import ProductCards from '../components/ProductCards'
 import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
 import CheckBoxColorGroup from '../components/filterComponents/CheckBoxColorGroup'
-
 import PriceSliderGroupMain from '../components/filterComponents/PriceSliderGroupMain'
 
 const ProductsPage = () => {
@@ -46,41 +45,7 @@ const ProductsPage = () => {
   
   return (
     <Wrapper>
-      <div className='top-filter'>
-        <div></div>
-
-        <div className='top-filter__inner'>
-          <div className='top-filter__item-count'>Showing: 50 products</div>
-
-          <div className='flex-center'>
-            <label className='sort-label' for="sort">Sort: </label>
-            <div className='select-dropdown sort-container'>
-              <select name="sort" id="sort">
-                <option value="featured">Featured</option>
-                <option value="price-lowest">Price (Lowest)</option>
-                <option value="price-highest">Price (Highest)</option>
-                <option value="rating-highest">Rating (Highest)</option>
-                <option value="rating-lowest">Rating (Lowest)</option>
-                <option value="name-a-z">Name (A - Z)</option>
-                <option value="name-z-a">Name (Z - A)</option>
-              </select>
-            </div>
-
-            <div className='flex-center top-filter__grid-container'>
-              {/*4 X 4 grid layout */}
-              <BsFillGrid3X3GapFill className='grid-icon'/>
-              {/*2 X 2 grid layout */}
-              <BsFillGridFill className='grid-icon'/>
-              {/*1 X 1 grid layout w/ info to side instead of on the bottom*/}
-              <BsFillGrid1X2Fill className='grid-icon grid-icon--diff'/>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
       <div className='holder'>
-
         <div className='side'>
           <input className='search-input' type='text' placeholder='Search'/>
 
@@ -102,27 +67,39 @@ const ProductsPage = () => {
           {/*Availability*/}
           <CheckboxGroupMain data={filterCategoryData[3]}/>
 
-
-
           <button className='clear-filters-btn'>Clear Filters</button>
-
-
-          {/* <div>
-            <h2>AVAILABILITY</h2>
-            <ul>
-              <li>
-                <input type="checkbox" value="instock" id="instock"/>
-                <label for="instock">In stock</label>
-              </li>
-              <li>
-                <input type="checkbox" value="outofstock" id="outofstock"/>
-                <label for="outofstock">Out of stock</label>
-              </li>
-            </ul>
-          </div>    */}
         </div>
 
         <div className='holder-products'>
+          <div className='top-filter'>
+            <div className='top-filter__inner'>
+              <div className='top-filter__item-count'>Showing: 50 products</div>
+                <div className='flex-center'>
+                  <label className='sort-label' for='sort'>Sort: </label>
+                  <div className='select-dropdown sort-container'>
+                    <select name='sort' id='sort'>
+                      <option value='featured'>Featured</option>
+                      <option value='price-lowest'>Price (Lowest)</option>
+                      <option value='price-highest'>Price (Highest)</option>
+                      <option value='rating-highest'>Rating (Highest)</option>
+                      <option value='rating-lowest'>Rating (Lowest)</option>
+                      <option value='name-a-z'>Name (A - Z)</option>
+                      <option value='name-z-a'>Name (Z - A)</option>
+                    </select>
+                  </div>
+
+                  <div className='flex-center top-filter__grid-container'>
+                    {/*4 X 4 grid layout */}
+                    <BsFillGrid3X3GapFill className='grid-icon'/>
+                    {/*2 X 2 grid layout */}
+                    <BsFillGridFill className='grid-icon'/>
+                    {/*1 X 1 grid layout w/ info to side instead of on the bottom*/}
+                    <BsFillGrid1X2Fill className='grid-icon grid-icon--diff'/>
+                  </div>
+                </div>
+              </div>
+          </div>
+
           <ProductCards/>
         </div>
       </div>
@@ -161,11 +138,6 @@ const Wrapper = styled.section`
 
     // align-self:center;
     margin-bottom:2rem;
-
-
-    display:grid;
-    grid-template-columns:1fr 3fr;
-    justify-content:center;
   }
 
 
@@ -278,11 +250,20 @@ const Wrapper = styled.section`
 
   .clear-filters-btn {
     border:none;
-    background:#BB1525;
-    color:#fff;
+    // background:#BB1525;
+    background:#EFEFEF;
+    border-radius:2px;
+    color:#222;
     letter-spacing:0.8px;
     font-size:0.875rem;
     padding:0.75rem 1rem;
+    transition:all 0.4s ease;
+    text-transform:uppercase;
+  }
+
+  .clear-filters-btn:hover {
+    color:#fff;
+    background:#222;
     cursor:pointer;
   }
   

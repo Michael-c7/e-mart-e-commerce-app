@@ -16,13 +16,13 @@ const CheckBoxColorGroup = (props) => {
         isCollapsed = !ch,
         noHeightSet = !el.style.height;
   
-      el.style.height = (isCollapsed || noHeightSet ? sh : 0) + "px";
+      el.style.height = (isCollapsed || noHeightSet ? sh : 0) + 'px';
       if (noHeightSet) return slidetoggle.call(this);
     });
   }
   
   
-  document.querySelectorAll("[data-slidetoggle]").forEach(el => el.addEventListener('click', slidetoggle));
+  document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
 
 
   return (
@@ -30,8 +30,8 @@ const CheckBoxColorGroup = (props) => {
       <div className={`filter-checkbox-group ${menuOpen && 'filter-checkbox-group--open'}`}>
         <header className='filter-checkbox-group__header' data-slidetoggle={`#box${dataIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
           <h2 className='filter-checkbox-group__heading'>{type}</h2>
-          <div className={`wrap ${menuOpen ? 'toggle' : 'toggle open'}`}>
-            <div className="toggle"></div>
+          <div className={`wrap ${menuOpen ? ' toggle open ' : 'toggle'}`}>
+            <div className='toggle'></div>
           </div>
         </header>
         
@@ -39,9 +39,9 @@ const CheckBoxColorGroup = (props) => {
           {data.map((item, index) => {
             return (
               <li className='checkbox-item' key={index}>
-                <label class="box">{item}
-                  <input type="checkbox"/>
-                  <span class="mark" style={{backgroundColor:item}}></span>
+                <label class='box'>{item}
+                  <input type='checkbox'/>
+                  <span class='mark' style={{backgroundColor:item}}></span>
                 </label>
               </li>
             )
@@ -131,7 +131,7 @@ const Wrapper = styled.section`
   /* Checkmark to be shown in checkbox */
   /* It will not be shown when not checked */
   .mark:after {
-    content: "";
+    content: '';
     position: absolute;
     display: none;
   }
@@ -193,7 +193,7 @@ const Wrapper = styled.section`
     }
     
     &::after {
-      content: "";
+      content: '';
       width: var(--w);
       transition: var(--transition);
       transition-delay: .1s;

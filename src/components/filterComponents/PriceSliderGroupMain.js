@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
+import MultiRangeSlider from './MultiRangeSlider'
+
 const PriceSliderGroupMain = (props) => {
     const [menuOpen, setMenuOpen] = useState(false)
-
-    let dataIndex = 999;
+    /*
+    give a unique number so the slideToggle function
+    will only close the current group and not multiple
+    */
+    let dataIndex = 9999;
   
   
   
@@ -16,13 +21,13 @@ const PriceSliderGroupMain = (props) => {
           isCollapsed = !ch,
           noHeightSet = !el.style.height;
     
-        el.style.height = (isCollapsed || noHeightSet ? sh : 0) + "px";
+        el.style.height = (isCollapsed || noHeightSet ? sh : 0) + 'px';
         if (noHeightSet) return slidetoggle.call(this);
       });
     }
     
     
-    document.querySelectorAll("[data-slidetoggle]").forEach(el => el.addEventListener('click', slidetoggle));
+    document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
   
   
 
@@ -33,18 +38,18 @@ const PriceSliderGroupMain = (props) => {
           <div className={`filter-checkbox-group ${menuOpen && 'filter-checkbox-group--open'}`}>
             <header className='filter-checkbox-group__header' data-slidetoggle={`#box${dataIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
               <h2 className='filter-checkbox-group__heading'>Price</h2>
-              <div className={`wrap ${menuOpen ? 'toggle' : 'toggle open'}`}>
-                <div className="toggle"></div>
+              <div className={`wrap ${menuOpen ? ' toggle open ' : 'toggle'}`}>
+                <div className='toggle'></div>
               </div>
             </header>
             
             <ul className='checkbox-items' id={`box${dataIndex}`}>
                   <li className='checkbox-item'>
-                      <div>
-                        <div>$87</div>
-                        <input type="range" name="price" min="0" max="309999"/>
-                        <button>Clear</button>
-                      </div>
+                      <MultiRangeSlider
+                        min={0}
+                        max={200}
+                        onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+                      />
                   </li>
             </ul>
           </div>
@@ -148,7 +153,7 @@ margin:1.5rem 0;
   /* Checkmark to be shown in checkbox */
   /* It will not be shown when not checked */
   .mark:after {
-    content: "";
+    content: '';
     position: absolute;
     display: none;
   }
@@ -214,7 +219,7 @@ margin:1.5rem 0;
     }
     
     &::after {
-      content: "";
+      content: '';
       width: var(--w);
       transition: var(--transition);
       transition-delay: .1s;
