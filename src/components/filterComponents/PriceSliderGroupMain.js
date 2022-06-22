@@ -62,9 +62,6 @@ const PriceSliderGroupMain = (props) => {
 export default PriceSliderGroupMain
 
 const Wrapper = styled.section`
-// margin:1.5rem 0;
-// background:red;
-
 
 .filter-checkbox-group__header {
   position:relative;

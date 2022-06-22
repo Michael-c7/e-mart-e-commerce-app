@@ -79,12 +79,10 @@ const MultiRangeSlider = ({ min, max, menuOpen, onChange }) => {
       />
 
       <div className='slider'>
-        <div className='slider__track' />
-        <div ref={range} className='slider__range' />
-        <div className='slider-nums-container'>
-            <div className='slider__left-value'>${minVal}</div>
-            <div className='slider__right-value'>${maxVal}</div>
-        </div>
+        <div className='slider__track'></div>
+        <div ref={range} className='slider__range'></div>
+        <div className='slider__left-value'>${minVal}</div>
+        <div className='slider__right-value'>${maxVal}</div>
       </div>
     </Wrapper>
   );
@@ -103,6 +101,9 @@ const Wrapper = styled.section`
     justify-content:flex-start;
     align-items:center;
     padding:1rem 0.25rem;
+    
+    height:75px;
+    margin-top:-1rem;
   
   
   .slider {
