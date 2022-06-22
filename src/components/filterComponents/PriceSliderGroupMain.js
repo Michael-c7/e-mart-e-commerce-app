@@ -26,8 +26,9 @@ const PriceSliderGroupMain = (props) => {
       });
     }
     
-    
-    document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
+    React.useEffect(() => {
+      document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
+    }, [])
   
   
 
@@ -48,6 +49,7 @@ const PriceSliderGroupMain = (props) => {
                       <MultiRangeSlider
                         min={0}
                         max={200}
+                        menuOpen={menuOpen}
                         onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
                       />
                   </li>
@@ -60,7 +62,8 @@ const PriceSliderGroupMain = (props) => {
 export default PriceSliderGroupMain
 
 const Wrapper = styled.section`
-margin:1.5rem 0;
+// margin:1.5rem 0;
+// background:red;
 
 
 .filter-checkbox-group__header {

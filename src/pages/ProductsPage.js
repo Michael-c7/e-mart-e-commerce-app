@@ -47,7 +47,9 @@ const ProductsPage = () => {
     <Wrapper>
       <div className='holder'>
         <div className='side'>
-          <input className='search-input' type='text' placeholder='Search'/>
+
+
+          {/* <input className='search-input' type='text' placeholder='Search'/> */}
 
           {/*Categories*/}
           <CheckboxGroupMain data={filterCategoryData[0]}/>
@@ -87,7 +89,6 @@ const ProductsPage = () => {
                       <option value='name-z-a'>Name (Z - A)</option>
                     </select>
                   </div>
-
                   <div className='flex-center top-filter__grid-container'>
                     {/*4 X 4 grid layout */}
                     <BsFillGrid3X3GapFill className='grid-icon'/>

@@ -20,13 +20,14 @@ const CheckboxGroupMain = (props) => {
     });
   }
   
-  
-  document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
+  React.useEffect(() => {
+    document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
+  }, [])
 
 
   return (
     <Wrapper>
-      <div className={`filter-checkbox-group ${menuOpen && 'filter-checkbox-group--open'}`}>
+      <div className='filter-checkbox-group'>
         <header className='filter-checkbox-group__header' data-slidetoggle={`#box${dataIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
           <h2 className='filter-checkbox-group__heading'>{type}</h2>
           <div className={`wrap ${menuOpen ? ' toggle open ' : 'toggle'}`}>

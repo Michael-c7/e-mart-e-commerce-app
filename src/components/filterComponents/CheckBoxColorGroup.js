@@ -21,8 +21,9 @@ const CheckBoxColorGroup = (props) => {
     });
   }
   
-  
-  document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
+  React.useEffect(() => {
+    document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
+  },[])
 
 
   return (
