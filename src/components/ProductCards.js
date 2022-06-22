@@ -148,9 +148,7 @@ align-item:center;
 
 // mobile view
 @media only screen and (max-width:1024px) {
-    .collection-cards {
-        --card-amt:3;
-    }
+    --card-amt:3;
 
     .collection-card {
         margin-top:1rem;
@@ -158,9 +156,7 @@ align-item:center;
   }
 
   @media only screen and (max-width:768px) {
-    .collection-cards {
-        --card-amt:2;
-    }
+    --card-amt:2;
   }
 
 
@@ -172,9 +168,7 @@ align-item:center;
     display:flex;
     flex-direction:column;
   
-    .collection-cards {
-        --card-amt:1;
-    }
+    --card-amt:1;
 }
 
 
