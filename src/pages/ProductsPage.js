@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill } from 'react-icons/bs'
+import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill, BsSliders } from 'react-icons/bs'
 
 import ProductCards from '../components/ProductCards'
 import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
@@ -74,7 +74,12 @@ const ProductsPage = () => {
         <div className='holder-products'>
           <div className='top-filter'>
             <div className='top-filter__inner'>
-              <div className='top-filter__item-count'>Showing: 50 products</div>
+              <div className='top-filter__inner-left-side'>
+                <button className='mobile-filter-open-btn' onClick={() => setMobileFiltersOpen(true)}>
+                  <BsSliders/>
+                </button>
+                <div className='top-filter__item-count'>Showing: 50 products</div>
+              </div>
                 <div className='flex-center'>
                   <label className='sort-label' for='sort'>Sort: </label>
                   <div className='select-dropdown sort-container'>
@@ -106,61 +111,6 @@ const ProductsPage = () => {
 
 
 
-
-      {mobileFiltersOpen ? (
-        <div className='close-mobile-filters-buttons'>
-          <button className='close-mobile-filters-buttons__btn-close'onClick={() => setMobileFiltersOpen(false)}>Close</button>
-          <button className='close-mobile-filters-buttons__btn-apply'onClick={() => {
-          setMobileFiltersOpen(false)
-          // also have the actual mobile menu CLOSE w/ this onclick & APPLY the changes to the filter / products
-        }}>Apply & Close</button>
-        </div>
-      ) : (
-        <button className='open-mobile-filters-btn' onClick={() => {
-          setMobileFiltersOpen(true)
-          // also have the actual mobile menu OPEN w/ this onclick
-        }}>Refine & Sort</button>
-      )}
-      
-
-
-
-      <section className='mobile-filters-container'>
-            <label className='sort-label' for='sort'>Sort: </label>
-              <div className='select-dropdown sort-container'>
-                <select name='sort' id='sort'>
-                  <option value='featured'>Featured</option>
-                  <option value='price-lowest'>Price (Lowest)</option>
-                  <option value='price-highest'>Price (Highest)</option>
-                  <option value='rating-highest'>Rating (Highest)</option>
-                  <option value='rating-lowest'>Rating (Lowest)</option>
-                  <option value='name-a-z'>Name (A - Z)</option>
-                  <option value='name-z-a'>Name (Z - A)</option>
-                </select>
-              </div>
-
-              <input className='search-input' type='text' placeholder='Search'/>
-
-              {/*Categories*/}
-              <CheckboxGroupMain data={filterCategoryData[0]}/>
-
-              {/*Colors*/}
-              <CheckBoxColorGroup  data={filterCategoryData[4]}/>
-
-              {/*Size*/}
-              <CheckboxGroupMain data={filterCategoryData[1]}/>
-
-              {/*Price*/}
-              <PriceSliderGroupMain/>
-
-              {/*Brands*/}
-              <CheckboxGroupMain data={filterCategoryData[2]}/>
-
-              {/*Availability*/}
-              <CheckboxGroupMain data={filterCategoryData[3]}/>
-
-              <button className='clear-filters-btn'>Clear Filters</button>
-      </section>
     </Wrapper>
   )
 }
@@ -185,29 +135,19 @@ const Wrapper = styled.section`
     justify-content:center;
   }
 
-
-  .side {
-  
-  }
-
   .top-filter {
     position:relative;
     width:100%;
-
     // align-self:center;
     margin-bottom:2rem;
   }
 
-
-
   .top-filter__inner {
-      // background:green;
-
-      display:flex;
-      flex-direction:row;
-      justify-content:space-between;
-      align-items:center;
-      margin:0 1rem;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    margin:0 1rem;
   }
 
   .top-filter__inner__holder {
@@ -222,6 +162,14 @@ const Wrapper = styled.section`
   }
 
 
+
+  .top-filter__inner-left-side {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+
   .sort-container {
     margin-right:1rem;
   }
@@ -232,12 +180,6 @@ const Wrapper = styled.section`
     font-weight:500;
     margin-right:0.5rem;
   }
-
-
-  .top-filter__grid-container {
-    
-  }
-
 
   .grid-icon {
     margin:0 0.25rem;
@@ -327,95 +269,95 @@ const Wrapper = styled.section`
   }
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- .close-mobile-filters-buttons {
-  position:fixed;
-  bottom:0;
-  width:100%;
-  // background-color:var(--main-color);
-  color:#fff;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
- }
-
-
-
-
- .close-mobile-filters-buttons__btn-close,
- .close-mobile-filters-buttons__btn-apply {
-  font-size:1.15rem;
-  padding:1rem 0;
-  border:none;
-  text-transform:uppercase;
-  font-weight:500;
-  flex:1;
-  cursor:pointer;
- }
-
- .close-mobile-filters-buttons__btn-close {
-  background-color:#efefef;
- }
-
- .close-mobile-filters-buttons__btn-apply {
-  background:var(--main-color);
-  color:#fff;
- }
-
-
-
-  .open-mobile-filters-btn {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    font-size:1.15rem;
-    letter-spacing:0.25px;
-    padding:1rem 0;
+  .mobile-filter-open-btn {
     border:none;
-    background-color:var(--main-color);
-    color:#fff;
-    text-transform:uppercase;
-    font-weight:500;
-    cursor:pointer;
+    border-radius:2px;
+    font-size:1.15rem;
+    padding:0.25rem 0.75rem;
+    margin-right:1rem;
+
+    display:none;
   }
 
 
 
   
 
-  .mobile-filters-container {
-    position:absolute;
-    background:#fff;
-    z-index:999;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
 
-    // display:block;
 
-    display:none;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @media only screen and (max-width:1024px) {
+    width:100vw;   
+
+    .holder {
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr;
+      justify-content:center;
+      // background:green;
+    }
+
+    .holder-products  {
+      margin-left:0;
+    }
+
+    .side {
+      display:none;
+    }
+    
+
+
+    @media only screen and (max-width:768px) {
+      .sort-label {
+        display:none;
+      }
+  
+      .sort-container {
+        display:none;
+      }
+
+
+      .mobile-filter-open-btn {
+        display:block;
+      }
+    }
+
+    
   }
+
+
+
+
+
+  
+
+
+
+  //   .mobile-filters-container .sort-label {
+  //   display:block;
+  // }
+
+  //   .mobile-filters-container .sort-container {
+  //   display:block;
+  // }
+
+
+  // .mobile-filters-container .sort-container {
+  //   margin-right:0rem;
+  // }
 
 
 

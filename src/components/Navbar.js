@@ -98,13 +98,18 @@ export default Navbar
 
 
 const Wrapper = styled.section`
+    width:100vw;
+    padding:var(--site-spacing);
+
     .navbar {
+      position:relative;
       display:flex;
-      justify-content:space-around;
+      justify-content:space-between;
       align-items:center;
       height:5.6875rem;
       background:#fff;
       z-index:500;
+
     }
 
     .navbar__hamburger-menu {

@@ -147,17 +147,11 @@ align-item:center;
 
 
 // mobile view
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:768px) {
     --card-amt:3;
-
-    .collection-card {
-        margin-top:1rem;
-      }
   }
 
-  @media only screen and (max-width:768px) {
-    --card-amt:2;
-  }
+  .collection-card__img-container  {}
 
 
   @media only screen and (max-width:425px) {

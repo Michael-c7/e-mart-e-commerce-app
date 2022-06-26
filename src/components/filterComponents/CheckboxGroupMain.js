@@ -56,7 +56,8 @@ export default CheckboxGroupMain
 
 
 const Wrapper = styled.section`
-margin:1.5rem 0;
+  margin:1.5rem 0;
+  // border-bottom:1px solid #F4F4F4;
 
 
 .filter-checkbox-group__header {

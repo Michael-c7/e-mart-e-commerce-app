@@ -1,14 +1,94 @@
 import React from 'react'
 import styled from 'styled-components'
+import AboutUsImg from '../assets/images/about-us-img.jpg'
 
 const AboutPage = () => {
   return (
     <Wrapper>
-      <div className='about__info'>
-          <h1 className='about__heading'>About Us</h1>
-          <p className='about__text'>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat accusantium sapiente tempora sed dolore esse deserunt eaque excepturi, delectus error accusamus vel eligendi, omnis beatae. Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque dolore, obcaecati incidunt sequi blanditiis est exercitationem molestiae delectus saepe odio eligendi modi porro eaque in libero minus unde sapiente consectetur architecto. Ullam rerum, nemo iste ex, eaque perspiciatis nisi, eum totam velit saepe sed quos similique amet. Ex, voluptate accusamus nesciunt totam vitae esse iste.
-          </p>
+
+
+      <div className='about-us'>
+        <img className='about-us__img' src={AboutUsImg} alt='clothes on a clothes hanger'/>
+        <div className='about-us__info'>
+            <h1 className='about-us__heading'>About Us</h1>
+            <p className='about-us__text'>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat accusantium sapiente tempora sed dolore esse deserunt eaque excepturi, delectus error accusamus vel eligendi, omnis beatae. Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque dolore, obcaecati incidunt sequi blanditiis est exercitationem molestiae delectus saepe odio eligendi modi porro eaque in libero minus unde sapiente consectetur architecto. Ullam rerum, nemo iste ex, eaque perspiciatis nisi, eum totam velit saepe sed quos similique amet. Ex, voluptate accusamus nesciunt totam vitae esse iste.
+            </p>
+        </div>
+      </div>
+
+
+      <div className='why-shop-with-us'>
+        <h2 className='why-shop-with-us__heading'>Why Shop With Us?</h2>
+        <ul className='why-shop-with-us__items'>
+          <li className='why-shop-with-us__item'>
+            <div className='why-shop-with-us__item__icon'>icon here</div>
+            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+          </li>
+          <li className='why-shop-with-us__item'>
+            <div className='why-shop-with-us__item__icon'>icon here</div>
+            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+          </li>
+          <li className='why-shop-with-us__item'>
+            <div className='why-shop-with-us__item__icon'>icon here</div>
+            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+          </li>
+          <li className='why-shop-with-us__item'>
+            <div className='why-shop-with-us__item__icon'>icon here</div>
+            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+          </li>
+          <li className='why-shop-with-us__item'>
+            <div className='why-shop-with-us__item__icon'>icon here</div>
+            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+      <div className='sale-facts'>
+        <ul className='sale-facts__items'>
+          <li className='sale-facts__item'>
+            <h2 className='sale-facts__item__fact'>
+              <div className='sale-facts__item__fact__number'>90%</div>
+              <div className='sale-facts__item__fact__text'>Of excellent reviews</div>
+            </h2>
+            <p className='sale-facts__item__text'>
+            Nor again is there anyone who loves or pursues
+            or desires to obtain pain of itself,
+            because it is pain,
+            but because occasionally in which
+            toil and pain can procure
+            </p>
+          </li>
+          <li className='sale-facts__item'>
+            <h2 className='sale-facts__item__fact'>
+              <div className='sale-facts__item__fact__number'>1545</div>
+              <div className='sale-facts__item__fact__text'>More sales</div>
+            </h2>
+            <p className='sale-facts__item__text'>
+            Nor again is there anyone who loves or pursues
+            or desires to obtain pain of itself,
+            because it is pain,
+            but because occasionally in which
+            toil and pain can procure
+            </p>
+          </li>
+          <li className='sale-facts__item'>
+            <h2 className='sale-facts__item__fact'>
+              <div className='sale-facts__item__fact__number'>100%</div>
+              <div className='sale-facts__item__fact__text'>Happy customers</div>
+            </h2>
+            <p className='sale-facts__item__text'>
+            Nor again is there anyone who loves or pursues
+            or desires to obtain pain of itself,
+            because it is pain,
+            but because occasionally in which
+            toil and pain can procure
+            </p>
+          </li>
+        </ul>
       </div>
     </Wrapper>
   )
@@ -17,10 +97,26 @@ const AboutPage = () => {
 export default AboutPage
 
 const Wrapper = styled.section`
+    padding:var(--site-spacing);
 
+    .about__info {
+      // background:red;
+    }
 
 
    .about__text {
     max-width:60ch;
+   }
+
+
+
+   .about-us {
+    background:red;
+    display:flex;
+    
+   }
+
+   .about-us__img {
+    width:500px;
    }
 `

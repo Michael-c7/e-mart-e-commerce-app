@@ -57,6 +57,8 @@ export default CheckBoxColorGroup
 
 
 const Wrapper = styled.section`
+  // border-bottom:1px solid #F4F4F4;
+
 .filter-checkbox-group__header {
   position:relative;
   display:flex;
