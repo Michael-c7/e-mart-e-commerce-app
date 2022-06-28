@@ -18,7 +18,7 @@ const AboutPage = () => {
       </div>
 
 
-      <div className='why-shop-with-us'>
+      {/* <div className='why-shop-with-us'>
         <h2 className='why-shop-with-us__heading'>Why Shop With Us?</h2>
         <ul className='why-shop-with-us__items'>
           <li className='why-shop-with-us__item'>
@@ -42,12 +42,12 @@ const AboutPage = () => {
             <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
           </li>
         </ul>
-      </div>
+      </div> */}
 
 
 
 
-      <div className='sale-facts'>
+      {/* <div className='sale-facts'>
         <ul className='sale-facts__items'>
           <li className='sale-facts__item'>
             <h2 className='sale-facts__item__fact'>
@@ -89,7 +89,7 @@ const AboutPage = () => {
             </p>
           </li>
         </ul>
-      </div>
+      </div> */}
     </Wrapper>
   )
 }
@@ -97,26 +97,51 @@ const AboutPage = () => {
 export default AboutPage
 
 const Wrapper = styled.section`
-    padding:var(--site-spacing);
-
-    .about__info {
-      // background:red;
-    }
-
-
-   .about__text {
+   .about-us__text {
     max-width:60ch;
+    line-height:2;
    }
 
-
-
    .about-us {
-    background:red;
-    display:flex;
-    
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-gap:2rem;
+    background:#F0F0F0;
+    height:auto;
+    padding:var(--site-spacing);
+    padding-top:2rem;
    }
 
    .about-us__img {
-    width:500px;
+    max-width:100%;
+    height:100%;
+    object-fit:cover;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// mobile view
+   @media screen and (max-width: 1024px) {
+    .about-us {
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      grid-gap:2rem;
+      background:#F0F0F0;
+      height:auto;
+      padding:var(--site-spacing);
+      padding-top:2rem;
+     }
    }
 `

@@ -9,7 +9,7 @@ Variables
   --main-black:#282828;
   --star-rating-color:#FFD400;
   --gray:#8d92a3;
-  --site-spacing:0 10rem;
+  --general-spacing:25%;
 
 
 
@@ -40,7 +40,7 @@ body {
   line-height: 1.5;
   font-size: 0.875rem;
 
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 ul {
   list-style-type: none;
@@ -239,11 +239,31 @@ p {
 
 
 
+@media only screen and (max-width:1920px) {
+  body {
+    --general-spacing:25rem;
+  }
+}
 
 
+@media only screen and (max-width:1440px) {
+  body {
+    --general-spacing:5rem;
+  }
+}
+
+@media only screen and (max-width:1024px) {
+  body {
+    --general-spacing:2.5rem;
+  }
+}
 
 
-
+@media only screen and (max-width:425px) {
+  body {
+    --general-spacing:0.5rem;
+  }
+}
 
 
 

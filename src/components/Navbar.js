@@ -27,44 +27,20 @@ const Navbar = () => {
 
 
 
-
-  // React.useEffect(() => {
-  //   window.addEventListener('scroll', stickNavbar);
-  //   return () => window.removeEventListener('scroll', stickNavbar);
-  // }, []);
-
-  // const stickNavbar = () => {
-  //   if (window !== undefined) {
-  //     let windowHeight = window.scrollY;
-  //     let r = document.querySelector(':root');
-      
-  //     if(windowHeight > 900) {
-  //       r.style.setProperty('--navbar-position', 'sticky');
-  //       r.style.setProperty('--navbar-animation-name', 'fadeIn'); 
-  //     }
-
-  //     if(windowHeight < 900) {
-  //       r.style.setProperty('--navbar-position', 'static');
-  //     }
-
-  //   }
-  // };
-
-
   return (
     <Wrapper>
       <nav className="navbar">
-        <div className="navbar__group navbar__group-first">
-          {/*hamburger menu here for mobile view*/}
+      {/*where hamburger menu goes & where the logo goes*/}
+        <div className="navbar__group__first">
           <GiHamburgerMenu className="navbar__hamburger-menu" onClick={sidebarOpen}/>
           <Link to="/">
             <img className="navbar__logo" src={eMartLogo} alt="e-mart logo"/>
           </Link>
         </div>
-
-        <div className="navbar__group navbar__group-middle">
+      {/*where home, about, products links go*/}
+        <div className="navbar__group__second">
           <ul className="navbar__items">
-            <li className={` navbar__item ${currentPath === '/' && "navbar__item--current"}`}>
+            <li className={`navbar__item ${currentPath === '/' && "navbar__item--current"}`}>
               <Link to="/">Home</Link>
             </li>
             <li className={`navbar__item ${currentPath === '/about' && "navbar__item--current"}`}>
@@ -72,11 +48,11 @@ const Navbar = () => {
             </li>
             <li className={`navbar__item ${currentPath === '/products' && "navbar__item--current"}`}>
               <Link to="/products">Products</Link>
-            </li>
+          </li>
           </ul>
         </div>
-
-        <div className="navbar__group navbar__group-last">
+      {/*where search icon & cart bag goes */}
+        <div className="navbar__group__third">
           <button className="navbar__icon navbar__search" onClick={searchbarOpen}><BsSearch/></button>
           <div className="navbar__icon navbar__cart-container">
             <Link to='/cart'>
@@ -97,19 +73,23 @@ const Navbar = () => {
 export default Navbar
 
 
-const Wrapper = styled.section`
-    width:100vw;
-    padding:var(--site-spacing);
-
+const Wrapper = styled.nav`
     .navbar {
       position:relative;
+      background:#fff;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      height:5.6875rem;
-      background:#fff;
+      padding:1.8rem var(--general-spacing);
       z-index:500;
+    }
 
+
+    .navbar__group__first,
+    .navbar__group__second,
+    .navbar__group__third {
+      display:flex;
+      align-items:center;
     }
 
     .navbar__hamburger-menu {
@@ -120,18 +100,24 @@ const Wrapper = styled.section`
       display:none;
     }
 
+    .navbar__group__second {
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+    }
 
     .navbar__items {
       display:flex;
+      justify-content:center;
       align-items:center;
-    }
-
-    .navbar__item {
-      margin:0 1rem;
       font-weight:500;
       font-size:1.15rem;
       color:#000;
       transition:color 0.2s ease;
+    }
+
+    .navbar__item {
+      margin:0 1rem;
     }
 
     .navbar__item a {
@@ -156,7 +142,6 @@ const Wrapper = styled.section`
       color:var(--main-color);
     }
 
-
     .navbar__search {
       position:relative;
       border:none;
@@ -180,6 +165,10 @@ const Wrapper = styled.section`
     }
 
 
+    .navbar__cart-container {
+      position:relative;
+    }
+
     .navbar__cart-total {
       position:relative;
       top:-8px;
@@ -188,7 +177,6 @@ const Wrapper = styled.section`
       margin-left:0.5rem;
     }
 
-
     .navbar__item-amt {
       position:absolute;
       font-size:0.7rem;
@@ -196,9 +184,9 @@ const Wrapper = styled.section`
       width:20px;
       height:20px;
       border-radius:100px;
-      left:37%;
-      top:115%;
-      transform:translate(-37%, -115%);
+      left:0%;
+      top:50%;
+      transform:translate(-50%, -0%);
     }
 
     .navbar__item-amt span {
@@ -208,6 +196,18 @@ const Wrapper = styled.section`
       transform:translate(-50%, -50%);
       color:#fff;
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -226,32 +226,40 @@ const Wrapper = styled.section`
       }
     }
 
+
     // mobile view 
     @media screen and (max-width: 1024px) {
-
-      .navbar  {
-        justify-content:space-between;
-        padding:0 1rem;
+      .navbar__hamburger-menu { 
+        display:block;
       }
+    }
 
-      .navbar__hamburger-menu,
-      .navbar__group-first { 
-        display:flex;
-      }
-
-      .navbar__group-middle {
+    @media screen and (max-width: 768px) {
+      .navbar__group__second {
         display:none;
       }
     }
 
-    @media screen and (max-width: 326px) {
+    
+    @media screen and (max-width: 375px) {
       .navbar  {
         display:flex;
         flex-direction:column;
-        justify-content:space-around;
+        justify-content:center;
         align-items:center;
-        padding:0 1rem;
+      }
+
+      .navbar__group__third {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+      }
+
+      .navbar__search {
+        margin:0.5rem 0;
       }
     }
+
     
 `

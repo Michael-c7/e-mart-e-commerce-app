@@ -31,15 +31,15 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <ImageSlider/>
+      {/* <ImageSlider/> */}
 
-      <InfoBoxes/>
+      {/* <InfoBoxes/> */}
 
-      <CollectionShowcase/>
+      {/* <CollectionShowcase/> */}
 
-      <Banner/>
+      {/* <Banner/> */}
 
-      <NewArrivalShowcase/>
+      {/* <NewArrivalShowcase/> */}
     </Wrapper>
   )
 }
