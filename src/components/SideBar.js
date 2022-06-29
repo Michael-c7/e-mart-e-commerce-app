@@ -19,26 +19,25 @@ const Sidebar = () => {
     setCurrentPath(location.pathname)
   }, [location.pathname])
 
+  const closeSidebar = _ => {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("sidenav-container").style.backgroundColor = "#fff";
+    document.getElementById("sidenav-container").style.height = "0";
+    document.getElementById("sidenav-container").style.zIndex = "-999";
+    // sidebarClose()
+  }
+
   return (
     <Wrapper>
-        <div className={`sidebar-container ${isSidebarOpen ? "" : "offscreen"}`}>
-          <section className={`sidebar  ${isSidebarOpen ? "sidebar--show" : "sidebar--hide"}`}>
-            <button className="sidebar__close-btn" onClick={sidebarClose}>
-              <VscChromeClose/>
-            </button>
-            <ul className="sidebar__items">
-              <li className={`sidebar__item ${currentPath === '/' && "navbar__item--current"}`}>
-                <Link to="/">Home</Link>
-              </li>
-              <li className={`sidebar__item ${currentPath === '/about' && "navbar__item--current"}`}>
-                <Link to="/about">About</Link>
-              </li>
-              <li className={`sidebar__item ${currentPath === '/products' && "navbar__item--current"}`}>
-                <Link to="/products">Products</Link>
-              </li>
-            </ul>
-          </section>
+      <div id='sidenav-container'>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onClick={closeSidebar}>&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
         </div>
+      </div>
     </Wrapper>
   )
 }
@@ -46,84 +45,60 @@ const Sidebar = () => {
 export default Sidebar
 
 const Wrapper = styled.section`
-    .sidebar-container {
-      top:0;
-      position:absolute;
-      background:rgba(90, 90, 90, 0.5);
-      width:100%;
-      height:100vh;
-      overflow:none;
-      z-index:999;
-    }
-
-    .sidebar {
-      position:relative;
-      width:20rem;
-      height:100%;
-      background:#fff;
-      padding:1rem;
-    }
-
-    .sidebar--hide {
-      transition:transform 0.4s ease;
-      transform:translateX(-350px);
-    }
-
-    .sidebar--show {
-      transition:transform 0.4s ease;
-      transform:translateX(0px);
-    }
+#sidenav-container {
+  position:fixed;
+  z-index:600;
+  top:0;
+}
 
 
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: absolute; /* Stay in place */
+  z-index: 9999; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #fff; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  z-index:999;
+}
 
-    .sidebar__close-btn {
-      border:none;
-      background:none;
-      font-weight:700;
-      font-size:2rem;
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #444;
+  display: block;
+  transition: 0.3s;
+}
 
-      cursor:pointer;
-      margin-bottom:1.5rem;
-    }
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
 
-    .sidebar__close-btn:hover,
-    .sidebar__close-btn:focus {
-      outline:none;
-      transition:color 0.2s ease;
-      color:var(--main-color);
-      cursor:pointer;
-    }
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
 
-    .sidebar__item {
-      margin:0.5rem 0;
-    }
-
-    .sidebar__item a {
-      font-weight:400;
-      font-size:1.075rem;
-      color:#000;
-    }
-
-    .sidebar__items a:hover,
-    .sidebar__items a:focus {
-      outline:none;
-      transition:color 0.2s ease;
-      color:var(--main-color);
-      cursor:pointer;
-    }
-
-    
-    .navbar__item--current a {
-      color:var(--main-color);
-    }
-
-
-
-    // mobile view
-    @media screen and (max-width: 300px) {
-      .sidebar {
-        width:100%;
-      }
-    }
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
 
 `

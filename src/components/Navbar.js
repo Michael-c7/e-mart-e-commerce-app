@@ -25,6 +25,15 @@ const Navbar = () => {
     setCurrentPath(location.pathname)
   }, [location.pathname])
 
+  const openSidebar = _ => {
+    document.getElementById("mySidenav").style.width = "250px";
+
+    document.getElementById("sidenav-container").style.backgroundColor = "rgba(0,0,0,0.5)";
+    document.getElementById("sidenav-container").style.width = "100%";
+    document.getElementById("sidenav-container").style.height = "100%";
+    document.getElementById("sidenav-container").style.zIndex = "9999";
+  }
+
 
 
   return (
@@ -32,7 +41,7 @@ const Navbar = () => {
       <nav className="navbar">
       {/*where hamburger menu goes & where the logo goes*/}
         <div className="navbar__group__first">
-          <GiHamburgerMenu className="navbar__hamburger-menu" onClick={sidebarOpen}/>
+          <GiHamburgerMenu className="navbar__hamburger-menu" onClick={openSidebar}/>
           <Link to="/">
             <img className="navbar__logo" src={eMartLogo} alt="e-mart logo"/>
           </Link>
