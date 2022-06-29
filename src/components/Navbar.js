@@ -228,13 +228,11 @@ const Wrapper = styled.nav`
 
 
     // mobile view 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 768px) {
       .navbar__hamburger-menu { 
         display:block;
       }
-    }
 
-    @media screen and (max-width: 768px) {
       .navbar__group__second {
         display:none;
       }
@@ -247,17 +245,6 @@ const Wrapper = styled.nav`
         flex-direction:column;
         justify-content:center;
         align-items:center;
-      }
-
-      .navbar__group__third {
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-      }
-
-      .navbar__search {
-        margin:0.5rem 0;
       }
     }
 
