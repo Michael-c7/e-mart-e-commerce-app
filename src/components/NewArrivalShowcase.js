@@ -70,7 +70,6 @@ const NewArrivalShowcase = () => {
 export default NewArrivalShowcase
 
 const Wrapper = styled.section`
---info-boxes-width:55vw;
 h3 {
   padding:0px;
   margin:0px;
