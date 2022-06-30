@@ -2,6 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import AboutUsImg from '../assets/images/about-us-img.jpg'
 
+import {FaHandshake} from 'react-icons/fa';
+import {
+  MdLocalShipping,
+  MdBorderColor,
+  MdOutlineSupportAgent,
+  MdOutlineSavings} from 'react-icons/md'
+// import {}
+
+
 const AboutPage = () => {
   return (
     <Wrapper>
@@ -22,24 +31,38 @@ const AboutPage = () => {
         <h2 className='why-shop-with-us__heading'>Why Shop With Us?</h2>
         <ul className='why-shop-with-us__items'>
           <li className='why-shop-with-us__item'>
-            <div className='why-shop-with-us__item__icon'>icon here</div>
+            <div className='why-shop-with-us__item__icon'>
+              <FaHandshake/>
+            </div>
             <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
           </li>
+
           <li className='why-shop-with-us__item'>
-            <div className='why-shop-with-us__item__icon'>icon here</div>
-            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+            <div className='why-shop-with-us__item__icon'>
+              <MdBorderColor/>
+            </div>
+            <p className='why-shop-with-us__item__text'>Same day dispatch on all orders</p>
           </li>
+
           <li className='why-shop-with-us__item'>
-            <div className='why-shop-with-us__item__icon'>icon here</div>
-            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+            <div className='why-shop-with-us__item__icon'>
+              <MdLocalShipping/>
+            </div>
+            <p className='why-shop-with-us__item__text'>Free delivery on all orders</p>
           </li>
+
           <li className='why-shop-with-us__item'>
-            <div className='why-shop-with-us__item__icon'>icon here</div>
-            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+            <div className='why-shop-with-us__item__icon'>
+              <MdOutlineSupportAgent/>
+            </div>
+            <p className='why-shop-with-us__item__text'>Professional advice and great support</p>
           </li>
+
           <li className='why-shop-with-us__item'>
-            <div className='why-shop-with-us__item__icon'>icon here</div>
-            <p className='why-shop-with-us__item__text'>Complete buyer supply store</p>
+            <div className='why-shop-with-us__item__icon'>
+              <MdOutlineSavings/>
+            </div>
+            <p className='why-shop-with-us__item__text'>Fall savings are in the air</p>
           </li>
         </ul>
       </div> */}
@@ -106,10 +129,9 @@ const Wrapper = styled.section`
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-gap:2rem;
-    background:#F0F0F0;
+    // background:#F0F0F0;
     height:auto;
-    padding:var(--site-spacing);
-    padding-top:2rem;
+    padding:2rem var(--general-spacing);
    }
 
    .about-us__img {
