@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link, useLocation  } from 'react-router-dom';
-import { VscChromeClose } from "react-icons/vsc"
 import { useProductsContext } from '../context/products_context'
 
 
@@ -19,24 +18,25 @@ const Sidebar = () => {
     setCurrentPath(location.pathname)
   }, [location.pathname])
 
-  const closeSidebar = _ => {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("sidenav-container").style.backgroundColor = "#fff";
-    document.getElementById("sidenav-container").style.height = "0";
-    document.getElementById("sidenav-container").style.zIndex = "-999";
-    // sidebarClose()
-  }
 
   return (
     <Wrapper>
-      <div id='sidenav-container'>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onClick={closeSidebar}>&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
+      <div className={`sidebar-container  ${isSidebarOpen ? 'sidebar-container--opened' :'sidebar-container--closed'}`}>
+        <nav className={`sidebar ${isSidebarOpen ? 'sidebar--opened' :'sidebar--closed'}`}>
+            <button  className='sidebar__close-btn' onClick={sidebarClose}>&times;</button>
+
+            <ul className='sidebar__items'>
+              <li className={`sidebar__item ${currentPath === '/' && 'sidebar__item--current'}`}>
+                <Link className='sidebar__item__link' to='/'>Home</Link>
+              </li>
+              <li className={`sidebar__item ${currentPath === '/about' && 'sidebar__item--current'}`}>
+                <Link className='sidebar__item__link' to='/about'>About</Link>
+              </li>
+              <li className={`sidebar__item ${currentPath === '/products' && 'sidebar__item--current'}`}>
+                <Link className='sidebar__item__link' to='/products'>Products</Link>
+              </li>
+            </ul>
+        </nav>
       </div>
     </Wrapper>
   )
@@ -45,60 +45,91 @@ const Sidebar = () => {
 export default Sidebar
 
 const Wrapper = styled.section`
-#sidenav-container {
-  position:fixed;
-  z-index:600;
-  top:0;
-}
+
 
 
 /* The side navigation menu */
-.sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: absolute; /* Stay in place */
-  z-index: 9999; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #fff; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+.sidebar {
+  width:0;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color:#fff;
+  overflow-x:hidden;
+  padding-top:60px; 
+  transition:0.5s;
   z-index:999;
 }
 
-/* The navigation menu links */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #444;
-  display: block;
-  transition: 0.3s;
+.sidebar__item {
+  padding:8px 8px 8px 32px;
+  text-decoration:none;
+  font-size:25px;
+  color:#444;
+  display:block;
+  transition:0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
+
+.sidebar__item__link {
+  color:#444;
 }
 
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+
+.sidebar__close-btn {
+  position:absolute;
+  top:15px;
+  right:25px;
+  font-size:36px;
+  margin-left:50px;
+  border:none;
+  background:none;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
+.sidebar__item--current .sidebar__item__link {
+  color:var(--main-color);
+}
+
+
+.sidebar--opened {
+  width:250px;
+}
+
+.sidebar--closed {
+  width:0;
+}
+
+
+.sidebar-container--opened {
+  width:100%;
+  height:100%;
+  z-index:999;
+}
+
+.sidebar-container--closed {
+  width:0;
+  height:0;
+  z-index:-999;
+}
+
+
+// mobile view
+@media screen and (max-height:450px) {
+  .sidebar {
+    padding-top:15px;
   }
-  .sidenav a {
-    font-size: 18px;
+  .sidebar__item {
+    font-size:18px;
   }
 }
+
+@media screen and (max-width:320px) {
+  .sidebar--opened {
+    width:100%;
+  }
+}
+
+
 
 `
