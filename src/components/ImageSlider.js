@@ -288,6 +288,7 @@ const Wrapper = styled.section`
     border-radius:100px;
     z-index:20;
     transition:all 0.2s ease;
+    // background:rgba(250,250,250,0.25);
   }
 
   .movement-btn:hover {
@@ -604,15 +605,15 @@ const Wrapper = styled.section`
 
   @media only screen and (max-width:768px) {
     .slide__info {
-      width:17rem;
+      width:18rem;
     }
 
     .slide__heading {
-      font-size:1.5rem;
+      font-size:1.85rem;
     }
 
     .slide__sub-heading {
-      font-size:0.85rem;
+      font-size:0.95rem;
       max-width:30ch;
     }
 
