@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
 import Footer  from "./components/Footer"
+import Overlay from './components/Overlay'
 
 // pages
 import  HomePage  from "./pages/HomePage"
@@ -19,6 +20,7 @@ function App() {
     <Router>
       <Navbar />
       <Sidebar />
+      <Overlay />
       <Switch>
         <Route exact path='/'>
           <HomePage />

@@ -1,14 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Overlay from '../components/Overlay'
 import { Link } from 'react-router-dom'
 
 
 const ErrorPage = () => {
   return (
     <Wrapper>
-      <Overlay/>
-
       <div className='error-page__info'>
         <h1 className='error-page__heading'>Page not found</h1>
         <Link className='standard-button error-page__btn' to="/">Go home</Link>

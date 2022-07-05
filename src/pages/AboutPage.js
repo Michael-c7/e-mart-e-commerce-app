@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import AboutUsImg from '../assets/images/about-us-img.jpg'
-import Overlay from '../components/Overlay'
 
 import {FaHandshake} from 'react-icons/fa';
 import {
@@ -18,8 +17,6 @@ const AboutPage = () => {
 
   return (
     <Wrapper>
-      <Overlay/>
-
       <div className='about-us'>
         <img className='about-us__img' src={AboutUsImg} alt='clothes on a clothes hanger'/>
         <div className='about-us__info'>

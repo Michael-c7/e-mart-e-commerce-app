@@ -33,8 +33,7 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <Overlay/>
-
+      
       <ImageSlider/>
 
       <InfoBoxes/>
