@@ -6,6 +6,7 @@ import ProductCards from '../components/ProductCards'
 import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
 import CheckBoxColorGroup from '../components/filterComponents/CheckBoxColorGroup'
 import PriceSliderGroupMain from '../components/filterComponents/PriceSliderGroupMain'
+import Overlay from '../components/Overlay'
 
 const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -46,6 +47,7 @@ const ProductsPage = () => {
   
   return (
     <Wrapper>
+      <Overlay/>
       <div className='holder'>
         <div className='side'>
           <input className='search-input' type='text' placeholder='Search'/>

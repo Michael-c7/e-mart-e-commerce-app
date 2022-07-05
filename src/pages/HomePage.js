@@ -13,6 +13,7 @@ import CollectionShowcase from '../components/CollectionShowcase'
 import Banner from '../components/Banner'
 import NewArrivalShowcase from '../components/NewArrivalShowcase'
 
+import Overlay from '../components/Overlay'
 
 
 
@@ -32,7 +33,8 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <div className={`main ${isSidebarOpen ? 'main-container--opened' : 'main-container--closed'}`} id='main'></div>
+      <Overlay/>
+
       <ImageSlider/>
 
       <InfoBoxes/>

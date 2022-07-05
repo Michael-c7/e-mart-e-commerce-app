@@ -31,7 +31,9 @@ const Banner = () => {
 
   return (
     <Wrapper>
-      <img className='banner-img' src={bannerImg} alt=''/>
+      <div className='banner-img-container'>
+        <img className='banner-img' src={bannerImg} alt=''/>
+      </div>
 
       <div className='banner__info'>
         <h2 className='banner__heading'>The Best Trends of {currentSeasonNorthernHemisphere} {getCurrentYear}</h2>
@@ -54,18 +56,25 @@ height:500px;
 margin:2rem auto;
 overflow:hidden;
 
+.banner-img-container {
+  position:absolute
+  background:red;
+  width:100%;
+  height:100%;
+}
+
 .banner-img {
   position:relative;
   width:auto;
   height:auto;
   transition:transform 0.5s ease;
   transform:scale(1.35);
-  left:150px;
-  top:35px;
+  left:175px;
+  top:50px;
 }
 
 :hover .banner-img {
-  transform:scale(1.45);
+  transform:scale(1.40);
 }
 
 
@@ -111,7 +120,7 @@ overflow:hidden;
     height:auto;
     transition:transform 0.5s ease;
     transform:scale(1.25);
-    left:-20px;
+    left:50px;
     top:50px;
   }
 
@@ -272,6 +281,5 @@ overflow:hidden;
     top:50px;
   }
 }
-
 
 `
