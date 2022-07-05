@@ -1,17 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import { useProductsContext } from '../context/products_context'
 
-
-
 const Overlay = () => {
-  const { isSidebarOpen } = useProductsContext()
-
+  const { isSidebarOpen, sidebarClose } = useProductsContext()
   
   return (
     <Wrapper>
-        <div className={`main ${isSidebarOpen ? 'main-container--opened' : 'main-container--closed'}`} id='main'></div>
+        <div onClick={sidebarClose} className={`overlay ${isSidebarOpen ? 'overlay-container--opened' : 'overlay-container--closed'}`}></div>
     </Wrapper>
   )
 }
@@ -20,10 +16,11 @@ export default Overlay
 
 
 const Wrapper = styled.section`
-.main {
+.overlay {
     position:absolute;
     background:rgba(0,0,0,0.5);
     top:0;
+    left:0;
     width:100%;
     height:100%;
     z-index:-998;
@@ -32,12 +29,12 @@ const Wrapper = styled.section`
   }
   
   
-  .main-container--opened {
+  .overlay-container--opened {
     z-index:998;
     opacity:1;
   }
   
-  .main-container--closed {
+  .overlay-container--closed {
     z-index:-998;
     opacity:0;
   }
