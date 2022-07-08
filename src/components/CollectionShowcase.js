@@ -57,7 +57,7 @@ const CollectionShowcase = () => {
           <ul className={`collection-cards collection-cards--${index} ${currentCollection === index ? 'collection-cards--show' : ''}`} key={index}>
             {productCollection.map(({fields, id}, index) => {
               return (
-                <li className={`collection-card`} key={id}>
+                <li className='collection-card' key={id}>
                   <Link to='/products'>
                     <div className='collection-card__img-container'>
                       <img className='collection-card__img' src={fields?.images[0].url} alt=''/>

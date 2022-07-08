@@ -6,6 +6,7 @@ import ProductCards from '../components/ProductCards'
 import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
 import CheckBoxColorGroup from '../components/filterComponents/CheckBoxColorGroup'
 import PriceSliderGroupMain from '../components/filterComponents/PriceSliderGroupMain'
+import { useProductsContext } from '../context/products_context'
 
 const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -40,7 +41,11 @@ const ProductsPage = () => {
     }
   ]
 
-
+  const {
+    products,
+    productsLoading,
+    productsError,
+  } = useProductsContext()
   
 
   
@@ -105,7 +110,7 @@ const ProductsPage = () => {
               </div>
           </div>
 
-          <ProductCards/>
+          <ProductCards productsData={products}/>
         </div>
       </div>
 

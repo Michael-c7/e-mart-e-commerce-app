@@ -1,48 +1,54 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import StarRating from '../components/StarRating'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
-import { filterProductsByTag } from '../utils/misc'
+// import { filterProductsByTag } from '../utils/misc'
+import Loading from '../components/Loading'
 
 
 
-const ProductCards = () => {
-    const {
-        products,
-      } = useProductsContext()
-
-      const [productCollection, setProductCollection] = useState([])
 
 
-    useEffect(() => {
-        setProductCollection(products)
+
+const ProductCards = (props) => {
+  const { productsData } = props;
+
+  const {
+    products,
+    productsLoading,
+    productsError,
+  } = useProductsContext()
 
 
-        console.log(products)
-      }, [products])
 
 
       return (
         <Wrapper>
-            <ul className='product__cards'>
-                {products.map(({fields, id}, index) => {
-                    return (
-                        <li className='product__card' key={index}>
-                            <Link to={`/products/${id}`}>
-                                <div className='collection-card__img-container'>
-                                <img className='collection-card__img' src={fields?.images[0].url} alt=''/>
-                                </div>
-                            </Link>
-                            <StarRating className='collection__card__stars' rating={fields?.Rating}/>
-                            <h4 className='collection__card__brand'>{fields?.brand}</h4>
-                            <h2 className='collection__card__name'>{fields?.Name}</h2>
-                            <h2 className='collection__card__price'>${fields?.price}</h2>
-                            <button className='standard-button collection__card-add-to-cart-btn'>ADD TO CART</button>
-                        </li>
-                    )
-                })}
-            </ul>
+         {productsLoading ? <Loading/> : (
+          <ul className='product-cards'>
+            {productsData?.map((product, index) => {
+              const {fields:productData, id:productId} = product;
+              console.log(productData)
+              return (
+                <li className='product-card' key={productId}>
+                  <Link to='/products'>
+                    <div className='product-card__img-container'>
+                      <img className='product-card__img' src={productData?.images[0].url} alt=''/>
+                    </div>
+                  </Link>
+                  <StarRating className='product-card__stars' rating={productData?.Rating}/>
+                  <h4 className='product-card__brand'>{productData?.brand}</h4>
+                  <h2 className='product-card__name'>{productData?.Name}</h2>
+                  <div className='product-card__info'>
+                      <h2 className='product-card__price'>${productData?.price}</h2>
+                      <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+         )}
         </Wrapper>
       )
 }
@@ -50,51 +56,35 @@ const ProductCards = () => {
 export default ProductCards
 
 const Wrapper = styled.section`
-
 h3 {
   padding:0px;
   margin:0px;
 }
 
-
---card-amt:4;
-width:100%;
-flex-wrap:wrap;
-flex-direction:column;
-justify-content:space-between;
-align-item:center;
+// width:var(--standard-width);
 
 
 
-.product__cards {
-    position:relative;
-    width:100%;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    align-items:center;
+
+
+
+.product-cards {
+  --card-amt:4;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-item:center;
 }
 
-
-.product__card {
-    text-align:center;
-    margin:0 1rem;
-
-    --product-card-space:2rem;
-    --product-card-amt:4;
-    --product-card-width:100% / var(--product-card-amt);
-
-    width:calc(var(--product-card-width) - var(--product-card-space));
+.product-card {
+  text-align:center;
+  margin:1rem 0;
 }
 
 
 
-
-
-
-
-
-.collection-card__img-container {
+.product-card__img-container {
   --card-space:0.25rem;
   --card-spacing:calc(var(--card-amt) * var(--card-space));
   --card-width:calc(var(--standard-width) / var(--card-amt));
@@ -105,7 +95,7 @@ align-item:center;
   overflow:hidden;
 }
 
-.collection-card__img {
+.product-card__img {
   width:100%;
   height:100%;
   transition:transform ease 0.5s;
@@ -113,23 +103,23 @@ align-item:center;
   object-position:50% 50%;
 }
 
-.collection-card__img:hover { 
+.product-card__img:hover { 
   transform: scale(1.05);
  }
 
-.collection__card__brand {
+.product-card__brand {
   font-size:0.8rem;
   color:rgba(175,175,175,1);
   font-weight:400;
   letter-spacing:0.05rem;
 }
 
-.collection__card__name {
+.product-card__name {
   font-size:1.05rem;
   font-weight:400;
 }
 
-.collection__card__price {
+.product-card__price {
   font-size:0.95rem;
   font-weight:400;
   opacity:1;
@@ -137,8 +127,8 @@ align-item:center;
   transition:transform:0.2s ease;
 }
 
-.collection__card-add-to-cart-btn {
-  margin:0 auto 3.5rem auto;
+.product-card-add-to-cart-btn {
+  margin:0 auto;
 }
 
 
@@ -147,11 +137,21 @@ align-item:center;
 
 
 // mobile view
-@media only screen and (max-width:768px) {
-    --card-amt:3;
+@media only screen and (max-width:1024px) {
+    .product-cards {
+        --card-amt:3;
+    }
+
+    .product-card {
+        margin-top:1rem;
+      }
   }
 
-  .collection-card__img-container  {}
+  @media only screen and (max-width:768px) {
+    .product-cards {
+        --card-amt:2;
+    }
+  }
 
 
   @media only screen and (max-width:425px) {
@@ -162,8 +162,12 @@ align-item:center;
     display:flex;
     flex-direction:column;
   
-    --card-amt:1;
+    .product-cards {
+        --card-amt:1;
+    }
+
 }
+
 
 
 `

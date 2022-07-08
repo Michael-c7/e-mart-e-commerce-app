@@ -121,6 +121,8 @@ const AboutPage = () => {
 export default AboutPage
 
 const Wrapper = styled.section`
+  height:100vh;
+
    .about-us__text {
     max-width:60ch;
     line-height:2;

@@ -4,6 +4,9 @@ import StarRating from '../components/StarRating'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { filterProductsByTag } from '../utils/misc'
+import ProductCards from './ProductCards'
+
+
 const NewArrivalShowcase = () => {
     const {
         products,
@@ -38,30 +41,7 @@ const NewArrivalShowcase = () => {
         <h3>Hurry up! Limited</h3>
     </header>
     <div className='collection__cards-all'>
-      {collectionsMasterArray?.map(({ productCollection }, index) => {
-        return (
-          <ul className={`collection-cards collection-cards--${index} ${currentCollection === index ? 'collection-cards--show' : ''}`} key={index}>
-            {productCollection.map(({fields, id}, index) => {
-              return (
-                <li className={`collection-card`} key={index}>
-                  <Link to='/products'>
-                    <div className='collection-card__img-container'>
-                      <img className='collection-card__img' src={fields?.images[0].url} alt=''/>
-                    </div>
-                  </Link>
-                  <StarRating className='collection__card__stars' rating={fields?.Rating}/>
-                  <h4 className='collection__card__brand'>{fields?.brand}</h4>
-                  <h2 className='collection__card__name'>{fields?.Name}</h2>
-                  <div className='collection__card__info'>
-                      <h2 className='collection__card__price'>${fields?.price}</h2>
-                      <button className='standard-button collection__card-add-to-cart-btn'>ADD TO CART</button>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-        )
-      })}
+      <ProductCards productsData={collectionsMasterArray[0]?.productCollection}/>
     </div>
   </Wrapper>
   )
