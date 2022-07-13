@@ -12,7 +12,10 @@ import Loading from '../components/Loading'
 
 
 const ProductCards = (props) => {
-  const { productsData } = props;
+  /*solo means if the component is not contained w/ anything else
+  eg: the productCards in newArrival component would be solo={true}
+  and the productCards in the Products page would be solo={false} */
+  const { productsData, solo } = props;
 
   const {
     products,
@@ -20,21 +23,17 @@ const ProductCards = (props) => {
     productsError,
   } = useProductsContext()
 
-
-
-
       return (
         <Wrapper>
          {productsLoading ? <Loading/> : (
-          <ul className='product-cards'>
+          <ul className={`product-cards  ${solo ? 'solo--true' : 'solo--false'}`}>
             {productsData?.map((product, index) => {
               const {fields:productData, id:productId} = product;
-              console.log(productData)
               return (
                 <li className='product-card' key={productId}>
                   <Link to='/products'>
                     <div className='product-card__img-container'>
-                      <img className='product-card__img' src={productData?.images[0].url} alt=''/>
+                      <img className='product-card__img' src={productData?.images[0].url} alt={productData?.Name}/>
                     </div>
                   </Link>
                   <StarRating className='product-card__stars' rating={productData?.Rating}/>
@@ -61,39 +60,81 @@ h3 {
   margin:0px;
 }
 
-// width:var(--standard-width);
-
-
-
 
 
 
 .product-cards {
   --card-amt:4;
   width:100%;
+}
+
+.product-cards.solo--true {
   display:flex;
+  flex-direction:row;
   flex-wrap:wrap;
   justify-content:space-between;
-  align-item:center;
+  align-items:center;
 }
+
+.product-cards.solo--false  {
+  --card-amt:3;
+  display:grid;
+  grid-template-columns:repeat(var(--card-amt), minmax(100px, 1fr));
+  grid-gap:4rem 2rem;
+}
+
+
 
 .product-card {
+  --card-space:0.25rem;
   text-align:center;
-  margin:1rem 0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 
-
-.product-card__img-container {
+.solo--true .product-card {
   --card-space:0.25rem;
   --card-spacing:calc(var(--card-amt) * var(--card-space));
   --card-width:calc(var(--standard-width) / var(--card-amt));
   --cardWidthAndCardSpacing:calc(var(--card-width) - var(--card-spacing));
-
   width:var(--cardWidthAndCardSpacing);
+  margin:1.75rem 0;
+}
+
+.solo--false .product-card {
+  width:100%;
+}
+
+
+
+
+
+
+.product-card__img-container {
+  // width:var(--cardWidthAndCardSpacing);
+
   height:350px;
   overflow:hidden;
 }
+
+
+.solo--true.product-card__img-container {
+  height:350px;
+  overflow:hidden;
+}
+
+
+.solo--false.product-card__img-container {
+  height:350px;
+  overflow:hidden;
+}
+
+
+
+
 
 .product-card__img {
   width:100%;
@@ -137,16 +178,6 @@ h3 {
 
 
 // mobile view
-@media only screen and (max-width:1024px) {
-    .product-cards {
-        --card-amt:3;
-    }
-
-    .product-card {
-        margin-top:1rem;
-      }
-  }
-
   @media only screen and (max-width:768px) {
     .product-cards {
         --card-amt:2;
@@ -154,16 +185,9 @@ h3 {
   }
 
 
-  @media only screen and (max-width:425px) {
-    /*
-    does not mean there is only 1 info-box,
-    this means to divide by 1 to get the full width w/ flex-direction:column;  
-    */  
-    display:flex;
-    flex-direction:column;
-  
+  @media only screen and (max-width:425px) { 
     .product-cards {
-        --card-amt:1;
+      --card-amt:1;
     }
 
 }

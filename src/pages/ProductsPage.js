@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill, BsSliders } from 'react-icons/bs'
-
+import { MdGrid4X4 } from 'react-icons/md'
 import ProductCards from '../components/ProductCards'
 import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
 import CheckBoxColorGroup from '../components/filterComponents/CheckBoxColorGroup'
@@ -110,7 +110,7 @@ const ProductsPage = () => {
               </div>
           </div>
 
-          <ProductCards productsData={products}/>
+          <ProductCards productsData={products} solo={false}/>
         </div>
       </div>
 
