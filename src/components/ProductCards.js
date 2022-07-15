@@ -182,11 +182,19 @@ h3 {
     .product-cards {
         --card-amt:2;
     }
+
+    .product-cards.solo--false  {
+      --card-amt:2;
+    }
   }
 
 
   @media only screen and (max-width:425px) { 
     .product-cards {
+      --card-amt:1;
+    }
+
+    .product-cards.solo--false  {
       --card-amt:1;
     }
 

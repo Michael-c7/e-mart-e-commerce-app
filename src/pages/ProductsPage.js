@@ -53,7 +53,7 @@ const ProductsPage = () => {
     <Wrapper>
       <div className='holder'>
         <div className='side'>
-          <input className='search-input' type='text' placeholder='Search'/>
+          {/* <input className='search-input' type='text' placeholder='Search'/> */}
 
           {/*Categories*/}
           <CheckboxGroupMain data={filterCategoryData[0]}/>
@@ -324,28 +324,22 @@ const Wrapper = styled.section`
     }
     
 
-
-    @media only screen and (max-width:768px) {
-      .sort-label {
-        display:none;
-      }
-  
-      .sort-container {
-        display:none;
-      }
-
-
-      .mobile-filter-open-btn {
-        display:block;
-      }
+    .mobile-filter-open-btn {
+      display:block;
     }
-
-    
   }
 
 
 
+  @media only screen and (max-width:768px) {
+    .sort-label {
+      display:none;
+    }
 
+    .sort-container {
+      display:none;
+    }
+  }
 
   
 
@@ -363,7 +357,6 @@ const Wrapper = styled.section`
   // .mobile-filters-container .sort-container {
   //   margin-right:0rem;
   // }
-
 
 
 

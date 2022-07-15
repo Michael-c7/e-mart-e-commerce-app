@@ -4,9 +4,8 @@ import styled from 'styled-components'
 
 const CheckboxGroupMain = (props) => {
   const { type, data, dataIndex } = props.data;
+  // const marginTop = props.marginTop;
   const [menuOpen, setMenuOpen] = useState(false)
-
-
 
   function slidetoggle() {
     document.querySelectorAll(this.getAttribute('data-slidetoggle')).forEach(el => {
@@ -24,9 +23,8 @@ const CheckboxGroupMain = (props) => {
     document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
   }, [])
 
-
   return (
-    <Wrapper>
+    <Wrapper marginValueIncludeFalse>
       <div className='filter-checkbox-group'>
         <header className='filter-checkbox-group__header' data-slidetoggle={`#box${dataIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
           <h2 className='filter-checkbox-group__heading'>{type}</h2>
@@ -56,7 +54,7 @@ export default CheckboxGroupMain
 
 
 const Wrapper = styled.section`
-  margin:1.5rem 0;
+  // margin:0 0 1.5rem 0;
   // border-bottom:1px solid #F4F4F4;
 
 
