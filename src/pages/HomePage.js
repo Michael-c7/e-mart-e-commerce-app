@@ -16,6 +16,9 @@ import NewArrivalShowcase from '../components/NewArrivalShowcase'
 import Overlay from '../components/Overlay'
 
 
+import Accordion from '../components/Accordion'
+
+
 
 
 
@@ -43,6 +46,13 @@ const HomePage = () => {
       <Banner/>
 
       <NewArrivalShowcase/>
+
+
+      <Accordion  data={{
+        accordionData: "data props test",
+        accordionHeading: "props heading test",
+        accordionIndex: 666,
+      }} />
     </Wrapper>
   )
 }

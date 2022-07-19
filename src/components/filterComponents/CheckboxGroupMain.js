@@ -65,7 +65,7 @@ const Wrapper = styled.section`
   align-items:center;
   cursor:pointer;
 
-  margin-bottom:0.75rem;
+  // margin-bottom:0.75rem;
 
 }
 
@@ -75,6 +75,8 @@ const Wrapper = styled.section`
   transition:all 0.2s ease;
   top:5px;
   position:relative;
+  // margin-bottom:1.25rem;
+
 }
 
 .filter-checkbox-group__header:hover .filter-checkbox-group__heading {
@@ -145,8 +147,8 @@ const Wrapper = styled.section`
 
   /* Specify the background color for the checkbox when it is checked */
   .box input:checked + .mark {
-    background-color: #8ebf42;
-    background-color: var(--main-color);
+    background-color:#8ebf42;
+    background-color:var(--main-color);
     
   }
 

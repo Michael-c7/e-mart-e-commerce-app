@@ -236,7 +236,14 @@ const Wrapper = styled.section`
 
 
 
+  .side > * {
+   margin:1.75rem 0;
+   border-bottom:2px solid #efefef;
+  }
 
+  .side > *:first-of-type {
+    margin-top:0;
+   }
 
 
   .search-input {

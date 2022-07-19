@@ -63,7 +63,7 @@ export default PriceSliderGroupMain
 
 const Wrapper = styled.section`
 // border-bottom:1px solid #F4F4F4;
-margin:1.5rem 0;
+// margin:1.5rem 0;
 
 .filter-checkbox-group__header {
   position:relative;
