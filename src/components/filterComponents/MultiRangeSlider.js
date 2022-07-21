@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
 
-const MultiRangeSlider = ({ min, max, menuOpen, onChange }) => {
+const MultiRangeSlider = ({ min, max, onChange }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(null);

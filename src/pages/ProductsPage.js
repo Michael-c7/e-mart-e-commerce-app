@@ -12,7 +12,6 @@ import Accordion from '../components/Accordion'
 import Checkbox from '../components/Checkbox'
 import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
 
-
 // import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
 
 const ProductsPage = () => {
@@ -62,12 +61,6 @@ const ProductsPage = () => {
         <div className='side'>
           {/* <input className='search-input' type='text' placeholder='Search'/> */}
 
-
-
-          {/*Price*/}
-          {/* <PriceSliderGroupMain/> */}
-
-
           {/*Categories*/}
           <Accordion data={{ accordionHeading:filterCategoryData[0].type, accordionIndex:filterCategoryData[0].dataIndex, firstOfType:true }}>
             <Checkbox  {...{checkboxData:filterCategoryData[0], type:'standard'}}/>
@@ -86,11 +79,12 @@ const ProductsPage = () => {
 
 
           {/*Price*/}
-          {/* <Accordion data={{ accordionHeading:'Price', accordionIndex:9090909090 }}>
-            <MultiRangeSlider/>
-          </Accordion> */}
-
-          {/* <PriceSliderGroupMain/> */}
+          <Accordion data={{ accordionHeading:'Price', accordionIndex:9090909090 }}>
+            <MultiRangeSlider 
+              min={0}
+              max={200}
+              onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}/>
+          </Accordion>
 
           {/*Brands*/}
           <Accordion data={{ accordionHeading:filterCategoryData[2].type, accordionIndex:filterCategoryData[2].dataIndex }}>

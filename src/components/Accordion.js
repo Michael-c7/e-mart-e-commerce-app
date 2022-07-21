@@ -65,7 +65,9 @@ const Wrapper = styled.section`
   --transition: 0.5s all cubic-bezier(.17,.67,.09,.97);
 
   
-  width:calc(100% - 2rem);
+  // width:calc(100% - 2rem);
+  width:100%;
+
   position:relative;
   margin:0rem auto 2rem auto;
   border-bottom:1px solid #F4F4F4;
