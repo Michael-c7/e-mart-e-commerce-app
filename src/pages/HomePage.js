@@ -17,6 +17,7 @@ import Overlay from '../components/Overlay'
 
 
 import Accordion from '../components/Accordion'
+import Checkbox from '../components/Checkbox'
 
 
 
@@ -36,7 +37,6 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      
       <ImageSlider/>
 
       <InfoBoxes/>
@@ -46,13 +46,6 @@ const HomePage = () => {
       <Banner/>
 
       <NewArrivalShowcase/>
-
-
-      <Accordion  data={{
-        accordionData: "data props test",
-        accordionHeading: "props heading test",
-        accordionIndex: 666,
-      }} />
     </Wrapper>
   )
 }

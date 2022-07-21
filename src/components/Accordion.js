@@ -3,12 +3,13 @@ import styled from 'styled-components'
 
 
 const Accordion = (props) => {
-  const { accordionHeading, accordionData, accordionIndex } = props.data;
+  const { accordionHeading, accordionIndex } = props.data;
+  console.log(props.children)
 // console.log(props.data)
 // for now
-//   let accordionHeading = 'default heading'
-//   let accordionData = 'default data'
-//   let accordionIndex = 999999999999;
+  // let accordionHeading = 'default heading'
+  // let accordionData = 'default data'
+  // let accordionIndex = 999999999999;
 
 
 
@@ -38,17 +39,16 @@ const Accordion = (props) => {
 
   return (
     <Wrapper>
-      <div className='accordion'>
+      <div className={`accordion ${menuOpen ? 'spacing--open' : 'spacing--closed'}`}>
         <header className='accordion__header' data-slidetoggle={`#box${accordionIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
           <h2 className='accordion__heading'>{accordionHeading}</h2>
           <div className={`wrap ${menuOpen ? ' toggle open ' : 'toggle'}`}>
             <div className='toggle'></div>
           </div>
         </header>
-
         
         <div className='accordion__data' id={`box${accordionIndex}`}>
-           {accordionData}
+           {props.children}
         </div>
       </div>
   </Wrapper>
@@ -64,13 +64,11 @@ const Wrapper = styled.section`
   --bg: #333;
   --transition: 0.5s all cubic-bezier(.17,.67,.09,.97);
 
-
-  // margin:0 0 1.5rem 0;
-  // border-bottom:1px solid #F4F4F4;
-
+  
   width:calc(100% - 2rem);
-  margin:2rem auto;
   position:relative;
+  margin:0rem auto 2rem auto;
+  border-bottom:1px solid #F4F4F4;
 
 
 .accordion__header {
@@ -79,7 +77,7 @@ const Wrapper = styled.section`
   justify-content:space-between;
   align-items:center;
   cursor:pointer;
-  // margin-bottom:0.75rem;
+  margin-bottom:1.5rem;
 }
 
 .accordion__heading {
@@ -88,16 +86,12 @@ const Wrapper = styled.section`
   transition:all 0.2s ease;
   top:5px;
   position:relative;
-  // margin-bottom:1.25rem;
 }
 
 .accordion__header:hover .accordion__heading {
   color:var(--main-color);
   cursor:pointer;
 }
-
-
-
 
 
 
@@ -142,7 +136,15 @@ const Wrapper = styled.section`
 
 .accordion__data {
   overflow: hidden;
-  transition: height 0.5s;
+  transition: height 0.5s;  
+}
+
+.spacing--open .accordion__data {
+  margin-bottom:0rem;
+}
+
+.spacing--closed .accordion__data {
+  margin-bottom:1.5rem;
 }
 
   

@@ -3,10 +3,17 @@ import styled from 'styled-components'
 import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill, BsSliders } from 'react-icons/bs'
 import { MdGrid4X4 } from 'react-icons/md'
 import ProductCards from '../components/ProductCards'
-import CheckboxGroupMain from '../components/filterComponents/CheckboxGroupMain'
-import CheckBoxColorGroup from '../components/filterComponents/CheckBoxColorGroup'
+
 import PriceSliderGroupMain from '../components/filterComponents/PriceSliderGroupMain'
 import { useProductsContext } from '../context/products_context'
+
+
+import Accordion from '../components/Accordion'
+import Checkbox from '../components/Checkbox'
+import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
+
+
+// import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
 
 const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -55,23 +62,49 @@ const ProductsPage = () => {
         <div className='side'>
           {/* <input className='search-input' type='text' placeholder='Search'/> */}
 
-          {/*Categories*/}
-          <CheckboxGroupMain data={filterCategoryData[0]}/>
 
-          {/*Colors*/}
-          <CheckBoxColorGroup  data={filterCategoryData[4]}/>
-
-          {/*Size*/}
-          <CheckboxGroupMain data={filterCategoryData[1]}/>
 
           {/*Price*/}
-          <PriceSliderGroupMain/>
+          {/* <PriceSliderGroupMain/> */}
+
+
+          {/*Categories*/}
+          <Accordion data={{ accordionHeading:filterCategoryData[0].type, accordionIndex:filterCategoryData[0].dataIndex, firstOfType:true }}>
+            <Checkbox  {...{checkboxData:filterCategoryData[0], type:'standard'}}/>
+          </Accordion>
+
+
+          {/*Colors*/}
+          <Accordion data={{ accordionHeading:filterCategoryData[4].type, accordionIndex:filterCategoryData[4].dataIndex }}>
+            <Checkbox  {...{checkboxData:filterCategoryData[4], type:'color'}}/>
+          </Accordion>
+
+          {/*Size*/}
+          <Accordion data={{ accordionHeading:filterCategoryData[1].type, accordionIndex:filterCategoryData[1].dataIndex }}>
+            <Checkbox  {...{checkboxData:filterCategoryData[1], type:'standard'}}/>
+          </Accordion>
+
+
+          {/*Price*/}
+          {/* <Accordion data={{ accordionHeading:'Price', accordionIndex:9090909090 }}>
+            <MultiRangeSlider/>
+          </Accordion> */}
+
+          {/* <PriceSliderGroupMain/> */}
 
           {/*Brands*/}
-          <CheckboxGroupMain data={filterCategoryData[2]}/>
+          <Accordion data={{ accordionHeading:filterCategoryData[2].type, accordionIndex:filterCategoryData[2].dataIndex }}>
+            <Checkbox  {...{checkboxData:filterCategoryData[2], type:'standard'}}/>
+          </Accordion>
+
+
+
 
           {/*Availability*/}
-          <CheckboxGroupMain data={filterCategoryData[3]}/>
+          <Accordion data={{ accordionHeading:filterCategoryData[3].type, accordionIndex:filterCategoryData[3].dataIndex }}>
+            <Checkbox  {...{checkboxData:filterCategoryData[3], type:'standard'}}/>
+          </Accordion>
+
 
           <button className='clear-filters-btn'>Clear Filters</button>
         </div>
@@ -236,14 +269,14 @@ const Wrapper = styled.section`
 
 
 
-  .side > * {
-   margin:1.75rem 0;
-   border-bottom:2px solid #efefef;
-  }
+  // .side > * {
+  //  margin:1.75rem 0;
+  //  border-bottom:2px solid #efefef;
+  // }
 
-  .side > *:first-of-type {
-    margin-top:0;
-   }
+  // .side > *:first-of-type {
+  //   margin-top:0;
+  //  }
 
 
   .search-input {
