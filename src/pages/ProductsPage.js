@@ -4,13 +4,11 @@ import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill, BsSliders } fr
 import { MdGrid4X4 } from 'react-icons/md'
 import ProductCards from '../components/ProductCards'
 
-import PriceSliderGroupMain from '../components/filterComponents/PriceSliderGroupMain'
 import { useProductsContext } from '../context/products_context'
 
+import Filters from '../components/Filters'
 
-import Accordion from '../components/Accordion'
-import Checkbox from '../components/Checkbox'
-import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
+
 
 // import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
 
@@ -18,89 +16,19 @@ const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
 
-  const filterCategoryData = [
-    {
-      type:'Categories',
-      data:['accessories', 'shoes', 'clothing'],
-      dataIndex:0,
-    },
-    {
-      type:'Size',
-      data:['small', 'medium', 'large'],
-      dataIndex:1,
-    },
-
-    {
-      type:'Brands',
-      data:['poppy', 'lee', 'chaps'],
-      dataIndex:2,
-    },
-    {
-      type:'Availability',
-      data:['In stock', 'Out of stock'],
-      dataIndex:3,
-    },
-    {
-      type:'Color',
-      data:['red', 'green', 'blue', 'purple', 'gray', 'black', 'orange','violet','yellow','white','red'],
-      dataIndex:4,
-    }
-  ]
 
   const {
     products,
     productsLoading,
     productsError,
-  } = useProductsContext()
-  
+  } = useProductsContext()  
 
   
   return (
     <Wrapper>
       <div className='holder'>
         <div className='side'>
-          {/* <input className='search-input' type='text' placeholder='Search'/> */}
-
-          {/*Categories*/}
-          <Accordion data={{ accordionHeading:filterCategoryData[0].type, accordionIndex:filterCategoryData[0].dataIndex, firstOfType:true }}>
-            <Checkbox  {...{checkboxData:filterCategoryData[0], type:'standard'}}/>
-          </Accordion>
-
-
-          {/*Colors*/}
-          <Accordion data={{ accordionHeading:filterCategoryData[4].type, accordionIndex:filterCategoryData[4].dataIndex }}>
-            <Checkbox  {...{checkboxData:filterCategoryData[4], type:'color'}}/>
-          </Accordion>
-
-          {/*Size*/}
-          <Accordion data={{ accordionHeading:filterCategoryData[1].type, accordionIndex:filterCategoryData[1].dataIndex }}>
-            <Checkbox  {...{checkboxData:filterCategoryData[1], type:'standard'}}/>
-          </Accordion>
-
-
-          {/*Price*/}
-          <Accordion data={{ accordionHeading:'Price', accordionIndex:9090909090 }}>
-            <MultiRangeSlider 
-              min={0}
-              max={200}
-              onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}/>
-          </Accordion>
-
-          {/*Brands*/}
-          <Accordion data={{ accordionHeading:filterCategoryData[2].type, accordionIndex:filterCategoryData[2].dataIndex }}>
-            <Checkbox  {...{checkboxData:filterCategoryData[2], type:'standard'}}/>
-          </Accordion>
-
-
-
-
-          {/*Availability*/}
-          <Accordion data={{ accordionHeading:filterCategoryData[3].type, accordionIndex:filterCategoryData[3].dataIndex }}>
-            <Checkbox  {...{checkboxData:filterCategoryData[3], type:'standard'}}/>
-          </Accordion>
-
-
-          <button className='clear-filters-btn'>Clear Filters</button>
+          <Filters/>
         </div>
 
         <div className='holder-products'>
@@ -140,9 +68,6 @@ const ProductsPage = () => {
           <ProductCards productsData={products} solo={false}/>
         </div>
       </div>
-
-
-
     </Wrapper>
   )
 }

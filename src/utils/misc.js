@@ -1,3 +1,8 @@
+
+import { v4 as uuidv4 } from 'uuid';
+
+
+
 /**
    * 
    * @param {array} products - the products, an array of objects
@@ -17,6 +22,18 @@
 
 
 
+
+
+
+  const generateUniqueId = _ => uuidv4()
+
+  
+
+
+
+
+
   export {
     filterProductsByTag,
+    generateUniqueId,
   }
