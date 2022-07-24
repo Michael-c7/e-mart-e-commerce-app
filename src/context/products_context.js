@@ -8,6 +8,17 @@ const initialState = {
 
     isSidebarOpen:false,
     isSearchbarOpen:false,
+
+    /*
+      3x3 - the default, 3 product cards per row & image on top info on bottom
+
+      2x2 - like 3x3 but only 2 product cards in a row instead of 3
+
+      1x1-alt - 1 product card per row w/ an alternative layout
+      where the image is on the left side & info is on the right 
+      instead of the usual image on top info on bottom
+    */
+    gridLayoutType:"3x3",
 }
 
 
@@ -45,9 +56,17 @@ export const ProductsProvider = ({ children }) => {
         dispatch({type:"GET_PRODUCTS_DATA", payload:data})
       } catch(error) {
         dispatch({type:"GET_PRODUCTS_ERROR"})
-      }
-      
+      } 
   }
+
+
+
+  const changeGridLayoutType = layoutType => {
+    dispatch({type:"CHANGE_GRID_LAYOUT_TYPE", payload:layoutType})
+  }
+
+
+
 
 
 
@@ -63,6 +82,7 @@ export const ProductsProvider = ({ children }) => {
           sidebarClose,
           searchbarOpen,
           searchbarClose,
+          changeGridLayoutType,
         }}
       >
         {children}

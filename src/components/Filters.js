@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Accordion from '../components/Accordion'
 import Checkbox from '../components/Checkbox'
@@ -35,7 +36,7 @@ const Filters = () => {
 
 
   return (
-    <>
+    <Wrapper>
         {/* <input className='search-input' type='text' placeholder='Search'/> */}
 
           {/*Categories*/}
@@ -77,8 +78,46 @@ const Filters = () => {
 
 
           <button className='clear-filters-btn'>Clear Filters</button>
-    </>
+    </Wrapper>
   )
 }
 
 export default Filters
+
+
+
+const Wrapper = styled.section`
+
+// .search-input {
+//   border:none;
+//   padding:0.75rem;
+//   background:#F1F5F8;
+//   color:#222;
+//   width:auto;
+//   font-size:0.875rem;
+//   letter-spacing:0.8px;
+// }
+
+// .search-input:placeholder {
+//   color:#B4B6B7;
+// }
+
+.clear-filters-btn {
+  border:none;
+  // background:#BB1525;
+  background:#EFEFEF;
+  border-radius:2px;
+  color:#222;
+  letter-spacing:0.8px;
+  font-size:0.875rem;
+  padding:0.75rem 1rem;
+  transition:all 0.4s ease;
+  text-transform:uppercase;
+}
+
+.clear-filters-btn:hover {
+  color:#fff;
+  background:#222;
+  cursor:pointer;
+}
+`

@@ -69,7 +69,7 @@ const Wrapper = styled.section`
   width:100%;
 
   position:relative;
-  margin:0rem auto 2rem auto;
+  margin:0.17rem auto 2rem auto;
   border-bottom:1px solid #F4F4F4;
 
 

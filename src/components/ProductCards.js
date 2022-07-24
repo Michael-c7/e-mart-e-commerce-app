@@ -21,12 +21,13 @@ const ProductCards = (props) => {
     products,
     productsLoading,
     productsError,
+    gridLayoutType,
   } = useProductsContext()
 
       return (
         <Wrapper>
          {productsLoading ? <Loading/> : (
-          <ul className={`product-cards  ${solo ? 'solo--true' : 'solo--false'}`}>
+          <ul className={`product-cards  ${solo ? 'solo--true' : 'solo--false'}  grid-layout-${gridLayoutType}`}>
             {productsData?.map((product, index) => {
               const {fields:productData, id:productId} = product;
               return (
@@ -36,13 +37,16 @@ const ProductCards = (props) => {
                       <img className='product-card__img' src={productData?.images[0].url} alt={productData?.Name}/>
                     </div>
                   </Link>
-                  <StarRating className='product-card__stars' rating={productData?.Rating}/>
-                  <h4 className='product-card__brand'>{productData?.brand}</h4>
-                  <h2 className='product-card__name'>{productData?.Name}</h2>
-                  <div className='product-card__info'>
-                      <h2 className='product-card__price'>${productData?.price}</h2>
-                      <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
+                  <div>
+                    <StarRating className='product-card__stars' rating={productData?.Rating}/>
+                    <h4 className='product-card__brand'>{productData?.brand}</h4>
+                    <h2 className='product-card__name'>{productData?.Name}</h2>
+                    <div className='product-card__info'>
+                        <h2 className='product-card__price'>${productData?.price}</h2>
+                        <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
+                    </div>
                   </div>
+
                 </li>
               )
             })}
@@ -59,8 +63,6 @@ h3 {
   padding:0px;
   margin:0px;
 }
-
-
 
 
 .product-cards {
@@ -174,9 +176,6 @@ h3 {
 
 
 
-
-
-
 // mobile view
   @media only screen and (max-width:768px) {
     .product-cards {
@@ -200,6 +199,48 @@ h3 {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/*layouts*/
+.grid-layout-3x3.solo--false  {
+  --card-amt:3;
+}
+
+.grid-layout-2x2.solo--false  {
+  --card-amt:2;
+}
+
+
+.grid-layout-1x1-alt.solo--false {
+  --card-amt:1;
+}
+
+
+
+
+.grid-layout-1x1-alt.solo--false .product-card {
+  --card-space:0.25rem;
+  text-align:center;
+
+
+  display:grid;
+  grid-template-columns:minmax(100px,1fr) 1fr;
+  justify-items:start;
+  justify-content:start;
+  align-items:center;
+
+
+  background:red;
+}
 
 
 `

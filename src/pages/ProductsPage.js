@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { BsFillGrid3X3GapFill, BsFillGrid1X2Fill, BsFillGridFill, BsSliders } from 'react-icons/bs'
-import { MdGrid4X4 } from 'react-icons/md'
+import {  BsSliders } from 'react-icons/bs'
 import ProductCards from '../components/ProductCards'
-
-import { useProductsContext } from '../context/products_context'
-
 import Filters from '../components/Filters'
-
-
-
-// import MultiRangeSlider from '../components/filterComponents/MultiRangeSlider'
+import SortDropdown from '../components/SortDropdown'
+import GridLayoutSelect from '../components/GridLayoutSelect'
+import { useProductsContext } from '../context/products_context'
 
 const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -21,6 +16,7 @@ const ProductsPage = () => {
     products,
     productsLoading,
     productsError,
+    gridLayoutType,
   } = useProductsContext()  
 
   
@@ -41,31 +37,13 @@ const ProductsPage = () => {
                 <div className='top-filter__item-count'>Showing: 50 products</div>
               </div>
                 <div className='flex-center'>
-                  <label className='sort-label' for='sort'>Sort: </label>
-                  <div className='select-dropdown sort-container'>
-                    <select name='sort' id='sort'>
-                      <option value='featured'>Featured</option>
-                      <option value='price-lowest'>Price (Lowest)</option>
-                      <option value='price-highest'>Price (Highest)</option>
-                      <option value='rating-highest'>Rating (Highest)</option>
-                      <option value='rating-lowest'>Rating (Lowest)</option>
-                      <option value='name-a-z'>Name (A - Z)</option>
-                      <option value='name-z-a'>Name (Z - A)</option>
-                    </select>
-                  </div>
-                  <div className='flex-center top-filter__grid-container'>
-                    {/*4 X 4 grid layout */}
-                    <BsFillGrid3X3GapFill className='grid-icon'/>
-                    {/*2 X 2 grid layout */}
-                    <BsFillGridFill className='grid-icon'/>
-                    {/*1 X 1 grid layout w/ info to side instead of on the bottom*/}
-                    <BsFillGrid1X2Fill className='grid-icon grid-icon--diff'/>
-                  </div>
+                  <SortDropdown/>
+                  <GridLayoutSelect/>
                 </div>
               </div>
           </div>
 
-          <ProductCards productsData={products} solo={false}/>
+          <ProductCards productsData={products} solo={false} />
         </div>
       </div>
     </Wrapper>
@@ -79,9 +57,10 @@ const Wrapper = styled.section`
   flex-direction:column;
   justify-content:center;
   align-items:center;
-
-  width:70vw;
+  width:60vw;
+  max-width:100%;
   margin:5rem auto;
+  // background:#0f7fe7;
   
 
 
@@ -90,6 +69,7 @@ const Wrapper = styled.section`
     display:grid;
     grid-template-columns:1fr 3fr;
     justify-content:center;
+    width:100%;
   }
 
   .top-filter {
@@ -127,35 +107,6 @@ const Wrapper = styled.section`
   }
 
 
-  .sort-container {
-    margin-right:1rem;
-  }
-
-  .sort-label {
-    font-size:1.15rem;
-    text-transform:uppercase;
-    font-weight:500;
-    margin-right:0.5rem;
-  }
-
-  .grid-icon {
-    margin:0 0.25rem;
-    font-size:1.5rem;
-    color:#AEB0B8;
-    transition:color 0.2s ease;
-  }
-
-  .grid-icon:hover {
-    cursor:pointer;
-    color:#000;
-  }
-
-  .grid-icon--diff {
-    position:relative;
-    font-size:calc(1.5rem - 2.5px);
-    transform:rotate(180deg);
-  }
-
 
   .holder-products {
     display:flex;
@@ -180,57 +131,6 @@ const Wrapper = styled.section`
 
 
 
-
-
-
-
-
-
-
-
-  // .side > * {
-  //  margin:1.75rem 0;
-  //  border-bottom:2px solid #efefef;
-  // }
-
-  // .side > *:first-of-type {
-  //   margin-top:0;
-  //  }
-
-
-  .search-input {
-    border:none;
-    padding:0.75rem;
-    background:#F1F5F8;
-    color:#222;
-    width:auto;
-    font-size:0.875rem;
-    letter-spacing:0.8px;
-  }
-
-  .search-input:placeholder {
-    color:#B4B6B7;
-  }
-
-
-  .clear-filters-btn {
-    border:none;
-    // background:#BB1525;
-    background:#EFEFEF;
-    border-radius:2px;
-    color:#222;
-    letter-spacing:0.8px;
-    font-size:0.875rem;
-    padding:0.75rem 1rem;
-    transition:all 0.4s ease;
-    text-transform:uppercase;
-  }
-
-  .clear-filters-btn:hover {
-    color:#fff;
-    background:#222;
-    cursor:pointer;
-  }
   
 
   .mobile-filter-open-btn {
