@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useProductsContext } from '../context/products_context'
 import { 
     BsFillGrid3X3GapFill,
     BsFillGrid1X2Fill,
@@ -9,23 +8,18 @@ import {
 
 
 
-
-const GridLayoutSelect = () => {
-    const {
-            gridLayoutType,
-            changeGridLayoutType,
-        } = useProductsContext()
-    
+const GridLayoutSelect = (props) => {
+    const { gridLayoutType, setGridLayoutType } = props    
 
     return (
         <Wrapper>
             <div className='flex-center'>
                 {/*3 X 3 grid layout */}
-                <BsFillGrid3X3GapFill className={`grid-icon ${gridLayoutType === '3x3' && 'grid-icon--current'} `} data-grid-type='3x3' onClick={() => changeGridLayoutType('3x3')}/>
+                <BsFillGrid3X3GapFill className={`grid-icon ${gridLayoutType === '3x3' && 'grid-icon--current'} `} data-grid-type='3x3' onClick={() => setGridLayoutType('3x3')}/>
                 {/*2 X 2 grid layout */}
-                <BsFillGridFill className={`grid-icon ${gridLayoutType === '2x2' && 'grid-icon--current'} `} data-grid-type='2x2' onClick={() => changeGridLayoutType('2x2')}/>
+                <BsFillGridFill className={`grid-icon ${gridLayoutType === '2x2' && 'grid-icon--current'} `} data-grid-type='2x2' onClick={() => setGridLayoutType('2x2')}/>
                 {/*1 X 1 grid layout w/ info to side instead of on the bottom*/}
-                <BsFillGrid1X2Fill className={`grid-icon grid-icon--unique ${gridLayoutType === '1x1-alt' && 'grid-icon--current'} `} data-grid-type='1x1-alt' onClick={() => changeGridLayoutType('1x1-alt')}/>
+                <BsFillGrid1X2Fill className={`grid-icon grid-icon--unique ${gridLayoutType === '1x1-alt' && 'grid-icon--current'} `} data-grid-type='1x1-alt' onClick={() => setGridLayoutType('1x1-alt')}/>
             </div>
         </Wrapper>
 
@@ -35,7 +29,6 @@ const GridLayoutSelect = () => {
 export default GridLayoutSelect
 
 const Wrapper = styled.section`
-
   .grid-icon {
     margin:0 0.25rem;
     font-size:1.5rem;
@@ -54,8 +47,6 @@ const Wrapper = styled.section`
     transform:rotate(180deg);
   }
 
-
-
   .grid-icon--current {
     color:#000;
   }
@@ -63,6 +54,5 @@ const Wrapper = styled.section`
   .grid-icon--current:hover {
     cursor:auto;
   }
-
 
 `

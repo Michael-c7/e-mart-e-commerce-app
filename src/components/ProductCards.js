@@ -15,14 +15,18 @@ const ProductCards = (props) => {
   /*solo means if the component is not contained w/ anything else
   eg: the productCards in newArrival component would be solo={true}
   and the productCards in the Products page would be solo={false} */
-  const { productsData, solo } = props;
+  const { productsData, solo, gridLayoutType, setGridLayoutType } = props;
 
   const {
     products,
     productsLoading,
     productsError,
-    gridLayoutType,
   } = useProductsContext()
+
+
+
+
+
 
       return (
         <Wrapper>
@@ -30,23 +34,48 @@ const ProductCards = (props) => {
           <ul className={`product-cards  ${solo ? 'solo--true' : 'solo--false'}  grid-layout-${gridLayoutType}`}>
             {productsData?.map((product, index) => {
               const {fields:productData, id:productId} = product;
+            /* 1x1-alt grid layout */
+              if(gridLayoutType && gridLayoutType === '1x1-alt') {
+                const maxCharacterAmount = 200;
+                return (
+                  <li className='product-card 1x1-alt' key={productId}>
+                    <Link to={`/products/${productId}`}>
+                      <div className='product-card__img-container'>
+                        <img className='product-card__img' src={productData?.images[0].url} alt={productData?.Name}/>
+                      </div>
+                    </Link>
+                    <div className='product-card__info'>
+                      <StarRating className='product-card__stars' rating={productData?.Rating} horizontalSpacing={'start'}/>
+                      <h4 className='product-card__brand'>{productData?.brand}</h4>
+                      <h2 className='product-card__name'>{productData?.Name}</h2>
+
+                      <p className='product-card__description'>
+                        {`${productData?.description.slice(0, maxCharacterAmount).trim()}... `}
+                        { productData?.description && <Link className='learn-more-btn ' to={`products/${productId}`} target='_blank'>Learn more</Link>}
+                      </p>
+
+                      <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
+                    </div>
+
+                    <h2 className='product-card__price'>${productData?.price}</h2>
+                  </li>
+                )
+              }
+            /* 2x2 & 3x3 grid layouts */
               return (
                 <li className='product-card' key={productId}>
-                  <Link to='/products'>
+                  <Link to={`/products/${productId}`}>
                     <div className='product-card__img-container'>
                       <img className='product-card__img' src={productData?.images[0].url} alt={productData?.Name}/>
                     </div>
                   </Link>
-                  <div>
-                    <StarRating className='product-card__stars' rating={productData?.Rating}/>
-                    <h4 className='product-card__brand'>{productData?.brand}</h4>
-                    <h2 className='product-card__name'>{productData?.Name}</h2>
-                    <div className='product-card__info'>
-                        <h2 className='product-card__price'>${productData?.price}</h2>
-                        <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
-                    </div>
+                  <StarRating className='product-card__stars' rating={productData?.Rating}/>
+                  <h4 className='product-card__brand'>{productData?.brand}</h4>
+                  <h2 className='product-card__name'>{productData?.Name}</h2>
+                  <div className='product-card__info'>
+                      <h2 className='product-card__price'>${productData?.price}</h2>
+                      <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
                   </div>
-
                 </li>
               )
             })}
@@ -83,6 +112,7 @@ h3 {
   display:grid;
   grid-template-columns:repeat(var(--card-amt), minmax(100px, 1fr));
   grid-gap:4rem 2rem;
+  align-items:center;
 }
 
 
@@ -229,18 +259,85 @@ h3 {
 
 .grid-layout-1x1-alt.solo--false .product-card {
   --card-space:0.25rem;
-  text-align:center;
-
+  text-align:start;
 
   display:grid;
-  grid-template-columns:minmax(100px,1fr) 1fr;
+  grid-template-columns:minmax(200px, 250px) 1fr 1fr;
   justify-items:start;
   justify-content:start;
   align-items:center;
-
-
-  background:red;
 }
 
+.grid-layout-1x1-alt .product-card__info {
+  margin-left:1.5rem;
+}
+
+
+.grid-layout-1x1-alt .product-card__brand {
+  font-size:0.9rem;
+  position:relative;
+  top:-5px;
+  margin-bottom:0.5rem;
+}
+
+.grid-layout-1x1-alt .product-card__name {
+  font-size:1.05rem;
+  font-weight:500;
+}
+
+.grid-layout-1x1-alt .product-card__name:first-letter {
+  text-transform: capitalize;
+}
+
+
+.grid-layout-1x1-alt .product-card__description {
+  margin:1.75rem 0;
+  width:60ch;
+  max-width:65ch;
+}
+
+.grid-layout-1x1-alt .product-card__price {
+  font-size:1.5rem;
+  font-weight:500;
+  margin-left:2rem;
+  justify-self:end;
+  align-self:center;
+}
+
+.learn-more-btn {
+  border:none;
+  background:none;
+  cursor:pointer;
+  color:#0645AD;
+  display:inline;
+}
+
+
+
+
+
+@media only screen and (max-width:1024px) { 
+  margin:0 1rem;
+
+  .grid-layout-1x1-alt .product-card__description {
+    margin:1.75rem 0;
+    width:50ch;
+
+  }
+}
+
+@media only screen and (max-width:768px) { 
+  .grid-layout-1x1-alt .product-card__description {
+    width:30ch;
+  }
+}
+
+@media only screen and (max-width:425px) { 
+  grid-template-columns:minmax(200px, 250px) 1fr;
+
+  .grid-layout-1x1-alt .product-card__description {
+    width:20ch;
+  }
+}
 
 `

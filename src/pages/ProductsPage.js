@@ -16,8 +16,19 @@ const ProductsPage = () => {
     products,
     productsLoading,
     productsError,
-    gridLayoutType,
+    // gridLayoutType,
   } = useProductsContext()  
+
+  /*
+    3x3 - the default, 3 product cards per row & image on top info on bottom
+
+    2x2 - like 3x3 but only 2 product cards in a row instead of 3
+
+    1x1-alt - 1 product card per row w/ an alternative layout
+    where the image is on the left side & info is on the right 
+    instead of the usual image on top info on bottom
+  */
+  const [gridLayoutType, setGridLayoutType] = React.useState('3x3')
 
   
   return (
@@ -38,12 +49,12 @@ const ProductsPage = () => {
               </div>
                 <div className='flex-center'>
                   <SortDropdown/>
-                  <GridLayoutSelect/>
+                  <GridLayoutSelect {...{gridLayoutType, setGridLayoutType}}/>
                 </div>
               </div>
           </div>
 
-          <ProductCards productsData={products} solo={false} />
+          <ProductCards {...{productsData:products,solo:false, gridLayoutType, setGridLayoutType}} />
         </div>
       </div>
     </Wrapper>
@@ -84,7 +95,7 @@ const Wrapper = styled.section`
     flex-direction:row;
     justify-content:space-between;
     align-items:center;
-    margin:0 1rem;
+    // margin:0 1rem;
   }
 
   .top-filter__inner__holder {
@@ -180,6 +191,10 @@ const Wrapper = styled.section`
 
     .side {
       display:none;
+    }
+
+    .top-filter__inner {
+      margin:0 1rem;
     }
     
 

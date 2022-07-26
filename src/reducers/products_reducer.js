@@ -37,11 +37,6 @@ const products_reducer = (state, action) => {
     }
 
 
-    if(action.type === "CHANGE_GRID_LAYOUT_TYPE") {
-      return {...state, gridLayoutType:action.payload}
-    }
-
-
 
     
     throw new Error(`No Matching "${action.type}" - action type`)
