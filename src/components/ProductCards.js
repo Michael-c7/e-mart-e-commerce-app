@@ -39,7 +39,7 @@ const ProductCards = (props) => {
                 const maxCharacterAmount = 200;
                 return (
                   <li className='product-card 1x1-alt' key={productId}>
-                    <Link to={`/products/${productId}`}>
+                    <Link to={`/products/${productId}`} className='product-card__img-link-container'>
                       <div className='product-card__img-container'>
                         <img className='product-card__img' src={productData?.images[0].url} alt={productData?.Name}/>
                       </div>
@@ -55,9 +55,12 @@ const ProductCards = (props) => {
                       </p>
 
                       <button className='standard-button product-card-add-to-cart-btn'>ADD TO CART</button>
+
+                      <h2 className='product-card__price product-card__price--add'>${productData?.price}</h2>
+
                     </div>
 
-                    <h2 className='product-card__price'>${productData?.price}</h2>
+                    <h2 className='product-card__price product-card__price--remove'>${productData?.price}</h2>
                   </li>
                 )
               }
@@ -92,6 +95,8 @@ h3 {
   padding:0px;
   margin:0px;
 }
+
+--img-height:350px;
 
 
 .product-cards {
@@ -141,28 +146,19 @@ h3 {
 }
 
 
-
-
-
-
 .product-card__img-container {
   // width:var(--cardWidthAndCardSpacing);
-
-  height:350px;
+  height:var(--img-height);
   overflow:hidden;
 }
 
 
-.solo--true.product-card__img-container {
-  height:350px;
+.solo--true.product-card__img-container,
+.solo--false.product-card__img-container  {
+  height:var(--img-height);
   overflow:hidden;
 }
 
-
-.solo--false.product-card__img-container {
-  height:350px;
-  overflow:hidden;
-}
 
 
 
@@ -262,7 +258,7 @@ h3 {
   text-align:start;
 
   display:grid;
-  grid-template-columns:minmax(200px, 250px) 1fr 1fr;
+  grid-template-columns:minmax(200px, 250px) 2fr 1fr;
   justify-items:start;
   justify-content:start;
   align-items:center;
@@ -292,8 +288,7 @@ h3 {
 
 .grid-layout-1x1-alt .product-card__description {
   margin:1.75rem 0;
-  width:60ch;
-  max-width:65ch;
+  width:100%;
 }
 
 .grid-layout-1x1-alt .product-card__price {
@@ -313,31 +308,87 @@ h3 {
 }
 
 
-
+.product-card__price--add {
+  display:none;
+}
 
 
 @media only screen and (max-width:1024px) { 
   margin:0 1rem;
 
-  .grid-layout-1x1-alt .product-card__description {
-    margin:1.75rem 0;
-    width:50ch;
 
-  }
 }
 
 @media only screen and (max-width:768px) { 
-  .grid-layout-1x1-alt .product-card__description {
-    width:30ch;
+  .grid-layout-1x1-alt.solo--false .product-card {  
+    grid-template-columns:minmax(200px, 250px) 1fr;
   }
+
+  .grid-layout-1x1-alt .product-card__description {
+    margin:0rem;
+    margin-bottom:1rem;
+    width:100%;
+  }
+
+
+  .grid-layout-1x1-alt .product-card-add-to-cart-btn {
+    margin:0 auto;
+    margin:0;
+  }
+  
+
+  .grid-layout-1x1-alt .product-card__price {
+    font-size:1.25rem;
+    font-weight:500;
+    justify-self:start;
+    align-self:start;
+  }
+
+
+  .grid-layout-1x1-alt .product-card__price--remove {
+    display:none;
+  }
+
+
+  .product-card__price--add {
+    display:block;
+    margin:0;
+    justify-self:start;
+    align-self:start;
+    position:relative;
+    margin-top:1rem;
+    left:-2rem;
+  }
+
+
+
+
 }
 
 @media only screen and (max-width:425px) { 
-  grid-template-columns:minmax(200px, 250px) 1fr;
-
-  .grid-layout-1x1-alt .product-card__description {
-    width:20ch;
+  .grid-layout-1x1-alt {
+    transform: scale(0.9);
+    width:calc(100% * 1.1);
+    top:-26rem;
+    position:relative;
   }
+
+
 }
+
+
+@media only screen and (max-width:320px) { 
+  .grid-layout-1x1-alt {
+    transform: scale(0.8);
+    width:calc(100% * 1.2);
+    top:-58rem;
+    position:relative;
+  }
+
+}
+
+
+
+
 
 `

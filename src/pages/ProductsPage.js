@@ -68,10 +68,11 @@ const Wrapper = styled.section`
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  width:60vw;
+  // width:60vw;
   max-width:100%;
-  margin:5rem auto;
+  margin:5rem var(--general-spacing);
   // background:#0f7fe7;
+  
   
 
 
@@ -140,10 +141,6 @@ const Wrapper = styled.section`
     margin:0.5rem;
   }
 
-
-
-  
-
   .mobile-filter-open-btn {
     border:none;
     border-radius:2px;
@@ -175,8 +172,10 @@ const Wrapper = styled.section`
 
 
   @media only screen and (max-width:1024px) {
-    width:100vw;   
-
+    // width:100vw;   
+    
+    margin:5rem calc(var(--general-spacing) - 1rem);
+    
     .holder {
       position:relative;
       display:grid;
@@ -233,7 +232,21 @@ const Wrapper = styled.section`
   // }
 
 
+  @media only screen and (max-width:470px) {
+    // background:#0f7fe7; 
+    
+    // margin:5rem calc(var(--general-spacing) - 1rem);
+    margin:0;
+    
+    .holder {
+      position:relative;
+      display:flex;
+    }
 
+    .top-filter__inner {
+      margin:0 0.5rem;
+    }
+  }
 
 
 
