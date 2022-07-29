@@ -6,7 +6,7 @@ import Filters from '../components/Filters'
 import SortDropdown from '../components/SortDropdown'
 import GridLayoutSelect from '../components/GridLayoutSelect'
 import { useProductsContext } from '../context/products_context'
-
+import Loading from '../components/Loading'
 const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -29,23 +29,31 @@ const ProductsPage = () => {
     instead of the usual image on top info on bottom
   */
   const [gridLayoutType, setGridLayoutType] = React.useState('3x3')
+  const [productsData, setProductsData] = React.useState([])
 
-  
+
+  React.useEffect(() => {
+    setProductsData(products)
+  }, [])
+
+
   return (
     <Wrapper>
       <div className='holder'>
         <div className='side'>
           <Filters/>
         </div>
-
-        <div className='holder-products'>
+        {productsLoading ? (
+          <Loading/>
+        ) : (
+          <div className='holder-products'>
           <div className='top-filter'>
             <div className='top-filter__inner'>
               <div className='top-filter__inner-left-side'>
                 <button className='mobile-filter-open-btn' onClick={() => setMobileFiltersOpen(true)}>
                   <BsSliders/>
                 </button>
-                <div className='top-filter__item-count'>Showing: 50 products</div>
+                <div className='top-filter__item-count'>Showing: {products.length} products</div>
               </div>
                 <div className='flex-center'>
                   <SortDropdown/>
@@ -56,6 +64,8 @@ const ProductsPage = () => {
 
           <ProductCards {...{productsData:products,solo:false, gridLayoutType, setGridLayoutType}} />
         </div>
+        )}
+
       </div>
     </Wrapper>
   )
@@ -152,28 +162,7 @@ const Wrapper = styled.section`
   }
 
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @media only screen and (max-width:1024px) {
-    // width:100vw;   
-    
+  @media only screen and (max-width:1024px) {    
     margin:5rem calc(var(--general-spacing) - 1rem);
     
     .holder {
@@ -181,7 +170,6 @@ const Wrapper = styled.section`
       display:grid;
       grid-template-columns:1fr;
       justify-content:center;
-      // background:green;
     }
 
     .holder-products  {
@@ -245,6 +233,27 @@ const Wrapper = styled.section`
 
     .top-filter__inner {
       margin:0 0.5rem;
+    }
+  }
+
+
+
+  @media only screen and (max-width:425px) {
+    .top-filter__inner,
+    .top-filter__inner-left-side {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .top-filter__item-count {
+      margin: 1rem 0; 
+    }
+
+    .mobile-filter-open-btn {
+      margin-top:1rem;
+      margin-right:0rem;
     }
   }
 

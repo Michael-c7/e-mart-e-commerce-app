@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Loading = () => {
   return (
     <Wrapper>
-        <div className="loading"></div>
+        <div className="loading "></div>
     </Wrapper>
   )
 }
@@ -16,6 +16,8 @@ export default Loading
 const Wrapper = styled.section`
 text-align:center;
 padding:0.5rem;
+position:relative;
+
 
 .loading {
   display: inline-block;

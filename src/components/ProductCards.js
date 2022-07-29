@@ -24,10 +24,6 @@ const ProductCards = (props) => {
   } = useProductsContext()
 
 
-
-
-
-
       return (
         <Wrapper>
          {productsLoading ? <Loading/> : (
@@ -223,6 +219,17 @@ h3 {
       --card-amt:1;
     }
 
+
+    .grid-layout-3x3.product-cards.solo--false  {
+      --card-amt:2;
+    }
+
+
+    .grid-layout-2x2.product-cards.solo--false  {
+      --card-amt:1;
+    }
+
+
 }
 
 
@@ -367,23 +374,28 @@ h3 {
 
 @media only screen and (max-width:425px) { 
   .grid-layout-1x1-alt {
-    transform: scale(0.9);
-    width:calc(100% * 1.1);
-    top:-26rem;
     position:relative;
-  }
-
+      transform: scale(0.8);
+      width:calc(100% * 1.2);
+      top:-10%;
+      left:-14%;
+    }
 
 }
 
 
 @media only screen and (max-width:320px) { 
-  .grid-layout-1x1-alt {
-    transform: scale(0.8);
-    width:calc(100% * 1.2);
-    top:-58rem;
-    position:relative;
-  }
+  // .grid-layout-1x1-alt {
+  //   // transform: scale(0.8);
+  //   // width:calc(100% * 1.2);
+  //   // top:-58rem;
+  //   // position:relative;
+  // }
+
+
+  // .grid-layout-1x1-alt.solo--false .product-card__description {
+  //   max-width:15ch;
+  // }
 
 }
 

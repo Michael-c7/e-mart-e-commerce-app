@@ -4,14 +4,6 @@ import styled from 'styled-components'
 
 const Accordion = (props) => {
   const { accordionHeading, accordionIndex } = props.data;
-  console.log(props.children)
-// console.log(props.data)
-// for now
-  // let accordionHeading = 'default heading'
-  // let accordionData = 'default data'
-  // let accordionIndex = 999999999999;
-
-
 
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -27,15 +19,13 @@ const Accordion = (props) => {
     });
   }
 
-
-
   
   React.useEffect(() => {
     document.querySelectorAll('[data-slidetoggle]').forEach(el => el.addEventListener('click', slidetoggle));
   }, [])
 
 
-
+  
 
   return (
     <Wrapper>
