@@ -7,6 +7,9 @@ import SortDropdown from '../components/SortDropdown'
 import GridLayoutSelect from '../components/GridLayoutSelect'
 import { useProductsContext } from '../context/products_context'
 import Loading from '../components/Loading'
+import {sortArray} from '../utils/misc'
+
+
 const ProductsPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -18,6 +21,15 @@ const ProductsPage = () => {
     productsError,
     // gridLayoutType,
   } = useProductsContext()  
+
+
+  React.useEffect(() => {
+    let testArrStr = ['cat','abby','zack','bob','steve','zoe','john']
+    let testArrNum = [999,52,-2,2,44,10,11,500]
+
+    console.log(sortArray(testArrStr, 'low', 'string'))
+  })
+  
 
   /*
     3x3 - the default, 3 product cards per row & image on top info on bottom
