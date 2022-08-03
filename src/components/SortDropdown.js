@@ -40,6 +40,6 @@ const Wrapper = styled.section`
     font-weight:500;
     margin-right:0.5rem;
 
-    background:red;
+    // background:red;
   }
 `

@@ -60,34 +60,32 @@ const ProductsPage = () => {
 
   return (
     <Wrapper>
-      <div className='holder'>
-        <div className='side'>
-          <Filters/>
-        </div>
-        {productsLoading ? (
-          <Loading/>
-        ) : (
-          <div className='holder-products'>
-          <div className='top-filter'>
-            <div className='top-filter__inner'>
-              <div className='top-filter__inner-left-side'>
-                <button className='mobile-filter-open-btn' onClick={() => setMobileFiltersOpen(true)}>
-                  <BsSliders/>
-                </button>
-                <div className='top-filter__item-count'>Showing: {products.length} products</div>
-              </div>
+          <div className='container'>
+            <div className='left-side'>
+              <Filters/>
+            </div>
+            {productsLoading ? (
+              <Loading/>
+            ) : (
+            <div className='right-side'>
+              <div className='right-side__top-filter'>
                 <div className='flex-center'>
-                  <SortDropdown/>
+                  {/* <BsSliders className='mobile-filter-menu-open-icon'/> */}
+                  <div className='top-filter__item-count'>Showing: {products.length} products</div>
+                </div>
+                <div className='flex-center'>
+                  <div className='sort-dropdown-container'>
+                    <SortDropdown />
+                  </div>
                   <GridLayoutSelect {...{gridLayoutType, setGridLayoutType}}/>
                 </div>
               </div>
+              <div className='right-side__content'>
+                <ProductCards {...{productsData:products,solo:false, gridLayoutType, setGridLayoutType}} />
+              </div>
+            </div>
+            )}
           </div>
-
-          <ProductCards {...{productsData:products,solo:false, gridLayoutType, setGridLayoutType}} />
-        </div>
-        )}
-
-      </div>
     </Wrapper>
   )
 }
@@ -99,184 +97,71 @@ const Wrapper = styled.section`
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  // width:60vw;
-  max-width:100%;
+
+  
   margin:5rem var(--general-spacing);
   // background:#0f7fe7;
-  
-  
 
 
-  .holder {
+  .container {
     position:relative;
     display:grid;
     grid-template-columns:1fr 3fr;
     justify-content:center;
     width:100%;
   }
-
-  .top-filter {
-    position:relative;
-    width:100%;
-    margin-bottom:2rem;
+  
+  .left-side {
+    margin-right:2rem;
   }
 
-  .top-filter__inner {
+  .right-side__top-filter {
     display:flex;
     flex-direction:row;
     justify-content:space-between;
     align-items:center;
-    // margin:0 1rem;
-  }
-
-  .top-filter__inner__holder {
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-  }
-
-  .top-filter__item-count {
-    color:#000;
+    flex-wrap:wrap;
+    margin-bottom:1rem;
   }
 
 
-
-  .top-filter__inner-left-side {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
-
-
-
-  .holder-products {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    margin-left:2rem;
-  }
-
-
-  .holder-more-btns {
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    margin-top:1.5rem;
-  }
-
-  .holder-more-btns button {
-    margin:0.5rem;
-  }
-
-  .mobile-filter-open-btn {
-    border:none;
-    border-radius:2px;
-    font-size:1.15rem;
-    padding:0.25rem 0.75rem;
-    margin-right:1rem;
-
+  .mobile-filter-menu-open-icon {
+    margin-right:1.5rem;
     display:none;
   }
 
 
+
   @media only screen and (max-width:1024px) {    
-    margin:5rem calc(var(--general-spacing) - 1rem);
-    
-    .holder {
-      position:relative;
+    .container {
       display:grid;
       grid-template-columns:1fr;
       justify-content:center;
     }
 
-    .holder-products  {
-      margin-left:0;
-    }
 
-    .side {
+    .left-side {
+      margin-right:0rem;
       display:none;
     }
 
-    .top-filter__inner {
-      margin:0 1rem;
-    }
-    
-
-    .mobile-filter-open-btn {
-      display:block;
-    }
   }
 
 
-
-  @media only screen and (max-width:768px) {
-    .sort-label {
-      display:none;
-    }
-
-    .sort-container {
+  @media only screen and (max-width:768px) {  
+    .sort-dropdown-container {
       display:none;
     }
   }
 
-  
-
-
-
-  //   .mobile-filters-container .sort-label {
-  //   display:block;
-  // }
-
-  //   .mobile-filters-container .sort-container {
-  //   display:block;
-  // }
-
-
-  // .mobile-filters-container .sort-container {
-  //   margin-right:0rem;
-  // }
-
-
-  @media only screen and (max-width:470px) {
-    // background:#0f7fe7; 
-    
-    // margin:5rem calc(var(--general-spacing) - 1rem);
-    margin:0;
-    
-    .holder {
-      position:relative;
-      display:flex;
-    }
-
-    .top-filter__inner {
-      margin:0 0.5rem;
-    }
-  }
-
-
-
-  @media only screen and (max-width:425px) {
-    .top-filter__inner,
-    .top-filter__inner-left-side {
-      display:flex;
-      flex-direction:column;
+  @media only screen and (max-width:250px) {  
+    .right-side__top-filter {
       justify-content:center;
-      align-items:center;
     }
 
     .top-filter__item-count {
-      margin: 1rem 0; 
-    }
-
-    .mobile-filter-open-btn {
-      margin-top:1rem;
-      margin-right:0rem;
+      margin-bottom:0.5rem;
     }
   }
-
-
 
 `
