@@ -23,12 +23,9 @@ const ProductsPage = () => {
   } = useProductsContext()  
 
 
-  React.useEffect(() => {
-    let testArrStr = ['cat','abby','zack','bob','steve','zoe','john']
-    let testArrNum = [999,52,-2,2,44,10,11,500]
 
-    console.log(sortArray(testArrStr, 'low', 'string'))
-  })
+
+    // console.log(sortArray(testArrNum, 'high', 'number'))
   
 
   /*
@@ -47,6 +44,18 @@ const ProductsPage = () => {
   React.useEffect(() => {
     setProductsData(products)
   }, [])
+
+
+  React.useEffect(() => {
+    let sortedData = productsData.sort((a, b) => {
+      return a.fields.price - b.fields.price
+    })
+
+    console.log(sortedData)
+
+    setProductsData(sortedData)
+
+  }, [productsData])
 
 
   return (
@@ -109,7 +118,6 @@ const Wrapper = styled.section`
   .top-filter {
     position:relative;
     width:100%;
-    // align-self:center;
     margin-bottom:2rem;
   }
 

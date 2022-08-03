@@ -8,6 +8,10 @@ const initialState = {
 
     isSidebarOpen:false,
     isSearchbarOpen:false,
+
+    /*price-lowest, rating-highest, name-a-z*/
+    sortFilter:'',
+    filteredProducts:[],
 }
 
 
@@ -46,6 +50,13 @@ export const ProductsProvider = ({ children }) => {
       } catch(error) {
         dispatch({type:"GET_PRODUCTS_ERROR"})
       } 
+  }
+
+
+
+
+  const sortProducts = () => {
+    dispatch({type:""})
   }
 
 
