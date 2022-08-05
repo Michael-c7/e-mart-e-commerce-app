@@ -355,13 +355,25 @@ h3 {
 }
 
 
+@media only screen and (max-width:660px) { 
+  .grid-layout-3x3.solo--false  {
+    --card-amt:2;
+  }
+
+  .grid-layout-2x2.solo--false  {
+    --card-amt:1;
+  }
+  
+}
+
+
 @media only screen and (max-width:425px) { 
   .grid-layout-1x1-alt {
     position:relative;
-      transform: scale(0.8);
-      width:calc(100% * 1.2);
-      top:-10%;
-      left:-14%;
+    transform:scale(0.8);
+    width:calc(100% * 1.2);
+    left:-16.6%;
+    top:-875px;
   }
 }
 
