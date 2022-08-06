@@ -10,7 +10,7 @@ const initialState = {
     isSearchbarOpen:false,
 
     /*price-lowest, rating-highest, name-a-z*/
-    sortFilter:'',
+    sortFilter:'featured',
     filteredProducts:[],
 }
 
@@ -55,8 +55,8 @@ export const ProductsProvider = ({ children }) => {
 
 
 
-  const sortProducts = () => {
-    dispatch({type:""})
+  const sortProducts = (sortType) => {
+    dispatch({type:"SORT_PRODUCTS", sortFilter:sortType})
   }
 
 

@@ -39,7 +39,9 @@ const products_reducer = (state, action) => {
 
 
 
-    
+    if(action.type === "SORT_PRODUCTS") {
+      return {...state, sortFilter:action.payload}
+    }
 
 
 

@@ -86,6 +86,29 @@ const ProductsPage = () => {
             </div>
             )}
           </div>
+
+          {/* <div className='mobile-filter-menu'>
+              <div className='mobile-filter-menu__inner'>
+                <div className='mobile-filter-menu__sort-container'>
+                  <SortDropdown />
+                </div>
+                <div className='mobile-filter-menu__filters-container'>
+                  <Filters/>
+                </div>
+              </div>
+          </div> */}
+
+          {mobileFiltersOpen ? (
+            <div className='mobile-filter-btn-container mobile-filter-close-btn-container'>
+              <button className='standard-button mobile-filter-container__btn  mobile-filter-container__btn--gray' onClick={() => setMobileFiltersOpen(false)}>reset</button>
+              <button className='standard-button mobile-filter-container__btn'>apply & close</button>
+            </div>
+          ) : (
+            <div className='mobile-filter-btn-container mobile-filter-open-btn-container'>
+              <button className='standard-button mobile-filter-container__btn' onClick={() => setMobileFiltersOpen(true)}>refine & sort</button>
+            </div>
+          )}
+    
     </Wrapper>
   )
 }
@@ -125,9 +148,62 @@ const Wrapper = styled.section`
   }
 
 
-  .mobile-filter-menu-open-icon {
-    margin-right:1.5rem;
-    display:none;
+
+
+
+
+
+  .mobile-filter-btn-container {
+    position:fixed;
+    z-index:999;
+    display:flex;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:4rem;
+  }
+
+  @media only screen and (max-width:425px) {
+    .mobile-filter-close-btn-container {
+      flex-direction:column;
+      bottom:1.7rem;
+    }
+  } 
+
+  .mobile-filter-container__btn {
+    height:100%;
+    width:100%;
+    font-size:1.5rem;
+    border-radius:0;
+    background:var(--main-color);
+  }
+
+
+  .mobile-filter-container__btn--gray {
+    background:#EFEFEF;
+    color:#000;
+  }
+
+
+
+  .mobile-filter-menu {
+    position:absolute;
+    z-index:999;
+    // display:flex;
+    // flex-direction:column;
+    // justify-content:center;
+    align-items:center;
+    background-color:#fff;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    overflow:auto;
+    padding:1rem;
+  }
+
+  .mobile-filter-menu__inner {
+    top:0;
   }
 
 
@@ -139,12 +215,10 @@ const Wrapper = styled.section`
       justify-content:center;
     }
 
-
     .left-side {
       margin-right:0rem;
       display:none;
     }
-
   }
 
 
