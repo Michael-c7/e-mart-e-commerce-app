@@ -8,6 +8,8 @@ import GridLayoutSelect from '../components/GridLayoutSelect'
 import { useProductsContext } from '../context/products_context'
 import Loading from '../components/Loading'
 import {sortArray} from '../utils/misc'
+import Accordion from '../components/Accordion'
+import { generateUniqueId } from '../utils/misc'
 
 
 const ProductsPage = () => {
@@ -70,7 +72,6 @@ const ProductsPage = () => {
             <div className='right-side'>
               <div className='right-side__top-filter'>
                 <div className='flex-center'>
-                  {/* <BsSliders className='mobile-filter-menu-open-icon'/> */}
                   <div className='top-filter__item-count'>Showing: {products.length} products</div>
                 </div>
                 <div className='flex-center'>
@@ -87,16 +88,16 @@ const ProductsPage = () => {
             )}
           </div>
 
-          {/* <div className='mobile-filter-menu'>
+          <div className={`mobile-filter-menu  ${mobileFiltersOpen && 'mobile-filter-menu--open'}`}>
               <div className='mobile-filter-menu__inner'>
                 <div className='mobile-filter-menu__sort-container'>
-                  <SortDropdown />
+                  <SortDropdown  {...{sortLabelDirection:'column'}}/>
                 </div>
                 <div className='mobile-filter-menu__filters-container'>
                   <Filters/>
                 </div>
               </div>
-          </div> */}
+          </div>
 
           {mobileFiltersOpen ? (
             <div className='mobile-filter-btn-container mobile-filter-close-btn-container'>
@@ -152,6 +153,7 @@ const Wrapper = styled.section`
 
 
 
+  --mobile-filter-btn-container-height:4rem;
 
   .mobile-filter-btn-container {
     position:fixed;
@@ -160,8 +162,52 @@ const Wrapper = styled.section`
     bottom:0;
     left:0;
     width:100%;
-    height:4rem;
+    height:var(--mobile-filter-btn-container-height);
   }
+
+
+  .mobile-filter-menu {
+    position:absolute;
+    z-index:999;
+    align-items:center;
+    background-color:#fff;
+    top:0;
+    left:0;
+    width:100%;
+    height:calc(100vh - var(--mobile-filter-btn-container-height));
+    overflow:auto;
+    padding:2rem 1rem;
+
+    transform:translateY(100%);
+    transition:transform 0.5s ease;
+    display:none;
+    z-index:-999;
+  }
+
+  .mobile-filter-menu--open {
+    transform:translateY(0%);
+
+    display:block;
+    z-index:998;
+  }
+
+  .mobile-filter-menu__inner {
+    top:0;
+    width:70%;
+    margin:0 auto;
+  }
+
+
+  .mobile-filter-menu__sort-container {
+    padding:2rem 0;
+    margin:2rem 0;
+    border-top:1px solid #F4F4F4;
+    border-bottom:1px solid #F4F4F4;
+  }
+
+
+
+
 
   @media only screen and (max-width:425px) {
     .mobile-filter-close-btn-container {
@@ -186,25 +232,7 @@ const Wrapper = styled.section`
 
 
 
-  .mobile-filter-menu {
-    position:absolute;
-    z-index:999;
-    // display:flex;
-    // flex-direction:column;
-    // justify-content:center;
-    align-items:center;
-    background-color:#fff;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    overflow:auto;
-    padding:1rem;
-  }
 
-  .mobile-filter-menu__inner {
-    top:0;
-  }
 
 
 

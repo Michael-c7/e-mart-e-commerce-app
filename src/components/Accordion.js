@@ -31,7 +31,7 @@ const Accordion = (props) => {
     <Wrapper>
       <div className={`accordion ${menuOpen ? 'spacing--open' : 'spacing--closed'}`}>
         <header className='accordion__header' data-slidetoggle={`#box${accordionIndex}`} onClick={() => setMenuOpen(!menuOpen)}>
-          <h2 className='accordion__heading'>{accordionHeading}</h2>
+          {accordionHeading ? <h2 className='accordion__heading'>{accordionHeading}</h2> : ''}
           <div className={`wrap ${menuOpen ? ' toggle open ' : 'toggle'}`}>
             <div className='toggle'></div>
           </div>
